@@ -30,11 +30,34 @@ header h1 {
   letter-spacing: -0.3px;
 }
 
+.daily-quote {
+  max-width: 720px;
+  margin: 1.5rem auto 0.25rem;
+  padding: 0 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--text);
+  font-style: italic;
+}
+
+.quote-author {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
 .tabs {
   display: flex;
   background: white;
   border-bottom: 1px solid var(--border);
   padding: 0 2rem;
+  margin-top: 1.5rem;
 }
 
 .tab {
