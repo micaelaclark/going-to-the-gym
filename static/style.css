@@ -338,6 +338,174 @@ tr:last-child td { border-bottom: none; }
   padding: 1rem 0;
 }
 
+/* ── Muscle tags ── */
+
+.muscle-tags {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-top: 0.6rem;
+}
+
+.muscle-tag {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.muscle-tag.chest      { background: #ffe4ea; color: #c2185b; }
+.muscle-tag.back       { background: #e3f2fd; color: #1565c0; }
+.muscle-tag.shoulders  { background: #f3e5f5; color: #7b1fa2; }
+.muscle-tag.biceps     { background: #fff3e0; color: #e65100; }
+.muscle-tag.triceps    { background: #fffde7; color: #f57f17; }
+.muscle-tag.core       { background: #e0f7fa; color: #00838f; }
+.muscle-tag.quads      { background: #e8f5e9; color: #2e7d32; }
+.muscle-tag.hamstrings { background: #f1f8e9; color: #558b2f; }
+.muscle-tag.glutes     { background: #fce4ec; color: #ad1457; }
+.muscle-tag.calves     { background: #e0f2f1; color: #00695c; }
+.muscle-tag.forearms   { background: #ede7f6; color: #4527a0; }
+
+/* ── Training insights ── */
+
+.insights-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.insights-panel-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 1.1rem;
+}
+
+.insights-section {
+  margin-bottom: 1.1rem;
+}
+.insights-section:last-child { margin-bottom: 0; }
+
+.insights-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.55rem;
+}
+
+.insights-hint {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.insights-pills {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.insights-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.insights-pill-meta {
+  font-size: 0.65rem;
+  font-weight: 600;
+  opacity: 0.75;
+  text-transform: none;
+  letter-spacing: 0.2px;
+  padding-left: 0.35rem;
+  border-left: 1px solid rgba(0,0,0,0.12);
+}
+
+/* ── Activity timeline ── */
+
+#activity-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.timeline-day {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--accent);
+}
+
+.timeline-day::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0.35rem;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg);
+}
+
+.timeline-date {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 0.85rem;
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.timeline-item {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.timeline-icon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+.timeline-body {
+  flex: 1;
+  color: var(--text);
+}
+
+.timeline-label {
+  font-weight: 700;
+}
+
+.timeline-meta {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 0.15rem;
+}
+
 /* ── Journal ── */
 
 #journal-entries {

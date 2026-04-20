@@ -8,16 +8,19 @@ const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4'
 // ── Init ─────────────────────────────────────────────────────────────────────
 
 async function fetchData() {
-  const res = await fetch('/api/workouts');
+  // Cache-bust so fresh deploys show up immediately
+  const res = await fetch('./data/workouts.json?t=' + Date.now());
   state = await res.json();
   renderAll();
 }
 
 function renderAll() {
   renderStrengthBubbles();
+  renderInsights();
   renderRunningTable();
   renderRunningChart();
   renderJournalEntries();
+  renderActivityTimeline();
   if (selectedBubbleId) {
     const entry = state.strength.find(e => e.id === selectedBubbleId);
     if (entry) renderStrengthChart(entry.exercise);
@@ -35,13 +38,6 @@ document.querySelectorAll('.tab').forEach(tab => {
     document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
   });
 });
-
-// ── Delete ────────────────────────────────────────────────────────────────────
-
-async function deleteEntry(type, id) {
-  await fetch(`/api/workouts/${type}/${id}`, { method: 'DELETE' });
-  await fetchData();
-}
 
 // ── Strength bubbles ──────────────────────────────────────────────────────────
 
@@ -63,8 +59,77 @@ function renderStrengthBubbles() {
         ${e.rep2 != null ? `<span class="rep-chip">${e.rep2}</span>` : ''}
         ${e.rep3 != null ? `<span class="rep-chip">${e.rep3}</span>` : ''}
       </div>
+      ${(e.muscles && e.muscles.length) ? `
+        <div class="muscle-tags">
+          ${e.muscles.map(m => `<span class="muscle-tag ${m}">${m}</span>`).join('')}
+        </div>
+      ` : ''}
     </div>
   `).join('');
+}
+
+const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'calves', 'forearms'];
+
+function daysSince(dateStr) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const d = new Date(dateStr + 'T00:00:00');
+  return Math.floor((today - d) / (1000 * 60 * 60 * 24));
+}
+
+function renderInsights() {
+  const panel = document.getElementById('insights');
+  if (!state.strength.length) {
+    panel.classList.add('hidden');
+    return;
+  }
+  panel.classList.remove('hidden');
+
+  // Find most recent training date per muscle
+  const lastTrained = {};
+  for (const e of state.strength) {
+    for (const m of (e.muscles || [])) {
+      if (!lastTrained[m] || e.date > lastTrained[m]) lastTrained[m] = e.date;
+    }
+  }
+
+  const recovering = [];
+  const ready = [];
+  const focus = [];
+
+  for (const m of ALL_MUSCLES) {
+    const last = lastTrained[m];
+    if (!last) {
+      focus.push({ muscle: m, meta: 'untrained' });
+      continue;
+    }
+    const days = daysSince(last);
+    if (days < 2) {
+      const label = days === 0 ? 'today' : 'yesterday';
+      recovering.push({ muscle: m, meta: label });
+    } else if (days >= 7) {
+      focus.push({ muscle: m, meta: `${days}d ago` });
+    } else {
+      ready.push({ muscle: m, meta: `${days}d ago` });
+    }
+  }
+
+  fillInsightsSection('insights-focus', focus);
+  fillInsightsSection('insights-recovering', recovering);
+  fillInsightsSection('insights-ready', ready);
+}
+
+function fillInsightsSection(sectionId, items) {
+  const section = document.getElementById(sectionId);
+  const pills = section.querySelector('.insights-pills');
+  if (!items.length) {
+    section.classList.add('hidden');
+    return;
+  }
+  section.classList.remove('hidden');
+  pills.innerHTML = items.map(({ muscle, meta }) =>
+    `<span class="insights-pill muscle-tag ${muscle}">${muscle}<span class="insights-pill-meta">${meta}</span></span>`
+  ).join('');
 }
 
 function selectBubble(id, exercise) {
@@ -92,7 +157,7 @@ function renderRunningTable() {
   const tbody = document.querySelector('#running-table tbody');
   const sorted = [...state.running].sort((a, b) => b.date.localeCompare(a.date));
   if (!sorted.length) {
-    tbody.innerHTML = '<tr class="empty-row"><td colspan="4">No runs yet — log your first run above.</td></tr>';
+    tbody.innerHTML = '<tr class="empty-row"><td colspan="3">No runs yet.</td></tr>';
     return;
   }
   tbody.innerHTML = sorted.map(e => `
@@ -100,7 +165,6 @@ function renderRunningTable() {
       <td>${fmt(e.date)}</td>
       <td>${e.distance}</td>
       <td>${e.speed}</td>
-      <td><button class="delete-btn" onclick="deleteEntry('running','${e.id}')" title="Delete">✕</button></td>
     </tr>
   `).join('');
 }
@@ -207,6 +271,66 @@ function renderRunningChart() {
   });
 }
 
+// ── Activity timeline ─────────────────────────────────────────────────────────
+
+function renderActivityTimeline() {
+  const container = document.getElementById('activity-timeline');
+  const items = [];
+
+  for (const e of (state.strength || [])) {
+    const reps = [e.rep1, e.rep2, e.rep3].filter(r => r != null).join('/');
+    items.push({
+      date: e.date,
+      icon: '💪',
+      label: e.exercise,
+      meta: `${e.sets} sets · ${e.weight} lbs${reps ? ' · ' + reps : ''}`
+    });
+  }
+  for (const e of (state.running || [])) {
+    items.push({
+      date: e.date,
+      icon: '🏃‍♀️',
+      label: `Run — ${e.distance} mi`,
+      meta: `${e.speed} mph`
+    });
+  }
+  for (const e of (state.journal || [])) {
+    items.push({
+      date: e.date,
+      icon: '📝',
+      label: 'Journal',
+      meta: e.text
+    });
+  }
+
+  if (!items.length) {
+    container.innerHTML = '<p class="empty-state">No activity logged yet.</p>';
+    return;
+  }
+
+  // Group by date (newest first)
+  const byDate = {};
+  for (const it of items) (byDate[it.date] ||= []).push(it);
+  const dates = Object.keys(byDate).sort((a, b) => b.localeCompare(a));
+
+  container.innerHTML = dates.map(date => `
+    <div class="timeline-day">
+      <div class="timeline-date">${fmtLong(date)}</div>
+      <div class="timeline-items">
+        ${byDate[date].map(it => `
+          <div class="timeline-item">
+            <div class="timeline-icon">${it.icon}</div>
+            <div class="timeline-body">
+              <div class="timeline-label">${it.label}</div>
+              <div class="timeline-meta">${it.meta}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
 // ── Journal ───────────────────────────────────────────────────────────────────
 
 function renderJournalEntries() {
@@ -222,7 +346,6 @@ function renderJournalEntries() {
         <div class="journal-date">${fmt(e.date)}</div>
         <div class="journal-text">${e.text}</div>
       </div>
-      <button class="delete-btn" onclick="deleteEntry('journal','${e.id}')" title="Delete">✕</button>
     </div>
   `).join('');
 }
@@ -232,6 +355,11 @@ function renderJournalEntries() {
 function fmt(dateStr) {
   const [y, m, d] = dateStr.split('-');
   return `${m}/${d}/${y}`;
+}
+
+function fmtLong(dateStr) {
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 
 function hexAlpha(hex, alpha) {

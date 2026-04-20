@@ -8,7 +8,8 @@
       "rep1": 12,
       "rep2": 12,
       "rep3": 12,
-      "weight": 50
+      "weight": 50,
+      "muscles": ["chest"]
     },
     {
       "id": "a1b2c3d4-0002-0002-0002-000000000002",
@@ -18,7 +19,8 @@
       "rep1": 12,
       "rep2": 8,
       "rep3": 6,
-      "weight": 25
+      "weight": 25,
+      "muscles": ["triceps"]
     }
   ],
   "running": [],
