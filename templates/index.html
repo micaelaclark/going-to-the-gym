@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Micaela Goes to the Gym</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💪</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Micaela Goes to the Gym 🏃‍♀️</h1>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="strength">Strength</button>
+    <button class="tab" data-tab="running">Running</button>
+    <button class="tab" data-tab="journal">Journal</button>
+  </div>
+
+  <!-- Strength Tab -->
+  <div id="strength-tab" class="tab-content">
+    <div id="strength-bubbles" class="bubble-grid">
+      <p class="empty-state">No workouts yet.</p>
+    </div>
+
+    <div id="strength-chart-panel" class="chart-panel hidden">
+      <div class="chart-panel-header">
+        <span id="chart-panel-title"></span>
+        <button class="close-btn" onclick="closeChart()">✕</button>
+      </div>
+      <canvas id="strength-chart"></canvas>
+    </div>
+  </div>
+
+  <!-- Running Tab -->
+  <div id="running-tab" class="tab-content hidden">
+    <div class="card">
+      <h2>Progress</h2>
+      <div class="chart-wrap">
+        <canvas id="running-chart"></canvas>
+        <p id="running-empty" class="empty-chart hidden">Log some runs to see your progress chart.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>History</h2>
+      <table id="running-table">
+        <thead>
+          <tr>
+            <th>Date</th><th>Distance (mi)</th><th>Speed (mph)</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Journal Tab -->
+  <div id="journal-tab" class="tab-content hidden">
+    <div id="journal-entries">
+      <p class="empty-state">No journal entries yet.</p>
+    </div>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

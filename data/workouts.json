@@ -1,0 +1,32 @@
+{
+  "strength": [
+    {
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "date": "2026-04-20",
+      "exercise": "Chest Fly",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 50
+    },
+    {
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "date": "2026-04-20",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 25
+    }
+  ],
+  "running": [],
+  "journal": [
+    {
+      "id": "j1b2c3d4-0001-0001-0001-000000000001",
+      "date": "2026-04-20",
+      "text": "Light workout overcoming being sick. Felt normal and like I could have pushed myself slightly harder."
+    }
+  ]
+}
