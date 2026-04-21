@@ -106,9 +106,9 @@ function renderStrengthBubbles() {
   container.innerHTML = sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
-      <div class="bubble-exercise">${e.exercise}</div>
+      <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
       <div class="bubble-date">${fmt(e.date)}</div>
-      <div class="bubble-stats">${e.sets} sets · ${e.weight} lbs</div>
+      <div class="bubble-stats">${e.sets} sets${e.weight ? ' · ' + e.weight + ' lbs' : ''}</div>
       <div class="rep-chips">
         ${e.rep1 != null ? `<span class="rep-chip">${e.rep1}</span>` : ''}
         ${e.rep2 != null ? `<span class="rep-chip">${e.rep2}</span>` : ''}
@@ -337,8 +337,8 @@ function renderActivityTimeline() {
     items.push({
       date: e.date,
       icon: '💪',
-      label: e.exercise,
-      meta: `${e.sets} sets · ${e.weight} lbs${reps ? ' · ' + reps : ''}`
+      label: `${e.exercise}${e.starred ? ' ⭐' : ''}`,
+      meta: `${e.sets} sets${e.weight ? ' · ' + e.weight + ' lbs' : ''}${reps ? ' · ' + reps : ''}`
     });
   }
   for (const e of (state.running || [])) {

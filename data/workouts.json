@@ -21,14 +21,58 @@
       "rep3": 6,
       "weight": 25,
       "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0003-0003-0003-000000000003",
+      "date": "2026-04-21",
+      "exercise": "Goblet Squat",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 15,
+      "rep3": 15,
+      "weight": 15,
+      "muscles": ["quads", "glutes", "core"]
+    },
+    {
+      "id": "a1b2c3d4-0004-0004-0004-000000000004",
+      "date": "2026-04-21",
+      "exercise": "Leg Press",
+      "sets": 2,
+      "rep1": 10,
+      "rep2": 7,
+      "weight": 180,
+      "starred": true,
+      "muscles": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0005-0005-0005-000000000005",
+      "date": "2026-04-21",
+      "exercise": "Romanian Deadlift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 0,
+      "muscles": ["hamstrings", "glutes"]
     }
   ],
-  "running": [],
+  "running": [
+    {
+      "date": "2026-04-21",
+      "distance": 1,
+      "speed": 5.07
+    }
+  ],
   "journal": [
     {
       "id": "j1b2c3d4-0001-0001-0001-000000000001",
       "date": "2026-04-20",
       "text": "Light workout overcoming being sick. Felt normal and like I could have pushed myself slightly harder."
+    },
+    {
+      "id": "j1b2c3d4-0002-0002-0002-000000000002",
+      "date": "2026-04-21",
+      "text": "I don't think I'm doing goblet squats right because I can feel it in my mid back and can do many; what is the fix to this?"
     }
   ]
 }
