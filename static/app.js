@@ -424,5 +424,60 @@ function hexAlpha(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
+// ── Oura status ───────────────────────────────────────────────────────────────
+
+async function fetchOuraStatus() {
+  try {
+    const res = await fetch('/.netlify/functions/oura');
+    if (!res.ok) return;
+    const { sleep, readiness, stress } = await res.json();
+    renderOuraStatus(sleep, readiness, stress);
+  } catch {
+    // Oura not configured — bar stays hidden
+  }
+}
+
+function scoreClass(n) {
+  if (n >= 85) return 'good';
+  if (n >= 70) return 'ok';
+  return 'poor';
+}
+
+const STRESS_MAP = {
+  restored:     { label: 'Restored', cls: 'good' },
+  normal:       { label: 'Normal',   cls: 'good' },
+  stressful:    { label: 'Stressful', cls: 'ok'  },
+  overwhelming: { label: 'High',     cls: 'poor' },
+};
+
+function renderOuraStatus(sleep, readiness, stress) {
+  let hasData = false;
+
+  if (sleep?.score != null) {
+    const el = document.getElementById('oura-sleep');
+    el.textContent = sleep.score;
+    el.className = `oura-score ${scoreClass(sleep.score)}`;
+    hasData = true;
+  }
+
+  if (readiness?.score != null) {
+    const el = document.getElementById('oura-readiness');
+    el.textContent = readiness.score;
+    el.className = `oura-score ${scoreClass(readiness.score)}`;
+    hasData = true;
+  }
+
+  if (stress?.day_summary) {
+    const el = document.getElementById('oura-stress');
+    const s = STRESS_MAP[stress.day_summary] ?? { label: stress.day_summary, cls: '' };
+    el.textContent = s.label;
+    el.className = `oura-score ${s.cls}`;
+    hasData = true;
+  }
+
+  if (hasData) document.getElementById('oura-bar').classList.remove('hidden');
+}
+
 // ── Boot ──────────────────────────────────────────────────────────────────────
 fetchData();
+fetchOuraStatus();
