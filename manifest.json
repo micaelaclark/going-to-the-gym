@@ -1,0 +1,11 @@
+{
+  "name": "Micaela Goes to the Gym",
+  "short_name": "Gym 💪",
+  "icons": [
+    { "src": "/static/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#f06292",
+  "background_color": "#f4f4f4"
+}
