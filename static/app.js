@@ -483,16 +483,28 @@ function renderOuraStatus(sleep, readiness, stress) {
 
 // ── Workout recommendation ────────────────────────────────────────────────────
 
-const REC_TRIGGER_HOUR = 14; // 2:00 PM
+const REC_TRIGGER_HOUR = 8;     // 8 AM
+const REC_TRIGGER_MINUTE = 30;  // :30
+const REC_TRIGGER_TZ = 'America/New_York';  // anchor to EST regardless of user's local time
 
 function todayKey() {
-  return 'rec-' + new Date().toISOString().slice(0, 10);
+  // Use EST date so the cache rolls over at midnight EST, not UTC
+  const nyDate = new Date().toLocaleDateString('en-CA', { timeZone: REC_TRIGGER_TZ });
+  return 'rec-' + nyDate;
 }
 
 function minutesUntilTrigger() {
-  const now = new Date();
-  const triggerMins = REC_TRIGGER_HOUR * 60;
-  const nowMins = now.getHours() * 60 + now.getMinutes();
+  // Extract current hour/minute as observed in New York timezone
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: REC_TRIGGER_TZ,
+    hour12: false,
+    hour: '2-digit',
+    minute: '2-digit',
+  }).formatToParts(new Date());
+  const h = parseInt(parts.find(p => p.type === 'hour').value, 10);
+  const m = parseInt(parts.find(p => p.type === 'minute').value, 10);
+  const triggerMins = REC_TRIGGER_HOUR * 60 + REC_TRIGGER_MINUTE;
+  const nowMins = h * 60 + m;
   return triggerMins - nowMins;
 }
 
@@ -524,8 +536,8 @@ function showRecCountdown(initialMins) {
     const h = Math.floor(mins / 60);
     const m = mins % 60;
     el.textContent = h > 0
-      ? `Generates in ${h}h ${m}m at 2:00 PM`
-      : `Generates in ${m} minute${m !== 1 ? 's' : ''} at 2:00 PM`;
+      ? `Generates in ${h}h ${m}m at 8:30 AM EST`
+      : `Generates in ${m} minute${m !== 1 ? 's' : ''} at 8:30 AM EST`;
     mins--;
   }
   tick();
