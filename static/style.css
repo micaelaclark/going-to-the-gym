@@ -516,11 +516,14 @@ tr:last-child td { border-bottom: none; }
 
 .timeline-body {
   flex: 1;
+  min-width: 0;
   color: var(--text);
 }
 
 .timeline-label {
   font-weight: 700;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .timeline-meta {
