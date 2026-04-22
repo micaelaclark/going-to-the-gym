@@ -37,9 +37,10 @@
       "id": "a1b2c3d4-0004-0004-0004-000000000004",
       "date": "2026-04-21",
       "exercise": "Leg Press",
-      "sets": 2,
+      "sets": 3,
       "rep1": 10,
       "rep2": 7,
+      "rep3": 7,
       "weight": 180,
       "starred": true,
       "muscles": ["quads", "glutes", "hamstrings"]
