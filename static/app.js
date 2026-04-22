@@ -1,4 +1,5 @@
 let state = { strength: [], running: [] };
+let ouraState = null;
 let strengthChart = null;
 let runningChart = null;
 let selectedBubbleId = null;
@@ -443,8 +444,9 @@ async function fetchOuraStatus() {
   try {
     const res = await fetch('/.netlify/functions/oura');
     if (!res.ok) return;
-    const { sleep, readiness, stress } = await res.json();
-    renderOuraStatus(sleep, readiness, stress);
+    const data = await res.json();
+    ouraState = data;
+    renderOuraStatus(data.sleep, data.readiness, data.stress);
   } catch {
     // Oura not configured — bar stays hidden
   }
@@ -491,6 +493,115 @@ function renderOuraStatus(sleep, readiness, stress) {
   if (hasData) document.getElementById('oura-bar').classList.remove('hidden');
 }
 
+// ── Workout recommendation ────────────────────────────────────────────────────
+
+const REC_TRIGGER_HOUR = 14; // 2:00 PM
+
+function todayKey() {
+  return 'rec-' + new Date().toISOString().slice(0, 10);
+}
+
+function minutesUntilTrigger() {
+  const now = new Date();
+  const triggerMins = REC_TRIGGER_HOUR * 60;
+  const nowMins = now.getHours() * 60 + now.getMinutes();
+  return triggerMins - nowMins;
+}
+
+async function initRecommendation() {
+  const cached = localStorage.getItem(todayKey());
+  if (cached) {
+    renderRecommendation(JSON.parse(cached));
+    return;
+  }
+  const minsLeft = minutesUntilTrigger();
+  if (minsLeft > 0) {
+    showRecCountdown(minsLeft);
+  } else {
+    await generateRecommendation();
+  }
+}
+
+function showRecCountdown(initialMins) {
+  const el = document.getElementById('rec-countdown');
+  el.classList.remove('hidden');
+
+  let mins = initialMins;
+  function tick() {
+    if (mins <= 0) {
+      el.classList.add('hidden');
+      generateRecommendation();
+      return;
+    }
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    el.textContent = h > 0
+      ? `Generates in ${h}h ${m}m at 2:00 PM`
+      : `Generates in ${m} minute${m !== 1 ? 's' : ''} at 2:00 PM`;
+    mins--;
+  }
+  tick();
+  setInterval(tick, 60000);
+}
+
+async function generateRecommendation() {
+  const loadEl = document.getElementById('rec-loading');
+  loadEl.classList.remove('hidden');
+
+  try {
+    const resp = await fetch('/.netlify/functions/recommend', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        strength: state.strength,
+        oura: ouraState,
+        today: new Date().toISOString().slice(0, 10),
+      }),
+    });
+
+    loadEl.classList.add('hidden');
+
+    if (!resp.ok) throw new Error('Function error');
+    const rec = await resp.json();
+    localStorage.setItem(todayKey(), JSON.stringify(rec));
+    renderRecommendation(rec);
+  } catch {
+    loadEl.classList.add('hidden');
+    const errEl = document.getElementById('rec-error');
+    errEl.textContent = 'Could not generate recommendation — check that ANTHROPIC_API_KEY is set in Netlify.';
+    errEl.classList.remove('hidden');
+  }
+}
+
+function renderRecommendation(rec) {
+  const badge = document.getElementById('rec-badge');
+  badge.textContent = rec.intensity.charAt(0).toUpperCase() + rec.intensity.slice(1);
+  badge.className = `rec-badge ${rec.intensity}`;
+  badge.classList.remove('hidden');
+
+  document.getElementById('rec-focus').textContent = rec.focus;
+
+  document.getElementById('rec-exercises').innerHTML = `
+    <div class="rec-exercise-list">
+      ${rec.exercises.map(ex => `
+        <div class="rec-exercise">
+          <div class="rec-ex-top">
+            <span class="rec-ex-name">${ex.name}</span>
+            ${ex.isNew ? '<span class="rec-new-badge">New</span>' : ''}
+          </div>
+          <div class="rec-ex-meta">
+            ${ex.sets} sets × ${ex.reps}
+            <span class="rec-ex-weight">@ ${ex.weight}</span>
+            ${(ex.muscles || []).map(m => `<span class="muscle-tag ${m}">${m}</span>`).join('')}
+          </div>
+          ${ex.note ? `<div class="rec-ex-note">${ex.note}</div>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+
+  document.getElementById('rec-body').classList.remove('hidden');
+}
+
 // ── Boot ──────────────────────────────────────────────────────────────────────
-fetchData();
-fetchOuraStatus();
+Promise.all([fetchData(), fetchOuraStatus()]).then(() => initRecommendation());
