@@ -434,7 +434,7 @@ async function fetchOuraStatus() {
     if (!res.ok) return;
     const data = await res.json();
     ouraState = data;
-    renderOuraStatus(data.sleep, data.readiness, data.stress);
+    renderOuraStatus(data.sleep, data.readiness);
   } catch {
     // Oura not configured — bar stays hidden
   }
@@ -446,14 +446,7 @@ function scoreClass(n) {
   return 'poor';
 }
 
-const STRESS_MAP = {
-  restored:     { label: 'Restored', cls: 'good' },
-  normal:       { label: 'Normal',   cls: 'good' },
-  stressful:    { label: 'Stressful', cls: 'ok'  },
-  overwhelming: { label: 'High',     cls: 'poor' },
-};
-
-function renderOuraStatus(sleep, readiness, stress) {
+function renderOuraStatus(sleep, readiness) {
   let hasData = false;
 
   if (sleep?.score != null) {
@@ -467,14 +460,6 @@ function renderOuraStatus(sleep, readiness, stress) {
     const el = document.getElementById('oura-readiness');
     el.textContent = readiness.score;
     el.className = `oura-score ${scoreClass(readiness.score)}`;
-    hasData = true;
-  }
-
-  if (stress?.day_summary) {
-    const el = document.getElementById('oura-stress');
-    const s = STRESS_MAP[stress.day_summary] ?? { label: stress.day_summary, cls: '' };
-    el.textContent = s.label;
-    el.className = `oura-score ${s.cls}`;
     hasData = true;
   }
 
