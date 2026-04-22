@@ -278,7 +278,7 @@ function renderRunningChart() {
   canvas.classList.remove('hidden');
   empty.classList.add('hidden');
 
-  // Always show trailing 7 days; fill gaps with null
+  // Trailing 7 days, gaps filled with null
   const days = [];
   for (let i = 6; i >= 0; i--) {
     const d = new Date();
@@ -289,51 +289,39 @@ function renderRunningChart() {
   const byDate = {};
   for (const r of state.running) byDate[r.date] = r;
 
-  const labels    = days.map(d => fmt(d));
-  const distances = days.map(d => byDate[d]?.distance ?? null);
-  const speeds    = days.map(d => byDate[d]?.speed    ?? null);
-
   runningChart = new Chart(canvas.getContext('2d'), {
     type: 'bar',
     data: {
-      labels,
-      datasets: [
-        {
-          label: 'Distance (mi)',
-          data: distances,
-          backgroundColor: hexAlpha('#f06292', 0.75),
-          borderColor: '#f06292',
-          borderWidth: 1,
-          yAxisID: 'yDist'
-        },
-        {
-          label: 'Speed (mph)',
-          data: speeds,
-          type: 'line',
-          borderColor: '#2196f3',
-          backgroundColor: 'transparent',
-          tension: 0.3,
-          pointRadius: 5,
-          pointHoverRadius: 7,
-          spanGaps: false,
-          yAxisID: 'ySpeed'
-        }
-      ]
+      labels: days.map(d => fmt(d)),
+      datasets: [{
+        label: 'Distance (mi)',
+        data: days.map(d => byDate[d]?.distance ?? null),
+        backgroundColor: hexAlpha('#f06292', 0.75),
+        borderColor: '#f06292',
+        borderWidth: 1,
+        borderRadius: 4,
+      }]
     },
     options: {
       responsive: true,
-      plugins: { legend: { position: 'top', labels: { boxWidth: 12, font: { size: 12 } } } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            afterLabel: (ctx) => {
+              const date = days[ctx.dataIndex];
+              const run = byDate[date];
+              return run ? `Speed: ${run.speed} mph` : '';
+            }
+          }
+        }
+      },
       scales: {
-        x: { title: { display: true, text: 'Date', font: { size: 11 } } },
-        yDist: {
-          title: { display: true, text: 'Distance (mi)', font: { size: 11 } },
-          beginAtZero: true
-        },
-        ySpeed: {
-          title: { display: true, text: 'Speed (mph)', font: { size: 11 } },
-          position: 'right',
+        x: { grid: { display: false } },
+        y: {
           beginAtZero: true,
-          grid: { drawOnChartArea: false }
+          title: { display: true, text: 'Distance (mi)', font: { size: 11 } },
+          ticks: { stepSize: 0.5 }
         }
       }
     }
