@@ -76,7 +76,6 @@ function renderAll() {
   renderRunningTable();
   renderRunningChart();
   renderJournalEntries();
-  renderActivityTimeline();
   if (selectedBubbleId) {
     const entry = state.strength.find(e => e.id === selectedBubbleId);
     if (entry) renderStrengthChart(entry.exercise);
@@ -328,66 +327,6 @@ function renderRunningChart() {
   });
 }
 
-// ── Activity timeline ─────────────────────────────────────────────────────────
-
-function renderActivityTimeline() {
-  const container = document.getElementById('activity-timeline');
-  const items = [];
-
-  for (const e of (state.strength || [])) {
-    const reps = [e.rep1, e.rep2, e.rep3].filter(r => r != null).join('/');
-    items.push({
-      date: e.date,
-      icon: '💪',
-      label: `${e.exercise}${e.starred ? ' ⭐' : ''}`,
-      meta: `${e.sets} sets${e.weight ? ' · ' + e.weight + ' lbs' : ''}${reps ? ' · ' + reps : ''}`
-    });
-  }
-  for (const e of (state.running || [])) {
-    items.push({
-      date: e.date,
-      icon: '🏃‍♀️',
-      label: `Run — ${e.distance} mi`,
-      meta: `${e.speed} mph`
-    });
-  }
-  for (const e of (state.journal || [])) {
-    items.push({
-      date: e.date,
-      icon: '📝',
-      label: 'Journal',
-      meta: e.text
-    });
-  }
-
-  if (!items.length) {
-    container.innerHTML = '<p class="empty-state">No activity logged yet.</p>';
-    return;
-  }
-
-  // Group by date (newest first)
-  const byDate = {};
-  for (const it of items) (byDate[it.date] ||= []).push(it);
-  const dates = Object.keys(byDate).sort((a, b) => b.localeCompare(a));
-
-  container.innerHTML = dates.map(date => `
-    <div class="timeline-day">
-      <div class="timeline-date">${fmtLong(date)}</div>
-      <div class="timeline-items">
-        ${byDate[date].map(it => `
-          <div class="timeline-item">
-            <div class="timeline-icon">${it.icon}</div>
-            <div class="timeline-body">
-              <div class="timeline-label">${it.label}</div>
-              <div class="timeline-meta">${it.meta}</div>
-            </div>
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `).join('');
-}
-
 // ── Journal ───────────────────────────────────────────────────────────────────
 
 function renderJournalEntries() {
@@ -412,11 +351,6 @@ function renderJournalEntries() {
 function fmt(dateStr) {
   const [y, m, d] = dateStr.split('-');
   return `${m}/${d}/${y}`;
-}
-
-function fmtLong(dateStr) {
-  const d = new Date(dateStr + 'T00:00:00');
-  return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 
 function hexAlpha(hex, alpha) {
