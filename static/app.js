@@ -123,7 +123,7 @@ function renderStrengthBubbles() {
   `).join('');
 }
 
-const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'forearms'];
+const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes'];
 
 function daysSince(dateStr) {
   const today = new Date();
