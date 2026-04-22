@@ -163,7 +163,7 @@ function renderInsights() {
     if (days < 2) {
       const label = days === 0 ? 'today' : 'yesterday';
       recovering.push({ muscle: m, meta: label });
-    } else if (days >= 7) {
+    } else if (days >= 3) {
       focus.push({ muscle: m, meta: `${days}d ago` });
     } else {
       ready.push({ muscle: m, meta: `${days}d ago` });

@@ -28,7 +28,7 @@ exports.handler = async (event) => {
     } else {
       const days = Math.floor((new Date(today) - new Date(last + 'T00:00:00')) / (1000 * 60 * 60 * 24));
       if (days < 2)  muscleStatus[m] = 'recovering — skip today';
-      else if (days >= 7) muscleStatus[m] = `focus — ${days}d since last trained`;
+      else if (days >= 3) muscleStatus[m] = `focus — ${days}d since last trained`;
       else               muscleStatus[m] = `ready — ${days}d rest`;
     }
   }
