@@ -1,5 +1,16 @@
 const BASE = "https://api.ouraring.com/v2/usercollection";
 
+async function safeFetch(url, headers) {
+  try {
+    const res = await fetch(url, { headers });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json.data?.[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
 exports.handler = async () => {
   const token = process.env.OURA_PERSONAL_TOKEN;
   if (!token) {
@@ -13,32 +24,22 @@ exports.handler = async () => {
   const qs = `?start_date=${today}&end_date=${today}`;
   const headers = { Authorization: `Bearer ${token}` };
 
-  try {
-    const [sleepRes, readinessRes, stressRes] = await Promise.all([
-      fetch(`${BASE}/daily_sleep${qs}`, { headers }),
-      fetch(`${BASE}/daily_readiness${qs}`, { headers }),
-      fetch(`${BASE}/daily_stress${qs}`, { headers }),
-    ]);
+  const [sleep, readiness, stress] = await Promise.all([
+    safeFetch(`${BASE}/daily_sleep${qs}`, { headers }),
+    safeFetch(`${BASE}/daily_readiness${qs}`, { headers }),
+    safeFetch(`${BASE}/daily_stress${qs}`, { headers }),
+  ]);
 
-    const [sleep, readiness, stress] = await Promise.all([
-      sleepRes.json(),
-      readinessRes.json(),
-      stressRes.json(),
-    ]);
-
+  if (!sleep && !readiness && !stress) {
     return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        sleep:     sleep.data?.[0]     ?? null,
-        readiness: readiness.data?.[0] ?? null,
-        stress:    stress.data?.[0]    ?? null,
-      }),
-    };
-  } catch (err) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
+      statusCode: 502,
+      body: JSON.stringify({ error: "No data returned from Oura" }),
     };
   }
+
+  return {
+    statusCode: 200,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ sleep, readiness, stress }),
+  };
 };
