@@ -66,6 +66,15 @@
       "rep3": 12,
       "weight": 40,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0007-0007-0007-000000000007",
+      "date": "2026-04-22",
+      "exercise": "Overhead Press",
+      "sets": 1,
+      "rep1": 10,
+      "weight": 12.5,
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
@@ -90,6 +99,11 @@
       "id": "j1b2c3d4-0002-0002-0002-000000000002",
       "date": "2026-04-21",
       "text": "I don't think I'm doing goblet squats right because I can feel it in my mid back and can do many; what is the fix to this?"
+    },
+    {
+      "id": "j1b2c3d4-0003-0003-0003-000000000003",
+      "date": "2026-04-22",
+      "text": "Overhead press 12.5 lbs — more sore in the arms than expected."
     }
   ]
 }
