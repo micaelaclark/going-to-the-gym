@@ -99,6 +99,16 @@
       "rep3": 12,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0010-0010-0010-000000000010",
+      "date": "2026-04-23",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "rep1": 78,
+      "weight": 0,
+      "timed": true,
+      "muscles": ["core"]
     }
   ],
   "running": [

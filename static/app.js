@@ -96,6 +96,12 @@ document.querySelectorAll('.tab').forEach(tab => {
 
 // ── Strength bubbles ──────────────────────────────────────────────────────────
 
+function fmtTime(totalSeconds) {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  return `${m}:${String(s).padStart(2, '0')}`;
+}
+
 function renderStrengthBubbles() {
   const container = document.getElementById('strength-bubbles');
   const sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
@@ -108,11 +114,14 @@ function renderStrengthBubbles() {
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
       <div class="bubble-date">${fmt(e.date)}</div>
-      <div class="bubble-stats">${e.sets} sets${e.weight ? ' · ' + e.weight + ' lbs' : ''}</div>
+      <div class="bubble-stats">${e.timed ? `${e.sets} hold` : `${e.sets} sets${e.weight ? ' · ' + e.weight + ' lbs' : ''}`}</div>
       <div class="rep-chips">
-        ${e.rep1 != null ? `<span class="rep-chip">${e.rep1}</span>` : ''}
-        ${e.rep2 != null ? `<span class="rep-chip">${e.rep2}</span>` : ''}
-        ${e.rep3 != null ? `<span class="rep-chip">${e.rep3}</span>` : ''}
+        ${e.timed
+          ? (e.rep1 != null ? `<span class="rep-chip">${fmtTime(e.rep1)}</span>` : '')
+          : `${e.rep1 != null ? `<span class="rep-chip">${e.rep1}</span>` : ''}
+             ${e.rep2 != null ? `<span class="rep-chip">${e.rep2}</span>` : ''}
+             ${e.rep3 != null ? `<span class="rep-chip">${e.rep3}</span>` : ''}`
+        }
       </div>
       ${(e.muscles && e.muscles.length) ? `
         <div class="muscle-tags">
