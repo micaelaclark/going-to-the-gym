@@ -77,6 +77,28 @@
       "rep3": 10,
       "weight": 12.5,
       "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0008-0008-0008-000000000008",
+      "date": "2026-04-23",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["chest", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0009-0009-0009-000000000009",
+      "date": "2026-04-23",
+      "exercise": "Leg Raises",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 0,
+      "muscles": ["core"]
     }
   ],
   "running": [
