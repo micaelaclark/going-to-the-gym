@@ -56,12 +56,28 @@
       "weight": 0,
       "muscles": ["hamstrings", "glutes"]
     }
+    {
+      "id": "a1b2c3d4-0006-0006-0006-000000000006",
+      "date": "2026-04-22",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 20,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 40,
+      "muscles": ["back", "biceps"]
+    }
   ],
   "running": [
     {
       "date": "2026-04-21",
       "distance": 1,
       "speed": 5.07
+    },
+    {
+      "date": "2026-04-22",
+      "distance": 1.36,
+      "speed": 6.28
     }
   ],
   "journal": [
