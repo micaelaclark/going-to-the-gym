@@ -71,8 +71,10 @@
       "id": "a1b2c3d4-0007-0007-0007-000000000007",
       "date": "2026-04-22",
       "exercise": "Overhead Press",
-      "sets": 1,
+      "sets": 3,
       "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
       "weight": 12.5,
       "muscles": ["shoulders", "triceps"]
     }
