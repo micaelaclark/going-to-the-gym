@@ -1,5 +1,4 @@
 let state = { strength: [], running: [] };
-let ouraState = null;
 let strengthChart = null;
 let runningChart = null;
 let selectedBubbleId = null;
@@ -369,45 +368,5 @@ function hexAlpha(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-// ── Oura status ───────────────────────────────────────────────────────────────
-
-async function fetchOuraStatus() {
-  try {
-    const res = await fetch('/.netlify/functions/oura');
-    if (!res.ok) return;
-    const data = await res.json();
-    ouraState = data;
-    renderOuraStatus(data.sleep, data.readiness);
-  } catch {
-    // Oura not configured — bar stays hidden
-  }
-}
-
-function scoreClass(n) {
-  if (n >= 85) return 'good';
-  if (n >= 70) return 'ok';
-  return 'poor';
-}
-
-function renderOuraStatus(sleep, readiness) {
-  let hasData = false;
-
-  if (sleep?.score != null) {
-    const el = document.getElementById('oura-sleep');
-    el.textContent = sleep.score;
-    el.className = `oura-score ${scoreClass(sleep.score)}`;
-    hasData = true;
-  }
-
-  if (readiness?.score != null) {
-    const el = document.getElementById('oura-readiness');
-    el.textContent = readiness.score;
-    el.className = `oura-score ${scoreClass(readiness.score)}`;
-    hasData = true;
-  }
-
-  if (hasData) document.getElementById('oura-bar').classList.remove('hidden');
-}
-
 // ── Boot ──────────────────────────────────────────────────────────────────────
-Promise.all([fetchData(), fetchOuraStatus()]);
+fetchData();
