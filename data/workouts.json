@@ -131,6 +131,17 @@
       "rep3": 10,
       "weight": 180,
       "muscles": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0013-0013-0013-000000000013",
+      "date": "2026-04-25",
+      "exercise": "Hip Abductor Inner",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 115,
+      "muscles": ["adductors"]
     }
   ],
   "running": [
