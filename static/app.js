@@ -201,7 +201,7 @@ function selectBubble(id, exercise) {
     return;
   }
   selectedBubbleId = id;
-  document.getElementById('chart-panel-title').textContent = exercise + ' — Weight Over Time';
+  document.getElementById('chart-panel-title').textContent = exercise + ' — Progress Over Time';
   document.getElementById('strength-chart-panel').classList.remove('hidden');
   renderStrengthChart(exercise);
   renderStrengthBubbles();
@@ -243,27 +243,66 @@ function renderStrengthChart(exercise) {
   if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
   if (!data.length) return;
 
+  const isTimed = data[0]?.timed;
+
+  const repsData = data.map(e => {
+    if (isTimed) return e.rep1 ?? null;
+    return (e.rep1 ?? 0) + (e.rep2 ?? 0) + (e.rep3 ?? 0);
+  });
+  const repsLabel = isTimed ? 'Hold Time (s)' : 'Total Reps';
+
   strengthChart = new Chart(canvas.getContext('2d'), {
     type: 'line',
     data: {
       labels: data.map(e => fmt(e.date)),
-      datasets: [{
-        label: 'Weight (lbs)',
-        data: data.map(e => e.weight),
-        borderColor: '#f06292',
-        backgroundColor: hexAlpha('#f06292', 0.1),
-        fill: true,
-        tension: 0.3,
-        pointRadius: 6,
-        pointHoverRadius: 8
-      }]
+      datasets: [
+        {
+          label: 'Weight (lbs)',
+          data: data.map(e => e.weight),
+          borderColor: '#f06292',
+          backgroundColor: hexAlpha('#f06292', 0.1),
+          fill: true,
+          tension: 0.3,
+          pointRadius: 6,
+          pointHoverRadius: 8,
+          yAxisID: 'y'
+        },
+        {
+          label: repsLabel,
+          data: repsData,
+          borderColor: '#2196f3',
+          backgroundColor: hexAlpha('#2196f3', 0.08),
+          fill: false,
+          tension: 0.3,
+          pointRadius: 6,
+          pointHoverRadius: 8,
+          borderDash: [5, 3],
+          yAxisID: 'y1'
+        }
+      ]
     },
     options: {
       responsive: true,
-      plugins: { legend: { display: false } },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: {
+          display: true,
+          labels: { boxWidth: 14, font: { size: 11 } }
+        }
+      },
       scales: {
         x: { title: { display: true, text: 'Date', font: { size: 11 } } },
-        y: { title: { display: true, text: 'Weight (lbs)', font: { size: 11 } }, beginAtZero: false }
+        y: {
+          title: { display: true, text: 'Weight (lbs)', font: { size: 11 } },
+          beginAtZero: false,
+          position: 'left'
+        },
+        y1: {
+          title: { display: true, text: repsLabel, font: { size: 11 } },
+          beginAtZero: true,
+          position: 'right',
+          grid: { drawOnChartArea: false }
+        }
       }
     }
   });
