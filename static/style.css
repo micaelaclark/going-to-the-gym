@@ -388,6 +388,7 @@ tr:last-child td { border-bottom: none; }
 .muscle-tag.quads      { background: #e8f5e9; color: #2e7d32; }
 .muscle-tag.hamstrings { background: #f1f8e9; color: #558b2f; }
 .muscle-tag.glutes     { background: #fce4ec; color: #ad1457; }
+.muscle-tag.adductors  { background: #fdf6e3; color: #8d6e00; }
 .muscle-tag.calves     { background: #e0f2f1; color: #00695c; }
 .muscle-tag.forearms   { background: #ede7f6; color: #4527a0; }
 
