@@ -142,6 +142,17 @@
       "rep3": 5,
       "weight": 115,
       "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0014-0014-0014-000000000014",
+      "date": "2026-04-25",
+      "exercise": "Hip Abductor Outer",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 115,
+      "muscles": ["glutes", "abductors"]
     }
   ],
   "running": [
