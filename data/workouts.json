@@ -109,6 +109,28 @@
       "weight": 0,
       "timed": true,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0011-0011-0011-000000000011",
+      "date": "2026-04-25",
+      "exercise": "Bulgarian Split Squat",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 12.5,
+      "muscles": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0012-0012-0012-000000000012",
+      "date": "2026-04-25",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 180,
+      "muscles": ["quads", "glutes", "hamstrings"]
     }
   ],
   "running": [
