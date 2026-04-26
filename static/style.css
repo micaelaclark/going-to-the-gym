@@ -53,42 +53,15 @@ header h1 {
   text-transform: uppercase;
 }
 
-.tabs {
-  display: flex;
-  background: white;
-  border-bottom: 1px solid var(--border);
-  padding: 0 2rem;
-}
 
-.tab {
-  padding: 0.85rem 1.5rem;
-  background: none;
-  border: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -1px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--muted);
-  transition: color 0.15s;
-}
-
-.tab.active {
-  color: var(--accent);
-  border-bottom-color: var(--accent);
-}
-
-.tab-content {
+.page-content {
   max-width: 900px;
   margin: 2rem auto;
-  padding: 0 1.5rem;
+  padding: 0 1.5rem 3rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding-bottom: 3rem;
 }
-
-.tab-content.hidden { display: none; }
 
 .card {
   background: var(--card);

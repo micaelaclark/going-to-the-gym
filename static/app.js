@@ -1,7 +1,7 @@
 let state = { strength: [], running: [], barre: [] };
 let strengthChart = null;
-let runningChart = null;
 let selectedBubbleId = null;
+let runningSelected = false;
 
 // ── Daily quote ───────────────────────────────────────────────────────────────
 
@@ -63,7 +63,6 @@ const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4'
 // ── Init ─────────────────────────────────────────────────────────────────────
 
 async function fetchData() {
-  // Cache-bust so fresh deploys show up immediately
   const res = await fetch('./data/workouts.json?t=' + Date.now());
   state = await res.json();
   renderAll();
@@ -72,8 +71,6 @@ async function fetchData() {
 function renderAll() {
   renderStrengthBubbles();
   renderInsights();
-  renderRunningTable();
-  renderRunningChart();
   if (selectedBubbleId) {
     const entry = state.strength.find(e => e.id === selectedBubbleId);
     if (entry) renderStrengthChart(entry.exercise);
@@ -81,18 +78,7 @@ function renderAll() {
   }
 }
 
-// ── Tabs ──────────────────────────────────────────────────────────────────────
-
-document.querySelectorAll('.tab').forEach(tab => {
-  tab.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-    tab.classList.add('active');
-    document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
-  });
-});
-
-// ── Strength bubbles ──────────────────────────────────────────────────────────
+// ── Bubbles ───────────────────────────────────────────────────────────────────
 
 function fmtTime(totalSeconds) {
   const m = Math.floor(totalSeconds / 60);
@@ -103,6 +89,7 @@ function fmtTime(totalSeconds) {
 function renderStrengthBubbles() {
   const container = document.getElementById('strength-bubbles');
   const sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
+
   const barreCount = (state.barre || []).length;
   const barreBubble = `
     <div class="bubble barre-bubble">
@@ -110,11 +97,21 @@ function renderStrengthBubbles() {
       <div class="barre-tally">${barreCount}</div>
       <div class="bubble-stats">classes total</div>
     </div>`;
+
+  const totalMiles = (state.running || []).reduce((sum, r) => sum + r.distance, 0);
+  const runBubble = `
+    <div class="bubble running-bubble ${runningSelected ? 'selected' : ''}"
+         onclick="selectRunningBubble()">
+      <div class="bubble-exercise">Total Miles</div>
+      <div class="barre-tally">${totalMiles % 1 === 0 ? totalMiles : totalMiles.toFixed(1)}</div>
+      <div class="bubble-stats">miles run</div>
+    </div>`;
+
   if (!sorted.length) {
-    container.innerHTML = barreBubble;
+    container.innerHTML = barreBubble + runBubble;
     return;
   }
-  container.innerHTML = barreBubble + sorted.map(e => `
+  container.innerHTML = barreBubble + runBubble + sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
@@ -154,7 +151,6 @@ function renderInsights() {
   }
   panel.classList.remove('hidden');
 
-  // Find most recent training date per muscle
   const lastTrained = {};
   for (const e of state.strength) {
     for (const m of (e.muscles || [])) {
@@ -212,6 +208,7 @@ function selectBubble(id, exercise) {
     closeChart();
     return;
   }
+  runningSelected = false;
   selectedBubbleId = id;
   document.getElementById('chart-panel-title').textContent = exercise + ' — Progress Over Time';
   document.getElementById('strength-chart-panel').classList.remove('hidden');
@@ -219,29 +216,25 @@ function selectBubble(id, exercise) {
   renderStrengthBubbles();
 }
 
-function closeChart() {
+function selectRunningBubble() {
+  if (runningSelected) {
+    closeChart();
+    return;
+  }
   selectedBubbleId = null;
-  document.getElementById('strength-chart-panel').classList.add('hidden');
-  if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
+  runningSelected = true;
+  document.getElementById('chart-panel-title').textContent = 'Running — Distance Over Time';
+  document.getElementById('strength-chart-panel').classList.remove('hidden');
+  renderRunningChart();
   renderStrengthBubbles();
 }
 
-// ── Running table ─────────────────────────────────────────────────────────────
-
-function renderRunningTable() {
-  const tbody = document.querySelector('#running-table tbody');
-  const sorted = [...state.running].sort((a, b) => b.date.localeCompare(a.date));
-  if (!sorted.length) {
-    tbody.innerHTML = '<tr class="empty-row"><td colspan="3">No runs yet.</td></tr>';
-    return;
-  }
-  tbody.innerHTML = sorted.map(e => `
-    <tr>
-      <td>${fmt(e.date)}</td>
-      <td>${e.distance}</td>
-      <td>${e.speed}</td>
-    </tr>
-  `).join('');
+function closeChart() {
+  selectedBubbleId = null;
+  runningSelected = false;
+  document.getElementById('strength-chart-panel').classList.add('hidden');
+  if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
+  renderStrengthBubbles();
 }
 
 // ── Strength chart ────────────────────────────────────────────────────────────
@@ -323,37 +316,19 @@ function renderStrengthChart(exercise) {
 // ── Running chart ─────────────────────────────────────────────────────────────
 
 function renderRunningChart() {
-  const canvas = document.getElementById('running-chart');
-  const empty = document.getElementById('running-empty');
+  const canvas = document.getElementById('strength-chart');
+  if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
 
-  if (runningChart) { runningChart.destroy(); runningChart = null; }
+  const data = [...state.running].sort((a, b) => a.date.localeCompare(b.date));
+  if (!data.length) return;
 
-  if (!state.running.length) {
-    canvas.classList.add('hidden');
-    empty.classList.remove('hidden');
-    return;
-  }
-  canvas.classList.remove('hidden');
-  empty.classList.add('hidden');
-
-  // Trailing 7 days, gaps filled with null
-  const days = [];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-    days.push(d.toISOString().slice(0, 10));
-  }
-
-  const byDate = {};
-  for (const r of state.running) byDate[r.date] = r;
-
-  runningChart = new Chart(canvas.getContext('2d'), {
+  strengthChart = new Chart(canvas.getContext('2d'), {
     type: 'bar',
     data: {
-      labels: days.map(d => fmt(d)),
+      labels: data.map(r => fmt(r.date)),
       datasets: [{
         label: 'Distance (mi)',
-        data: days.map(d => byDate[d]?.distance ?? null),
+        data: data.map(r => r.distance),
         backgroundColor: hexAlpha('#f06292', 0.75),
         borderColor: '#f06292',
         borderWidth: 1,
@@ -366,11 +341,7 @@ function renderRunningChart() {
         legend: { display: false },
         tooltip: {
           callbacks: {
-            afterLabel: (ctx) => {
-              const date = days[ctx.dataIndex];
-              const run = byDate[date];
-              return run ? `Speed: ${run.speed} mph` : '';
-            }
+            afterLabel: (ctx) => `Speed: ${data[ctx.dataIndex].speed} mph`
           }
         }
       },
@@ -385,7 +356,6 @@ function renderRunningChart() {
     }
   });
 }
-
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 

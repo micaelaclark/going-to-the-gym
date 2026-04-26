@@ -21,13 +21,7 @@
     <h1>Micaela Goes to the Gym 🏃‍♀️</h1>
   </header>
 
-  <div class="tabs">
-    <button class="tab active" data-tab="strength">Strength</button>
-    <button class="tab" data-tab="running">Running</button>
-  </div>
-
-  <!-- Strength Tab -->
-  <div id="strength-tab" class="tab-content">
+  <div class="page-content">
     <div id="insights" class="insights-panel hidden">
       <div class="insights-panel-title">Training Insights</div>
 
@@ -60,31 +54,7 @@
     </div>
   </div>
 
-  <!-- Running Tab -->
-  <div id="running-tab" class="tab-content hidden">
-    <div class="card">
-      <h2>Progress</h2>
-      <div class="chart-wrap">
-        <canvas id="running-chart"></canvas>
-        <p id="running-empty" class="empty-chart hidden">Log some runs to see your progress chart.</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <h2>History</h2>
-      <table id="running-table">
-        <thead>
-          <tr>
-            <th>Date</th><th>Distance (mi)</th><th>Speed (mph)</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </div>
-
-
-<div id="daily-quote" class="daily-quote"></div>
+  <div id="daily-quote" class="daily-quote"></div>
 
   <script src="/static/app.js"></script>
 </body>
