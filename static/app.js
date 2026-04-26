@@ -1,4 +1,4 @@
-let state = { strength: [], running: [] };
+let state = { strength: [], running: [], barre: [] };
 let strengthChart = null;
 let runningChart = null;
 let selectedBubbleId = null;
@@ -104,11 +104,18 @@ function fmtTime(totalSeconds) {
 function renderStrengthBubbles() {
   const container = document.getElementById('strength-bubbles');
   const sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
+  const barreCount = (state.barre || []).length;
+  const barreBubble = `
+    <div class="bubble barre-bubble">
+      <div class="bubble-exercise">Barre Class</div>
+      <div class="barre-tally">${barreCount}</div>
+      <div class="bubble-stats">classes total</div>
+    </div>`;
   if (!sorted.length) {
-    container.innerHTML = '<p class="empty-state">No workouts yet.</p>';
+    container.innerHTML = barreBubble;
     return;
   }
-  container.innerHTML = sorted.map(e => `
+  container.innerHTML = barreBubble + sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
@@ -142,7 +149,7 @@ function daysSince(dateStr) {
 
 function renderInsights() {
   const panel = document.getElementById('insights');
-  if (!state.strength.length) {
+  if (!state.strength.length && !(state.barre || []).length) {
     panel.classList.add('hidden');
     return;
   }
@@ -153,6 +160,12 @@ function renderInsights() {
   for (const e of state.strength) {
     for (const m of (e.muscles || [])) {
       if (!lastTrained[m] || e.date > lastTrained[m]) lastTrained[m] = e.date;
+    }
+  }
+  // Barre = full body, counts for all muscles
+  for (const b of (state.barre || [])) {
+    for (const m of ALL_MUSCLES) {
+      if (!lastTrained[m] || b.date > lastTrained[m]) lastTrained[m] = b.date;
     }
   }
 
