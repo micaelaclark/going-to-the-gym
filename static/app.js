@@ -74,7 +74,6 @@ function renderAll() {
   renderInsights();
   renderRunningTable();
   renderRunningChart();
-  renderJournalEntries();
   if (selectedBubbleId) {
     const entry = state.strength.find(e => e.id === selectedBubbleId);
     if (entry) renderStrengthChart(entry.exercise);
@@ -387,24 +386,6 @@ function renderRunningChart() {
   });
 }
 
-// ── Journal ───────────────────────────────────────────────────────────────────
-
-function renderJournalEntries() {
-  const container = document.getElementById('journal-entries');
-  const sorted = [...(state.journal || [])].sort((a, b) => b.date.localeCompare(a.date));
-  if (!sorted.length) {
-    container.innerHTML = '<p class="empty-state">No journal entries yet.</p>';
-    return;
-  }
-  container.innerHTML = sorted.map(e => `
-    <div class="journal-card">
-      <div class="journal-body">
-        <div class="journal-date">${fmt(e.date)}</div>
-        <div class="journal-text">${e.text}</div>
-      </div>
-    </div>
-  `).join('');
-}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
