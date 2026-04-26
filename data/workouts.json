@@ -184,5 +184,7 @@
       "text": "Overhead press 12.5 lbs — more sore in the arms than expected."
     }
   ],
-  "barre": []
+  "barre": [
+    { "id": "b1a2r3e4-0001-0001-0001-000000000001", "date": "2026-04-26" }
+  ]
 }
