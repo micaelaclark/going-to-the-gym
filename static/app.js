@@ -2,6 +2,18 @@ let state = { strength: [], running: [], barre: [] };
 let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
+let bodyFilter = 'all';
+
+const UPPER_MUSCLES = new Set(['chest', 'back', 'shoulders', 'biceps', 'triceps']);
+const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'core']);
+
+function setBodyFilter(filter) {
+  bodyFilter = filter;
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  renderStrengthBubbles();
+}
 
 // ── Daily quote ───────────────────────────────────────────────────────────────
 
@@ -88,7 +100,19 @@ function fmtTime(totalSeconds) {
 
 function renderStrengthBubbles() {
   const container = document.getElementById('strength-bubbles');
-  const sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
+  const searchQ = (document.getElementById('exercise-search')?.value || '').trim().toLowerCase();
+
+  let sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
+
+  if (searchQ) {
+    sorted = sorted.filter(e => e.exercise.toLowerCase().includes(searchQ));
+  }
+
+  if (bodyFilter === 'upper') {
+    sorted = sorted.filter(e => (e.muscles || []).some(m => UPPER_MUSCLES.has(m)));
+  } else if (bodyFilter === 'lower') {
+    sorted = sorted.filter(e => (e.muscles || []).some(m => LOWER_MUSCLES.has(m)));
+  }
 
   const barreCount = (state.barre || []).length;
   const barreBubble = `
