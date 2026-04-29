@@ -215,6 +215,46 @@ tr:last-child td { border-bottom: none; }
   padding: 1.5rem;
 }
 
+/* ── Running chart controls ── */
+
+.running-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.run-ctrl-group {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.run-ctrl-btn {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.run-ctrl-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.run-ctrl-btn:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Filter bar ── */
 
 .filter-bar {

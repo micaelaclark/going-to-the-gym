@@ -59,6 +59,18 @@
         <span id="chart-panel-title"></span>
         <button class="close-btn" onclick="closeChart()">✕</button>
       </div>
+      <div id="running-chart-controls" class="running-controls hidden">
+        <div class="run-ctrl-group">
+          <button class="run-ctrl-btn active" data-days="all" onclick="setRunningDays('all')">All</button>
+          <button class="run-ctrl-btn" data-days="30" onclick="setRunningDays(30)">30d</button>
+          <button class="run-ctrl-btn" data-days="7" onclick="setRunningDays(7)">7d</button>
+        </div>
+        <div class="run-ctrl-group">
+          <button class="run-ctrl-btn active" data-metric="both" onclick="setRunningMetric('both')">Both</button>
+          <button class="run-ctrl-btn" data-metric="distance" onclick="setRunningMetric('distance')">Distance</button>
+          <button class="run-ctrl-btn" data-metric="speed" onclick="setRunningMetric('speed')">Speed</button>
+        </div>
+      </div>
       <canvas id="strength-chart"></canvas>
     </div>
   </div>

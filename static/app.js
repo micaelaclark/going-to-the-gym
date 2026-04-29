@@ -3,6 +3,8 @@ let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
 let bodyFilter = 'all';
+let runningDays = 'all';
+let runningMetric = 'both';
 
 const UPPER_MUSCLES = new Set(['chest', 'back', 'shoulders', 'biceps', 'triceps']);
 const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'core']);
@@ -13,6 +15,22 @@ function setBodyFilter(filter) {
     btn.classList.toggle('active', btn.dataset.filter === filter);
   });
   renderStrengthBubbles();
+}
+
+function setRunningDays(days) {
+  runningDays = days;
+  document.querySelectorAll('[data-days]').forEach(btn => {
+    btn.classList.toggle('active', String(btn.dataset.days) === String(days));
+  });
+  renderRunningChart();
+}
+
+function setRunningMetric(metric) {
+  runningMetric = metric;
+  document.querySelectorAll('[data-metric]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.metric === metric);
+  });
+  renderRunningChart();
 }
 
 // ── Daily quote ───────────────────────────────────────────────────────────────
@@ -234,6 +252,7 @@ function selectBubble(id, exercise) {
   }
   runningSelected = false;
   selectedBubbleId = id;
+  document.getElementById('running-chart-controls').classList.add('hidden');
   document.getElementById('chart-panel-title').textContent = exercise + ' — Progress Over Time';
   document.getElementById('strength-chart-panel').classList.remove('hidden');
   renderStrengthChart(exercise);
@@ -247,7 +266,8 @@ function selectRunningBubble() {
   }
   selectedBubbleId = null;
   runningSelected = true;
-  document.getElementById('chart-panel-title').textContent = 'Running — Distance Over Time';
+  document.getElementById('running-chart-controls').classList.remove('hidden');
+  document.getElementById('chart-panel-title').textContent = 'Running — Performance Over Time';
   document.getElementById('strength-chart-panel').classList.remove('hidden');
   renderRunningChart();
   renderStrengthBubbles();
@@ -256,6 +276,7 @@ function selectRunningBubble() {
 function closeChart() {
   selectedBubbleId = null;
   runningSelected = false;
+  document.getElementById('running-chart-controls').classList.add('hidden');
   document.getElementById('strength-chart-panel').classList.add('hidden');
   if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
   renderStrengthBubbles();
@@ -343,40 +364,79 @@ function renderRunningChart() {
   const canvas = document.getElementById('strength-chart');
   if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
 
-  const data = [...state.running].sort((a, b) => a.date.localeCompare(b.date));
+  let data = [...state.running].sort((a, b) => a.date.localeCompare(b.date));
+
+  if (runningDays !== 'all') {
+    const cutoff = new Date();
+    cutoff.setDate(cutoff.getDate() - Number(runningDays));
+    const cutoffStr = cutoff.toISOString().slice(0, 10);
+    data = data.filter(r => r.date >= cutoffStr);
+  }
+
   if (!data.length) return;
+
+  const labels = data.map(r => fmt(r.date));
+  const showDist = runningMetric === 'distance' || runningMetric === 'both';
+  const showSpeed = runningMetric === 'speed' || runningMetric === 'both';
+  const dual = runningMetric === 'both';
+
+  const datasets = [];
+  if (showDist) {
+    datasets.push({
+      type: 'bar',
+      label: 'Distance (mi)',
+      data: data.map(r => r.distance),
+      backgroundColor: hexAlpha('#f06292', 0.75),
+      borderColor: '#f06292',
+      borderWidth: 1,
+      borderRadius: 4,
+      yAxisID: 'y',
+    });
+  }
+  if (showSpeed) {
+    datasets.push({
+      type: 'line',
+      label: 'Speed (mph)',
+      data: data.map(r => r.speed),
+      borderColor: '#2196f3',
+      backgroundColor: hexAlpha('#2196f3', 0.08),
+      fill: false,
+      tension: 0.3,
+      pointRadius: 6,
+      pointHoverRadius: 8,
+      borderDash: dual ? [5, 3] : [],
+      yAxisID: dual ? 'y1' : 'y',
+    });
+  }
+
+  const scales = { x: { grid: { display: false } } };
+  if (showDist) {
+    scales.y = {
+      beginAtZero: true,
+      position: 'left',
+      title: { display: true, text: 'Distance (mi)', font: { size: 11 } },
+      ticks: { stepSize: 0.5 },
+    };
+  }
+  if (showSpeed) {
+    scales[dual ? 'y1' : 'y'] = {
+      beginAtZero: false,
+      position: dual ? 'right' : 'left',
+      title: { display: true, text: 'Speed (mph)', font: { size: 11 } },
+      grid: { drawOnChartArea: !showDist },
+    };
+  }
 
   strengthChart = new Chart(canvas.getContext('2d'), {
     type: 'bar',
-    data: {
-      labels: data.map(r => fmt(r.date)),
-      datasets: [{
-        label: 'Distance (mi)',
-        data: data.map(r => r.distance),
-        backgroundColor: hexAlpha('#f06292', 0.75),
-        borderColor: '#f06292',
-        borderWidth: 1,
-        borderRadius: 4,
-      }]
-    },
+    data: { labels, datasets },
     options: {
       responsive: true,
+      interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            afterLabel: (ctx) => `Speed: ${data[ctx.dataIndex].speed} mph`
-          }
-        }
+        legend: { display: dual, labels: { boxWidth: 14, font: { size: 11 } } },
       },
-      scales: {
-        x: { grid: { display: false } },
-        y: {
-          beginAtZero: true,
-          title: { display: true, text: 'Distance (mi)', font: { size: 11 } },
-          ticks: { stepSize: 0.5 }
-        }
-      }
+      scales,
     }
   });
 }
