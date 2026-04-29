@@ -41,6 +41,15 @@
       </div>
     </div>
 
+    <div class="filter-bar">
+      <input type="text" id="exercise-search" placeholder="Search exercises…" oninput="renderStrengthBubbles()">
+      <div class="body-filter-btns">
+        <button class="filter-btn active" data-filter="all" onclick="setBodyFilter('all')">All</button>
+        <button class="filter-btn" data-filter="upper" onclick="setBodyFilter('upper')">Upper Body</button>
+        <button class="filter-btn" data-filter="lower" onclick="setBodyFilter('lower')">Lower Body</button>
+      </div>
+    </div>
+
     <div id="strength-bubbles" class="bubble-grid">
       <p class="empty-state">No workouts yet.</p>
     </div>

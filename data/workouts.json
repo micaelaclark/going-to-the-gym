@@ -153,6 +153,49 @@
       "rep3": 12,
       "weight": 115,
       "muscles": ["glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0015-0015-0015-000000000015",
+      "date": "2026-04-29",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 14,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 45,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0016-0016-0016-000000000016",
+      "date": "2026-04-29",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 45,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0017-0017-0017-000000000017",
+      "date": "2026-04-29",
+      "exercise": "Chest Press",
+      "sets": 2,
+      "rep1": 10,
+      "rep2": 6,
+      "weight": 55,
+      "muscles": ["chest", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0018-0018-0018-000000000018",
+      "date": "2026-04-29",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 7,
+      "rep3": 4,
+      "weight": 25,
+      "muscles": ["triceps"]
     }
   ],
   "running": [
@@ -170,6 +213,11 @@
       "date": "2026-04-26",
       "distance": 4.6,
       "speed": 5.24
+    },
+    {
+      "date": "2026-04-29",
+      "distance": 2.26,
+      "speed": 6.32
     }
   ],
   "journal": [

@@ -215,6 +215,50 @@ tr:last-child td { border-bottom: none; }
   padding: 1.5rem;
 }
 
+/* ── Filter bar ── */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.filter-bar input[type="text"] {
+  flex: 1;
+  min-width: 180px;
+  max-width: 260px;
+}
+
+.body-filter-btns {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.filter-btn {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.45rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.filter-btn:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Bubbles ── */
 
 .bubble-grid {
