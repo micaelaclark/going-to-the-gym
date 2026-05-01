@@ -1,4 +1,4 @@
-let state = { strength: [], running: [], barre: [] };
+let state = { strength: [], running: [], barre: [], yoga: [] };
 let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
@@ -140,6 +140,14 @@ function renderStrengthBubbles() {
       <div class="bubble-stats">classes total</div>
     </div>`;
 
+  const yogaCount = (state.yoga || []).length;
+  const yogaBubble = `
+    <div class="bubble yoga-bubble">
+      <div class="bubble-exercise">Yoga</div>
+      <div class="yoga-tally">${yogaCount}</div>
+      <div class="bubble-stats">sessions total</div>
+    </div>`;
+
   const totalMiles = (state.running || []).reduce((sum, r) => sum + r.distance, 0);
   const runBubble = `
     <div class="bubble running-bubble ${runningSelected ? 'selected' : ''}"
@@ -150,10 +158,10 @@ function renderStrengthBubbles() {
     </div>`;
 
   if (!sorted.length) {
-    container.innerHTML = barreBubble + runBubble;
+    container.innerHTML = barreBubble + yogaBubble + runBubble;
     return;
   }
-  container.innerHTML = barreBubble + runBubble + sorted.map(e => `
+  container.innerHTML = barreBubble + yogaBubble + runBubble + sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
@@ -199,8 +207,8 @@ function renderInsights() {
       if (!lastTrained[m] || e.date > lastTrained[m]) lastTrained[m] = e.date;
     }
   }
-  // Barre = full body, counts for all muscles
-  for (const b of (state.barre || [])) {
+  // Barre + yoga = full body, counts for all muscles
+  for (const b of [...(state.barre || []), ...(state.yoga || [])]) {
     for (const m of ALL_MUSCLES) {
       if (!lastTrained[m] || b.date > lastTrained[m]) lastTrained[m] = b.date;
     }
