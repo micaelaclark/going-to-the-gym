@@ -196,6 +196,83 @@
       "rep3": 4,
       "weight": 25,
       "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0019-0019-0019-000000000019",
+      "date": "2026-05-02",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 55,
+      "muscles": ["chest", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0020-0020-0020-000000000020",
+      "date": "2026-05-02",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0021-0021-0021-000000000021",
+      "date": "2026-05-02",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 50,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0022-0022-0022-000000000022",
+      "date": "2026-05-02",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 5,
+      "rep3": 4,
+      "weight": 40,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0023-0023-0023-000000000023",
+      "date": "2026-05-02",
+      "exercise": "Bar Squat",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 40,
+      "muscles": ["quads", "glutes", "core"]
+    },
+    {
+      "id": "a1b2c3d4-0024-0024-0024-000000000024",
+      "date": "2026-05-02",
+      "exercise": "Hip Abductor Outer",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 115,
+      "muscles": ["glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0025-0025-0025-000000000025",
+      "date": "2026-05-02",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 180,
+      "muscles": ["quads", "glutes", "hamstrings"]
     }
   ],
   "running": [
