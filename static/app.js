@@ -132,6 +132,14 @@ function renderStrengthBubbles() {
     sorted = sorted.filter(e => (e.muscles || []).some(m => LOWER_MUSCLES.has(m)));
   }
 
+  // One bubble per exercise — most recent entry, chart shows full history
+  const seen = new Set();
+  sorted = sorted.filter(e => {
+    if (seen.has(e.exercise)) return false;
+    seen.add(e.exercise);
+    return true;
+  });
+
   const barreCount = (state.barre || []).length;
   const barreBubble = `
     <div class="bubble barre-bubble">

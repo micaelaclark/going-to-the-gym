@@ -273,6 +273,61 @@
       "rep3": 10,
       "weight": 180,
       "muscles": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0026-0026-0026-000000000026",
+      "date": "2026-05-05",
+      "exercise": "Chest Fly",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 6,
+      "rep3": 5,
+      "weight": 55,
+      "muscles": ["chest"]
+    },
+    {
+      "id": "a1b2c3d4-0027-0027-0027-000000000027",
+      "date": "2026-05-05",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 25,
+      "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0028-0028-0028-000000000028",
+      "date": "2026-05-05",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 20,
+      "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0029-0029-0029-000000000029",
+      "date": "2026-05-05",
+      "exercise": "Overhead Press",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 10,
+      "weight": 20,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0030-0030-0030-000000000030",
+      "date": "2026-05-05",
+      "exercise": "Leg Raising",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 0,
+      "muscles": ["core", "adductors"]
     }
   ],
   "running": [
