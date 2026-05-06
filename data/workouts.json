@@ -42,7 +42,6 @@
       "rep2": 7,
       "rep3": 7,
       "weight": 180,
-      "starred": true,
       "muscles": ["quads", "glutes", "hamstrings"]
     },
     {
@@ -272,6 +271,7 @@
       "rep2": 10,
       "rep3": 10,
       "weight": 180,
+      "starred": true,
       "muscles": ["quads", "glutes", "hamstrings"]
     },
     {
