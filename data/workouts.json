@@ -328,6 +328,28 @@
       "rep3": 12,
       "weight": 0,
       "muscles": ["core", "adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0031-0031-0031-000000000031",
+      "date": "2026-05-06",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 35,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0032-0032-0032-000000000032",
+      "date": "2026-05-06",
+      "exercise": "Bulgarian Split Squat",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 17.5,
+      "muscles": ["quads", "glutes", "hamstrings"]
     }
   ],
   "running": [
@@ -350,6 +372,11 @@
       "date": "2026-04-29",
       "distance": 2.26,
       "speed": 6.32
+    },
+    {
+      "date": "2026-05-06",
+      "distance": 1.5,
+      "speed": 7.35
     }
   ],
   "journal": [
