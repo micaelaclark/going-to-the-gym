@@ -33,7 +33,7 @@ function setRunningMetric(metric) {
   renderRunningChart();
 }
 
-// ── Daily quote ───────────────────────────────────────────────────────────────
+// ── Daily quote ───────────────────────────────────────────────────────────────────────────────
 
 const QUOTES = [
   { text: "We are what we repeatedly do. Excellence is not an act, but a habit.", author: "Aristotle" },
@@ -90,7 +90,7 @@ renderDailyQuote();
 
 const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4', '#ff9800', '#607d8b'];
 
-// ── Init ─────────────────────────────────────────────────────────────────────
+// ── Init ─────────────────────────────────────────────────────────────────────────────────
 
 async function fetchData() {
   const res = await fetch('./data/workouts.json?t=' + Date.now());
@@ -108,7 +108,7 @@ function renderAll() {
   }
 }
 
-// ── Bubbles ───────────────────────────────────────────────────────────────────
+// ── Bubbles ────────────────────────────────────────────────────────────────────────────────
 
 function fmtTime(totalSeconds) {
   const m = Math.floor(totalSeconds / 60);
@@ -188,11 +188,25 @@ function renderStrengthBubbles() {
           ${e.muscles.map(m => `<span class="muscle-tag ${m}">${m}</span>`).join('')}
         </div>
       ` : ''}
+      <span class="intensity-badge ${calcIntensity(e)}">${calcIntensity(e)}</span>
     </div>
   `).join('');
 }
 
 const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'adductors'];
+
+const RECOVERY_DAYS = { light: 1, moderate: 2, intense: 3 };
+
+function calcIntensity(entry) {
+  if (entry.timed) return 'moderate';
+  const reps = [entry.rep1, entry.rep2, entry.rep3].filter(r => r != null);
+  if (!reps.length) return 'moderate';
+  const avg = reps.reduce((s, r) => s + r, 0) / reps.length;
+  const dropOff = reps[0] > 0 ? (reps[0] - reps[reps.length - 1]) / reps[0] : 0;
+  if (dropOff >= 0.4 || avg <= 7) return 'intense';
+  if (dropOff < 0.2 && avg >= 12) return 'light';
+  return 'moderate';
+}
 
 function daysSince(dateStr) {
   const today = new Date();
@@ -211,14 +225,19 @@ function renderInsights() {
 
   const lastTrained = {};
   for (const e of state.strength) {
+    const intensity = calcIntensity(e);
     for (const m of (e.muscles || [])) {
-      if (!lastTrained[m] || e.date > lastTrained[m]) lastTrained[m] = e.date;
+      if (!lastTrained[m] || e.date > lastTrained[m].date) {
+        lastTrained[m] = { date: e.date, intensity };
+      }
     }
   }
-  // Barre + yoga = full body, counts for all muscles
+  // Barre + yoga = full body moderate intensity
   for (const b of [...(state.barre || []), ...(state.yoga || [])]) {
     for (const m of ALL_MUSCLES) {
-      if (!lastTrained[m] || b.date > lastTrained[m]) lastTrained[m] = b.date;
+      if (!lastTrained[m] || b.date > lastTrained[m].date) {
+        lastTrained[m] = { date: b.date, intensity: 'moderate' };
+      }
     }
   }
 
@@ -232,14 +251,15 @@ function renderInsights() {
       focus.push({ muscle: m, meta: 'untrained' });
       continue;
     }
-    const days = daysSince(last);
-    if (days < 2) {
-      const label = days === 0 ? 'today' : 'yesterday';
-      recovering.push({ muscle: m, meta: label });
-    } else if (days >= 3) {
-      focus.push({ muscle: m, meta: `${days}d ago` });
-    } else {
+    const days = daysSince(last.date);
+    const needed = RECOVERY_DAYS[last.intensity];
+    if (days < needed) {
+      const dayLabel = days === 0 ? 'today' : days === 1 ? 'yesterday' : `${days}d ago`;
+      recovering.push({ muscle: m, meta: `${dayLabel} · ${last.intensity}` });
+    } else if (days === needed) {
       ready.push({ muscle: m, meta: `${days}d ago` });
+    } else {
+      focus.push({ muscle: m, meta: `${days}d ago` });
     }
   }
 
@@ -298,7 +318,7 @@ function closeChart() {
   renderStrengthBubbles();
 }
 
-// ── Strength chart ────────────────────────────────────────────────────────────
+// ── Strength chart ────────────────────────────────────────────────────────────────────────
 
 function renderStrengthChart(exercise) {
   const canvas = document.getElementById('strength-chart');
@@ -374,7 +394,7 @@ function renderStrengthChart(exercise) {
   });
 }
 
-// ── Running chart ─────────────────────────────────────────────────────────────
+// ── Running chart ─────────────────────────────────────────────────────────────────────────
 
 function renderRunningChart() {
   const canvas = document.getElementById('strength-chart');
@@ -457,7 +477,7 @@ function renderRunningChart() {
   });
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Helpers ─────────────────────────────────────────────────────────────────────────────────
 
 function fmt(dateStr) {
   const [y, m, d] = dateStr.split('-');
@@ -471,5 +491,5 @@ function hexAlpha(hex, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 
-// ── Boot ──────────────────────────────────────────────────────────────────────
+// ── Boot ──────────────────────────────────────────────────────────────────────────────────
 fetchData();

@@ -545,6 +545,23 @@ tr:last-child td { border-bottom: none; }
   margin: 0.4rem 0 0.2rem;
 }
 
+/* ── Intensity badge ── */
+
+.intensity-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+}
+
+.intensity-badge.light    { background: #e8f5e9; color: #2e7d32; }
+.intensity-badge.moderate { background: #fff3e0; color: #e65100; }
+.intensity-badge.intense  { background: #fce4ec; color: #c2185b; }
+
 /* ── Journal ── */
 
 #journal-entries {
@@ -585,5 +602,4 @@ tr:last-child td { border-bottom: none; }
   line-height: 1.65;
   white-space: pre-wrap;
 }
-
 
