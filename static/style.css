@@ -215,6 +215,46 @@ tr:last-child td { border-bottom: none; }
   padding: 1.5rem;
 }
 
+/* ── Running chart controls ── */
+
+.running-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.run-ctrl-group {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.run-ctrl-btn {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+}
+
+.run-ctrl-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.run-ctrl-btn:hover:not(.active) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Filter bar ── */
 
 .filter-bar {
@@ -477,12 +517,14 @@ tr:last-child td { border-bottom: none; }
 
 /* ── Barre bubble ── */
 
-.barre-bubble {
+.barre-bubble,
+.yoga-bubble {
   cursor: default;
   text-align: center;
 }
 
-.barre-bubble:hover {
+.barre-bubble:hover,
+.yoga-bubble:hover {
   transform: none;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
 }
@@ -494,6 +536,31 @@ tr:last-child td { border-bottom: none; }
   line-height: 1.1;
   margin: 0.4rem 0 0.2rem;
 }
+
+.yoga-tally {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #9c27b0;
+  line-height: 1.1;
+  margin: 0.4rem 0 0.2rem;
+}
+
+/* ── Intensity badge ── */
+
+.intensity-badge {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  margin-top: 0.5rem;
+}
+
+.intensity-badge.light    { background: #e8f5e9; color: #2e7d32; }
+.intensity-badge.moderate { background: #fff3e0; color: #e65100; }
+.intensity-badge.intense  { background: #fce4ec; color: #c2185b; }
 
 /* ── Journal ── */
 
@@ -536,4 +603,230 @@ tr:last-child td { border-bottom: none; }
   white-space: pre-wrap;
 }
 
+/* ── Page tabs ── */
 
+.page-tabs {
+  display: flex;
+  background: var(--accent);
+  padding: 0 2rem;
+}
+
+.page-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255,255,255,0.75);
+  padding: 0.6rem 1.1rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.page-tab.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+.page-tab:hover:not(.active) {
+  color: rgba(255,255,255,0.9);
+}
+
+/* ── Cycle page ── */
+
+.cycle-phase-banner {
+  border-left: 4px solid var(--accent);
+  animation: slideDown 0.2s ease;
+}
+
+.cycle-day-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+
+.cycle-phase-name {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-bottom: 0.35rem;
+}
+
+.cycle-phase-desc {
+  font-size: 0.875rem;
+  color: var(--text);
+  margin-bottom: 0.3rem;
+}
+
+.cycle-phase-advice {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* ── Calendar ── */
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cal-month-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.cal-nav-btn {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background 0.15s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-nav-btn:hover { background: var(--bg); }
+
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.cal-header {
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--muted);
+  padding: 0.25rem 0 0.5rem;
+}
+
+.cal-cell {
+  border-radius: 6px;
+  min-height: 46px;
+  padding: 0.3rem 0.2rem 0.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.82rem;
+}
+
+.cal-cell.empty { background: none !important; }
+
+.cal-cell.future { opacity: 0.55; }
+
+.cal-day-num {
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cal-cell.today .cal-day-num {
+  background: var(--accent);
+  color: white;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.cal-period-marker {
+  font-size: 0.55rem;
+  color: #c2185b;
+  line-height: 1;
+}
+
+.cal-period-predicted {
+  font-size: 0.55rem;
+  color: #c2185b;
+  opacity: 0.45;
+  line-height: 1;
+}
+
+.cal-workout-dot {
+  font-size: 1.1rem;
+  color: var(--muted);
+  line-height: 0.6;
+}
+
+/* ── Cycle footer ── */
+
+.cycle-footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cycle-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-weight: 700;
+}
+
+.legend-days {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.cycle-log-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.cycle-log-btn:hover:not(:disabled) { background: var(--accent-dark); }
+
+.cycle-log-btn:disabled,
+.cycle-log-btn.logged {
+  background: #e0e0e0;
+  color: var(--muted);
+  cursor: default;
+}
