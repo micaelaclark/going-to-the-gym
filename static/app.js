@@ -479,6 +479,67 @@ const PHASES = [
   }
 ];
 
+const CYCLE_FOODS = {
+  Menstrual: [
+    { food: 'Beets', why: 'Iron-rich to replenish what\'s lost during menstruation, plus betalain pigments that act as anti-inflammatories. Folate supports red blood cell production at the moment you need it most.' },
+    { food: 'Ginger', why: 'Inhibits prostaglandin synthesis — the same mechanism as ibuprofen — directly reducing uterine cramping. Clinical studies show 250mg ginger extract rivals NSAIDs for menstrual pain relief.' },
+    { food: 'Pumpkin Seeds', why: 'Zinc drops sharply in the days before your period. Pumpkin seeds are one of the richest sources, supporting immune function, mood stability, and reducing PMS intensity.' },
+    { food: 'Sardines', why: 'Omega-3 fatty acids (EPA + DHA) directly inhibit prostaglandin production, which drives cramping. They also replenish the iron and vitamin D lost during menstruation.' },
+    { food: 'Dark Cherries', why: 'Anthocyanins are potent natural anti-inflammatories that calm systemic inflammation during menstruation. Also contain melatonin to support sleep disrupted by cramps.' },
+    { food: 'Kale', why: 'High in vitamin K (supports healthy clotting), iron, and magnesium. Magnesium relaxes smooth muscle in the uterus, directly reducing cramp intensity.' },
+    { food: 'Turmeric', why: 'Curcumin inhibits COX-2, the enzyme that produces the prostaglandins driving period pain. Add black pepper — it increases curcumin absorption by 2000%.' },
+    { food: 'Sweet Potato', why: 'Complex carbs stabilize blood sugar during the hormonal dip of menstruation. Vitamin B6 is a co-factor for serotonin synthesis, directly easing mood changes.' },
+    { food: 'Mushrooms', why: 'One of the only food sources of vitamin D, which research links to significantly reduced menstrual pain severity and duration.' },
+    { food: 'Watermelon', why: 'High water content combats bloating; natural sugars provide quick energy. Citrulline relaxes blood vessels, easing the uterine muscle tension behind cramping.' },
+  ],
+  Follicular: [
+    { food: 'Broccoli Sprouts', why: 'Sulforaphane — concentrated 50–100x higher in sprouts than mature broccoli — activates liver enzymes that metabolize estrogen cleanly as it rises in this phase.' },
+    { food: 'Flaxseed', why: 'Lignans modulate estrogen receptors, amplifying the effects of your rising estrogen. Ground flax has up to 800x more lignans than any other plant food.' },
+    { food: 'Avocado', why: 'Monounsaturated fats are the literal building blocks of sex hormone synthesis. B5 (pantothenic acid) feeds the adrenal glands that support hormonal signaling.' },
+    { food: 'Lentils', why: 'Folate is critical for healthy follicle development and egg quality — and demand rises in the follicular phase. Also replenishes iron lost during menstruation as energy climbs.' },
+    { food: 'Brazil Nuts', why: 'Just two Brazil nuts meet your full daily selenium requirement. Selenium supports thyroid function and is essential for follicle health and egg quality.' },
+    { food: 'Oats', why: 'Beta-glucan fiber feeds the gut bacteria (the estrobolome) that regulate how estrogen circulates in your body. Provides steady energy as workout capacity rises.' },
+    { food: 'Eggs', why: 'Choline is directly used in follicle development. Research links adequate choline intake to measurably better egg quality and follicular health.' },
+    { food: 'Artichokes', why: 'Cynarin stimulates bile production, which the liver uses to package and excrete used estrogen. Keeps the estrogen detox pathway clear as levels build.' },
+    { food: 'Citrus', why: 'Vitamin C enhances iron absorption from plant sources — critical post-menstruation. Bioflavonoids directly support rising estrogen activity during the follicular surge.' },
+    { food: 'Carrots', why: 'Raw carrots contain a unique fiber that binds excess estrogen in the gut before it can be reabsorbed. Beta-carotene supports the cell growth that drives follicle maturation.' },
+  ],
+  Ovulation: [
+    { food: 'Asparagus', why: 'Contains the highest glutathione concentration of any vegetable — your body\'s "master antioxidant" — protecting the egg from oxidative damage during its final release.' },
+    { food: 'Wild-Caught Salmon', why: 'DHA omega-3 supports egg membrane fluidity and mitochondrial function. Zinc peaks in demand at ovulation to support the LH surge and the egg\'s actual release.' },
+    { food: 'Almonds', why: 'Vitamin E is a fat-soluble antioxidant that directly protects egg membranes from oxidative stress at the critical moment of ovulation.' },
+    { food: 'Red Bell Pepper', why: 'Contains 3x more vitamin C than an orange. Vitamin C protects ovarian follicles from oxidative damage and supports corpus luteum formation post-ovulation.' },
+    { food: 'Raspberries', why: 'Ellagic acid and anthocyanins provide antioxidant protection for the egg during its final maturation stage. Antioxidant capacity is highest in red-pigmented fruits.' },
+    { food: 'Spinach', why: 'Magnesium and iron support the high energy demands of the LH surge. Folate protects the egg\'s DNA integrity — particularly important right at ovulation.' },
+    { food: 'Quinoa', why: 'A complete protein with all 9 essential amino acids. Supports peak-phase energy, muscle repair during your strongest workout window, and hormone precursor synthesis.' },
+    { food: 'Figs', why: 'Rich in iron, calcium, potassium, and B6. Phytoestrogenic compounds in figs support the hormone balance needed around ovulation.' },
+    { food: 'Dandelion Greens', why: 'Support liver detox of spent estrogen after the LH surge. Natural diuretic properties reduce the bloating that can accompany the periovulatory fluid shift.' },
+    { food: 'Shrimp', why: 'High in iodine, which the thyroid needs to trigger ovulation. Also a lean, bioavailable source of zinc and selenium for egg quality.' },
+  ],
+  Luteal: [
+    { food: 'Dark Chocolate (70%+)', why: 'Magnesium is the most depleted nutrient in PMS. Dark chocolate delivers magnesium plus phenylethylamine, which boosts dopamine during the progesterone-driven mood dip.' },
+    { food: 'Sweet Potato', why: 'Complex carbs boost serotonin production — which drops as progesterone rises. B6 is the co-factor for serotonin synthesis, directly easing luteal mood symptoms.' },
+    { food: 'Walnuts', why: 'Omega-3 ALA reduces PMS-related inflammation. Walnuts also contain melatonin, helping restore sleep disrupted by elevated progesterone in the late luteal phase.' },
+    { food: 'Chickpeas', why: 'Clinical trials show B6 reduces PMS severity by up to 50%. Chickpeas are high in both B6 and magnesium, which work synergistically to ease symptoms.' },
+    { food: 'Turkey', why: 'Tryptophan converts to serotonin, directly counteracting the mood-lowering effect of progesterone. Also supports melatonin production for the deeper sleep needed in this phase.' },
+    { food: 'Cauliflower', why: 'Indole-3-carbinol supports healthy estrogen-to-progesterone balance. Fiber feeds the gut bacteria that regulate how estrogen is recycled, smoothing the hormonal curve.' },
+    { food: 'Ginger', why: 'Reduces luteal-phase bloating and nausea by relaxing the GI tract. Anti-inflammatory properties help specifically with breast tenderness common in this phase.' },
+    { food: 'Brown Rice', why: 'Magnesium and B vitamins support the nervous system under PMS pressure. Low-glycemic carbs prevent the blood sugar crashes that amplify luteal mood swings.' },
+    { food: 'Apple', why: 'Quercetin reduces inflammatory PMS symptoms. Pectin fiber feeds beneficial gut bacteria that regulate estrogen recycling, easing the hormonal curve toward your period.' },
+    { food: 'Sesame Seeds', why: 'Sesamin lignans help balance the estrogen-to-progesterone ratio. Calcium from sesame reduces PMS symptom severity by up to 48% in randomized trials.' },
+    { food: 'Pumpkin', why: 'High in zinc, which directly supports progesterone production in the luteal phase. Vitamin A supports immune function during the immunosuppressive window progesterone creates.' },
+    { food: 'Grass-Fed Beef', why: 'Pre-replenishes iron and zinc ahead of menstruation. B12 combats the fatigue that peaks in the late luteal phase as progesterone reaches its maximum.' },
+  ],
+};
+
+function getTodaysCycleFood(phaseName, dateStr) {
+  const foods = CYCLE_FOODS[phaseName];
+  if (!foods) return null;
+  const d = new Date(dateStr + 'T00:00:00');
+  const dayOfYear = Math.floor((d - new Date(d.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+  return foods[dayOfYear % foods.length];
+}
+
 let calendarMonth = null;
 let cycleLengthChart = null;
 
@@ -545,6 +606,7 @@ function renderCyclePage() {
   const phase = cycleDay ? getPhaseForDay(cycleDay) : null;
 
   const banner = document.getElementById('cycle-phase-banner');
+  const foodCard = document.getElementById('cycle-food-card');
   if (cycleDay && phase) {
     banner.innerHTML = `
       <div class="cycle-day-label">Cycle Day ${cycleDay}</div>
@@ -553,9 +615,20 @@ function renderCyclePage() {
       <div class="cycle-phase-advice">💪 ${phase.advice}</div>
     `;
     banner.style.cssText = `border-left-color:${phase.color}; background:${phase.bg};`;
+
+    const food = getTodaysCycleFood(phase.name, today);
+    if (food) {
+      foodCard.querySelector('.food-rec-name').textContent = food.food;
+      foodCard.querySelector('.food-rec-why').textContent = food.why;
+      foodCard.style.borderLeft = `4px solid ${phase.color}`;
+      foodCard.classList.remove('hidden');
+    } else {
+      foodCard.classList.add('hidden');
+    }
   } else {
     banner.innerHTML = `<div class="cycle-day-label">No period data — log your period start to get going.</div>`;
     banner.style.cssText = '';
+    foodCard.classList.add('hidden');
   }
 
   const logBtn = document.getElementById('cycle-log-btn');
