@@ -1,4 +1,4 @@
-let state = { strength: [], running: [], barre: [], yoga: [] };
+let state = { strength: [], running: [], barre: [], yoga: [], cycle: [] };
 let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
@@ -489,6 +489,231 @@ function hexAlpha(hex, alpha) {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r},${g},${b},${alpha})`;
+}
+
+// ── Cycle ─────────────────────────────────────────────────────────────────────────────────
+
+const CYCLE_LENGTH = 29;
+
+const PHASES = [
+  {
+    name: 'Menstrual',
+    days: [1, 5],
+    bg: '#fce4ec',
+    color: '#c2185b',
+    emoji: '🌑',
+    desc: 'Rest & restore. Your body is working hard internally.',
+    advice: 'Gentle movement: yoga, walking, light stretching. Skip heavy lifting.'
+  },
+  {
+    name: 'Follicular',
+    days: [6, 11],
+    bg: '#e3f2fd',
+    color: '#1565c0',
+    emoji: '🌒',
+    desc: 'Energy is rising. Estrogen is building — you feel stronger.',
+    advice: 'Increase weights, try new exercises, push cardio. Great time to build.'
+  },
+  {
+    name: 'Ovulation',
+    days: [12, 16],
+    bg: '#fff3e0',
+    color: '#e65100',
+    emoji: '🌕',
+    desc: 'Peak energy & strength. Your best performance window.',
+    advice: 'Heavy lifts, HIIT, max effort. Your body is primed for it.'
+  },
+  {
+    name: 'Luteal',
+    days: [17, 40],
+    bg: '#f3e5f5',
+    color: '#7b1fa2',
+    emoji: '🌖',
+    desc: 'Energy gradually decreases. Rest is productive toward the end.',
+    advice: 'Barre, pilates, moderate weights. Be kind to yourself.'
+  }
+];
+
+let calendarMonth = null;
+
+function getPhaseForDay(cycleDay) {
+  return PHASES.find(p => cycleDay >= p.days[0] && cycleDay <= p.days[1]) || PHASES[3];
+}
+
+function getAllPeriodDates() {
+  const fromData = (state.cycle || []).map(c => c.date);
+  const fromLocal = JSON.parse(localStorage.getItem('periodLogs') || '[]');
+  return [...new Set([...fromData, ...fromLocal])].sort();
+}
+
+function getEffectivePeriodDates(throughDateStr) {
+  const actual = getAllPeriodDates();
+  if (!actual.length) return { all: [], predicted: new Set() };
+  const extended = [...actual];
+  const predicted = new Set();
+  let last = new Date(extended[extended.length - 1] + 'T00:00:00');
+  const limit = new Date(throughDateStr + 'T00:00:00');
+  for (let i = 0; i < 24; i++) {
+    const next = new Date(last);
+    next.setDate(next.getDate() + CYCLE_LENGTH);
+    if (next > limit) break;
+    const s = next.toISOString().slice(0, 10);
+    extended.push(s);
+    predicted.add(s);
+    last = next;
+  }
+  return { all: extended.sort(), predicted };
+}
+
+function getCycleDayForDate(dateStr, periodDates) {
+  const past = periodDates.filter(d => d <= dateStr);
+  if (!past.length) return null;
+  const lastPeriod = new Date(past[past.length - 1] + 'T00:00:00');
+  const target = new Date(dateStr + 'T00:00:00');
+  return Math.floor((target - lastPeriod) / (1000 * 60 * 60 * 24)) + 1;
+}
+
+function showPage(page) {
+  document.getElementById('training-page').classList.toggle('hidden', page !== 'training');
+  document.getElementById('cycle-page').classList.toggle('hidden', page !== 'cycle');
+  document.getElementById('daily-quote').classList.toggle('hidden', page !== 'training');
+  document.querySelectorAll('.page-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.page === page);
+  });
+  if (page === 'cycle') renderCyclePage();
+}
+
+function logPeriod() {
+  const today = new Date().toISOString().slice(0, 10);
+  const logs = JSON.parse(localStorage.getItem('periodLogs') || '[]');
+  if (!logs.includes(today)) {
+    logs.push(today);
+    localStorage.setItem('periodLogs', JSON.stringify(logs));
+  }
+  renderCyclePage();
+}
+
+function renderCyclePage() {
+  const today = new Date().toISOString().slice(0, 10);
+  const { all: effectivePeriods } = getEffectivePeriodDates(today);
+  const cycleDay = getCycleDayForDate(today, effectivePeriods);
+  const phase = cycleDay ? getPhaseForDay(cycleDay) : null;
+
+  const banner = document.getElementById('cycle-phase-banner');
+  if (cycleDay && phase) {
+    banner.innerHTML = `
+      <div class="cycle-day-label">Cycle Day ${cycleDay}</div>
+      <div class="cycle-phase-name" style="color:${phase.color}">${phase.emoji} ${phase.name} Phase</div>
+      <div class="cycle-phase-desc">${phase.desc}</div>
+      <div class="cycle-phase-advice">💪 ${phase.advice}</div>
+    `;
+    banner.style.cssText = `border-left-color:${phase.color}; background:${phase.bg};`;
+  } else {
+    banner.innerHTML = `<div class="cycle-day-label">No period data — log your period start to get going.</div>`;
+    banner.style.cssText = '';
+  }
+
+  const logBtn = document.getElementById('cycle-log-btn');
+  const allLogged = [
+    ...(state.cycle || []).map(c => c.date),
+    ...JSON.parse(localStorage.getItem('periodLogs') || '[]')
+  ];
+  const alreadyLogged = allLogged.includes(today);
+  logBtn.textContent = alreadyLogged ? '✓ Period logged today' : '🩸 Log Period Start Today';
+  logBtn.disabled = alreadyLogged;
+  logBtn.classList.toggle('logged', alreadyLogged);
+
+  if (!calendarMonth) {
+    const now = new Date();
+    calendarMonth = { year: now.getFullYear(), month: now.getMonth() };
+  }
+  renderCalendar();
+  renderPhaseLegend();
+}
+
+function renderCalendar() {
+  const { year, month } = calendarMonth;
+  const todayDate = new Date();
+  todayDate.setHours(0, 0, 0, 0);
+
+  document.getElementById('cal-month-label').textContent =
+    new Date(year, month, 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const firstDay = new Date(year, month, 1).getDay();
+  const lastDay = `${year}-${String(month + 1).padStart(2, '0')}-${String(daysInMonth).padStart(2, '0')}`;
+
+  const { all: effectivePeriods, predicted } = getEffectivePeriodDates(lastDay);
+  const actualPeriods = new Set(getAllPeriodDates());
+
+  const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  let html = dayNames.map(d => `<div class="cal-header">${d}</div>`).join('');
+
+  for (let i = 0; i < firstDay; i++) {
+    html += `<div class="cal-cell empty"></div>`;
+  }
+
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    const cellDate = new Date(year, month, day);
+    const isToday = cellDate.getTime() === todayDate.getTime();
+    const isFuture = cellDate > todayDate;
+    const isActualPeriod = actualPeriods.has(dateStr);
+    const isPredictedPeriod = predicted.has(dateStr) && !isActualPeriod;
+
+    const cycleDay = getCycleDayForDate(dateStr, effectivePeriods);
+    const phase = cycleDay ? getPhaseForDay(cycleDay) : null;
+
+    const hadWorkout = !isFuture && (
+      (state.strength || []).some(e => e.date === dateStr) ||
+      (state.running || []).some(e => e.date === dateStr) ||
+      (state.barre || []).some(e => e.date === dateStr) ||
+      (state.yoga || []).some(e => e.date === dateStr)
+    );
+
+    const classes = ['cal-cell', isToday ? 'today' : '', isFuture ? 'future' : '']
+      .filter(Boolean).join(' ');
+    const bgStyle = phase ? `background:${phase.bg};` : '';
+
+    html += `
+      <div class="${classes}" style="${bgStyle}">
+        <span class="cal-day-num">${day}</span>
+        ${isActualPeriod ? `<span class="cal-period-marker" title="Period start">●</span>` : ''}
+        ${isPredictedPeriod ? `<span class="cal-period-predicted" title="Predicted period">○</span>` : ''}
+        ${hadWorkout ? `<span class="cal-workout-dot">·</span>` : ''}
+      </div>
+    `;
+  }
+
+  document.getElementById('cal-grid').innerHTML = html;
+}
+
+function renderPhaseLegend() {
+  document.getElementById('cycle-legend').innerHTML = PHASES.map(p => `
+    <div class="legend-item">
+      <span class="legend-swatch" style="background:${p.bg}; border:1.5px solid ${p.color};"></span>
+      <span class="legend-label" style="color:${p.color}">${p.emoji} ${p.name}</span>
+      <span class="legend-days">Days ${p.days[0]}–${p.days[1] > 30 ? '17+' : p.days[1]}</span>
+    </div>
+  `).join('');
+}
+
+function prevCalMonth() {
+  if (calendarMonth.month === 0) {
+    calendarMonth = { year: calendarMonth.year - 1, month: 11 };
+  } else {
+    calendarMonth = { ...calendarMonth, month: calendarMonth.month - 1 };
+  }
+  renderCalendar();
+}
+
+function nextCalMonth() {
+  if (calendarMonth.month === 11) {
+    calendarMonth = { year: calendarMonth.year + 1, month: 0 };
+  } else {
+    calendarMonth = { ...calendarMonth, month: calendarMonth.month + 1 };
+  }
+  renderCalendar();
 }
 
 // ── Boot ──────────────────────────────────────────────────────────────────────────────────

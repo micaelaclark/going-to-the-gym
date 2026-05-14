@@ -21,7 +21,12 @@
     <h1>Micaela Goes to the Gym 🏃‍♀️</h1>
   </header>
 
-  <div class="page-content">
+  <nav class="page-tabs">
+    <button class="page-tab active" data-page="training" onclick="showPage('training')">Training</button>
+    <button class="page-tab" data-page="cycle" onclick="showPage('cycle')">Cycle</button>
+  </nav>
+
+  <div id="training-page" class="page-content">
     <div id="insights" class="insights-panel hidden">
       <div class="insights-panel-title">Training Insights</div>
 
@@ -36,7 +41,7 @@
       </div>
 
       <div id="insights-ready" class="insights-section hidden">
-        <div class="insights-section-title">✨ Recovered & Ready</div>
+        <div class="insights-section-title">✨ Recovered &amp; Ready</div>
         <div class="insights-pills"></div>
       </div>
     </div>
@@ -72,6 +77,24 @@
         </div>
       </div>
       <canvas id="strength-chart"></canvas>
+    </div>
+  </div>
+
+  <div id="cycle-page" class="page-content hidden">
+    <div id="cycle-phase-banner" class="cycle-phase-banner card"></div>
+
+    <div class="card cycle-calendar">
+      <div class="cal-nav">
+        <button class="cal-nav-btn" onclick="prevCalMonth()">&#8249;</button>
+        <span id="cal-month-label" class="cal-month-label"></span>
+        <button class="cal-nav-btn" onclick="nextCalMonth()">&#8250;</button>
+      </div>
+      <div id="cal-grid" class="cal-grid"></div>
+    </div>
+
+    <div class="cycle-footer">
+      <div id="cycle-legend" class="cycle-legend"></div>
+      <button id="cycle-log-btn" class="cycle-log-btn" onclick="logPeriod()">🩸 Log Period Start Today</button>
     </div>
   </div>
 
