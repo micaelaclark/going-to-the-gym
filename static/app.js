@@ -480,6 +480,7 @@ const PHASES = [
 ];
 
 let calendarMonth = null;
+let cycleLengthChart = null;
 
 function getPhaseForDay(cycleDay) {
   return PHASES.find(p => cycleDay >= p.days[0] && cycleDay <= p.days[1]) || PHASES[3];
@@ -573,6 +574,7 @@ function renderCyclePage() {
   }
   renderCalendar();
   renderPhaseLegend();
+  renderCycleLengthChart();
 }
 
 function renderCalendar() {
@@ -640,6 +642,92 @@ function renderPhaseLegend() {
       <span class="legend-days">Days ${p.days[0]}–${p.days[1] > 30 ? '17+' : p.days[1]}</span>
     </div>
   `).join('');
+}
+
+function renderCycleLengthChart() {
+  const panel = document.getElementById('cycle-length-panel');
+  const actual = getAllPeriodDates();
+
+  if (actual.length < 2) {
+    panel.classList.add('hidden');
+    if (cycleLengthChart) { cycleLengthChart.destroy(); cycleLengthChart = null; }
+    return;
+  }
+  panel.classList.remove('hidden');
+
+  const labels = [];
+  const lengths = [];
+  for (let i = 1; i < actual.length; i++) {
+    const from = new Date(actual[i - 1] + 'T00:00:00');
+    const to   = new Date(actual[i]     + 'T00:00:00');
+    lengths.push(Math.round((to - from) / (1000 * 60 * 60 * 24)));
+    labels.push(new Date(actual[i - 1] + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+  }
+
+  const avg = Math.round(lengths.reduce((s, l) => s + l, 0) / lengths.length);
+
+  if (cycleLengthChart) { cycleLengthChart.destroy(); cycleLengthChart = null; }
+
+  cycleLengthChart = new Chart(
+    document.getElementById('cycle-length-chart').getContext('2d'),
+    {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [
+          {
+            label: 'Cycle Length (days)',
+            data: lengths,
+            backgroundColor: lengths.map(l => {
+              const dev = Math.abs(l - avg);
+              if (dev <= 2) return hexAlpha('#1a237e', 0.75);
+              if (dev <= 5) return hexAlpha('#ff9800', 0.8);
+              return hexAlpha('#e63946', 0.8);
+            }),
+            borderRadius: 4,
+            yAxisID: 'y',
+          },
+          {
+            type: 'line',
+            label: `Avg (${avg}d)`,
+            data: lengths.map(() => avg),
+            borderColor: 'rgba(0,0,0,0.25)',
+            borderDash: [5, 4],
+            borderWidth: 1.5,
+            pointRadius: 0,
+            yAxisID: 'y',
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: true, labels: { boxWidth: 12, font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              afterBody: ctx => {
+                const l = ctx[0]?.parsed?.y;
+                if (l == null) return '';
+                const dev = l - avg;
+                if (Math.abs(dev) <= 2) return 'Within normal range';
+                return `${dev > 0 ? '+' : ''}${dev}d from average`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { grid: { display: false } },
+          y: {
+            beginAtZero: false,
+            min: Math.max(14, Math.min(...lengths) - 4),
+            max: Math.max(...lengths) + 4,
+            title: { display: true, text: 'Days', font: { size: 11 } },
+          }
+        }
+      }
+    }
+  );
 }
 
 function prevCalMonth() {

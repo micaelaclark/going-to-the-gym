@@ -824,6 +824,17 @@ tr:last-child td { border-bottom: none; }
 
 .cycle-log-btn:hover:not(:disabled) { background: var(--accent-dark); }
 
+/* ── Cycle length chart ── */
+
+.cycle-length-header {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 1rem;
+}
+
 .cycle-log-btn:disabled,
 .cycle-log-btn.logged {
   background: #e0e0e0;
