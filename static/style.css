@@ -1,8 +1,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent: #f06292;
-  --accent-dark: #e91e8c;
+  --accent: #1a237e;
+  --accent-dark: #0d1462;
   --bg: #f4f4f4;
   --card: #ffffff;
   --text: #1a1a1a;

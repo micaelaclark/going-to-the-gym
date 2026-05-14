@@ -33,61 +33,6 @@ function setRunningMetric(metric) {
   renderRunningChart();
 }
 
-// ── Daily quote ───────────────────────────────────────────────────────────────────────────────
-
-const QUOTES = [
-  { text: "We are what we repeatedly do. Excellence is not an act, but a habit.", author: "Aristotle" },
-  { text: "He who has a why to live for can bear almost any how.", author: "Friedrich Nietzsche" },
-  { text: "You are the universe experiencing itself.", author: "Alan Watts" },
-  { text: "The unexamined life is not worth living.", author: "Socrates" },
-  { text: "Man is nothing else but what he makes of himself.", author: "Jean-Paul Sartre" },
-  { text: "One must imagine Sisyphus happy.", author: "Albert Camus" },
-  { text: "The privilege of a lifetime is being who you are.", author: "Joseph Campbell" },
-  { text: "Between stimulus and response, there is a space. In that space is our power to choose.", author: "Viktor Frankl" },
-  { text: "The only way out is through.", author: "Robert Frost" },
-  { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
-  { text: "Fall seven times, stand up eight.", author: "Japanese proverb" },
-  { text: "The mind is everything. What you think, you become.", author: "Buddha" },
-  { text: "Strength does not come from physical capacity. It comes from an indomitable will.", author: "Mahatma Gandhi" },
-  { text: "Pain is inevitable. Suffering is optional.", author: "Haruki Murakami" },
-  { text: "The body achieves what the mind believes.", author: "Napoleon Hill" },
-  { text: "The cave you fear to enter holds the treasure you seek.", author: "Joseph Campbell" },
-  { text: "The obstacle is the way.", author: "Marcus Aurelius" },
-  { text: "We suffer more often in imagination than in reality.", author: "Seneca" },
-  { text: "There is no passion to be found playing small.", author: "Nelson Mandela" },
-  { text: "What would you do if you weren't afraid?", author: "Sheryl Sandberg" },
-  { text: "Your body can stand almost anything. It's your mind you have to convince." },
-  { text: "Discipline is choosing between what you want now and what you want most." },
-  { text: "Small progress is still progress." },
-  { text: "Motivation gets you going. Habit keeps you going." },
-  { text: "The expert in anything was once a beginner." },
-  { text: "You are allowed to be both a masterpiece and a work in progress, simultaneously." },
-  { text: "Show up. Even when it's hard. Especially when it's hard." },
-  { text: "Your future self is watching you right now." },
-  { text: "The pain you feel today is the strength you feel tomorrow." },
-  { text: "Rest if you must, but don't quit." },
-  { text: "Amor fati — love of fate." },
-  { text: "Every day is a new chance to get stronger." },
-  { text: "One rep at a time. One day at a time." },
-  { text: "You don't have to be great to start, but you have to start to be great.", author: "Zig Ziglar" },
-  { text: "Done is better than perfect." },
-  { text: "Be stubborn about your goals, flexible about your methods." },
-  { text: "Trust the process." },
-  { text: "The only bad workout is the one that didn't happen." },
-  { text: "What you do every day matters more than what you do once in a while.", author: "Gretchen Rubin" },
-  { text: "She believed she could, so she did." }
-];
-
-function renderDailyQuote() {
-  const today = new Date();
-  const seed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-  const quote = QUOTES[seed % QUOTES.length];
-  const el = document.getElementById('daily-quote');
-  el.innerHTML = `"${quote.text}"${quote.author ? `<span class="quote-author">— ${quote.author}</span>` : ''}`;
-}
-
-renderDailyQuote();
-
 const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4', '#ff9800', '#607d8b'];
 
 // ── Init ─────────────────────────────────────────────────────────────────────────────────
@@ -576,7 +521,6 @@ function getCycleDayForDate(dateStr, periodDates) {
 function showPage(page) {
   document.getElementById('training-page').classList.toggle('hidden', page !== 'training');
   document.getElementById('cycle-page').classList.toggle('hidden', page !== 'cycle');
-  document.getElementById('daily-quote').classList.toggle('hidden', page !== 'training');
   document.querySelectorAll('.page-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page);
   });
