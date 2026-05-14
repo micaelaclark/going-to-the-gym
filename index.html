@@ -7,7 +7,7 @@
   <link rel="icon" href="/static/icon.svg">
   <link rel="apple-touch-icon" href="/static/icon.svg">
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#f06292">
+  <meta name="theme-color" content="#1a237e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Gym 💪">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -83,6 +83,12 @@
   <div id="cycle-page" class="page-content hidden">
     <div id="cycle-phase-banner" class="cycle-phase-banner card"></div>
 
+    <div id="cycle-food-card" class="card hidden">
+      <div class="food-rec-label">Today's Nutrition Focus</div>
+      <div class="food-rec-name"></div>
+      <div class="food-rec-why"></div>
+    </div>
+
     <div class="card cycle-calendar">
       <div class="cal-nav">
         <button class="cal-nav-btn" onclick="prevCalMonth()">&#8249;</button>
@@ -92,13 +98,16 @@
       <div id="cal-grid" class="cal-grid"></div>
     </div>
 
+    <div id="cycle-length-panel" class="card hidden">
+      <div class="cycle-length-header">Cycle Length History</div>
+      <canvas id="cycle-length-chart"></canvas>
+    </div>
+
     <div class="cycle-footer">
       <div id="cycle-legend" class="cycle-legend"></div>
       <button id="cycle-log-btn" class="cycle-log-btn" onclick="logPeriod()">🩸 Log Period Start Today</button>
     </div>
   </div>
-
-  <div id="daily-quote" class="daily-quote"></div>
 
   <script src="/static/app.js"></script>
 </body>

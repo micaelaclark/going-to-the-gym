@@ -1,8 +1,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --accent: #f06292;
-  --accent-dark: #e91e8c;
+  --accent: #1a237e;
+  --accent-dark: #0d1462;
   --bg: #f4f4f4;
   --card: #ffffff;
   --text: #1a1a1a;
@@ -823,6 +823,40 @@ tr:last-child td { border-bottom: none; }
 }
 
 .cycle-log-btn:hover:not(:disabled) { background: var(--accent-dark); }
+
+/* ── Food recommendation ── */
+
+.food-rec-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.food-rec-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.food-rec-why {
+  font-size: 0.875rem;
+  color: var(--text);
+  line-height: 1.65;
+}
+
+/* ── Cycle length chart ── */
+
+.cycle-length-header {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 1rem;
+}
 
 .cycle-log-btn:disabled,
 .cycle-log-btn.logged {
