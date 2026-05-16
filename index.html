@@ -24,6 +24,7 @@
   <nav class="page-tabs">
     <button class="page-tab active" data-page="training" onclick="showPage('training')">Training</button>
     <button class="page-tab" data-page="cycle" onclick="showPage('cycle')">Cycle</button>
+    <button class="page-tab" data-page="habits" onclick="showPage('habits')">Habits</button>
   </nav>
 
   <div id="training-page" class="page-content">
@@ -106,6 +107,16 @@
     <div class="cycle-footer">
       <div id="cycle-legend" class="cycle-legend"></div>
       <button id="cycle-log-btn" class="cycle-log-btn" onclick="logPeriod()">🩸 Log Period Start Today</button>
+    </div>
+  </div>
+
+  <div id="habits-page" class="page-content hidden">
+    <div class="card habit-card" id="no-drinking-card">
+      <div class="habit-label">Days Without Drinking</div>
+      <div class="habit-count" id="no-drinking-count">1</div>
+      <div class="habit-goal-dots" id="no-drinking-dots"></div>
+      <div class="habit-goal-label" id="no-drinking-goal-label"></div>
+      <button class="habit-add-btn" onclick="addNoDrinkingDay()">+ Add a Day</button>
     </div>
   </div>
 

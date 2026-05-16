@@ -864,3 +864,83 @@ tr:last-child td { border-bottom: none; }
   color: var(--muted);
   cursor: default;
 }
+
+/* ── Habits ── */
+
+.habit-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.habit-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+
+.habit-count {
+  font-size: 5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.habit-goal-dots {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.25rem 0;
+}
+
+.habit-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.2s;
+}
+
+.habit-dot.filled {
+  background: var(--accent);
+}
+
+.habit-goal-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.habit-goal-label.done {
+  color: #2e7d32;
+  font-size: 0.95rem;
+}
+
+.habit-add-btn {
+  margin-top: 0.5rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.65rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s;
+}
+
+.habit-add-btn:hover:not(:disabled) {
+  background: var(--accent-dark);
+}
+
+.habit-add-btn:disabled,
+.habit-add-btn.done {
+  background: #e0e0e0;
+  color: var(--muted);
+  cursor: default;
+}
