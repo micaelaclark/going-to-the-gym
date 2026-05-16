@@ -583,10 +583,53 @@ function getCycleDayForDate(dateStr, periodDates) {
 function showPage(page) {
   document.getElementById('training-page').classList.toggle('hidden', page !== 'training');
   document.getElementById('cycle-page').classList.toggle('hidden', page !== 'cycle');
+  document.getElementById('habits-page').classList.toggle('hidden', page !== 'habits');
   document.querySelectorAll('.page-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page);
   });
   if (page === 'cycle') renderCyclePage();
+  if (page === 'habits') renderHabitsPage();
+}
+
+// ── Habits ────────────────────────────────────────────────────────────────────────────────
+
+const NO_DRINKING_GOAL = 3;
+
+function getNoDrinkingDays() {
+  return parseInt(localStorage.getItem('noDrinkingDays') || '1');
+}
+
+function addNoDrinkingDay() {
+  const days = getNoDrinkingDays() + 1;
+  localStorage.setItem('noDrinkingDays', String(days));
+  renderHabitsPage();
+}
+
+function renderHabitsPage() {
+  const days = getNoDrinkingDays();
+  const goal = NO_DRINKING_GOAL;
+  const done = days >= goal;
+
+  document.getElementById('no-drinking-count').textContent = days;
+
+  const dots = document.getElementById('no-drinking-dots');
+  dots.innerHTML = Array.from({ length: goal }, (_, i) =>
+    `<span class="habit-dot ${i < days ? 'filled' : ''}"></span>`
+  ).join('');
+
+  const label = document.getElementById('no-drinking-goal-label');
+  if (done) {
+    label.textContent = '🎉 Weekend goal reached!';
+    label.className = 'habit-goal-label done';
+  } else {
+    const left = goal - days;
+    label.textContent = `${left} day${left !== 1 ? 's' : ''} to go`;
+    label.className = 'habit-goal-label';
+  }
+
+  const btn = document.querySelector('.habit-add-btn');
+  btn.disabled = done;
+  btn.classList.toggle('done', done);
 }
 
 function logPeriod() {
