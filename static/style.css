@@ -944,3 +944,32 @@ tr:last-child td { border-bottom: none; }
   color: var(--muted);
   cursor: default;
 }
+
+.habit-savings {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+.habit-savings-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+}
+.habit-savings-amount {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #2e7d32;
+  line-height: 1.1;
+}
+.habit-savings-note {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-weight: 500;
+}
