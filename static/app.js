@@ -594,6 +594,8 @@ function showPage(page) {
 // ── Habits ────────────────────────────────────────────────────────────────────────────────
 
 const NO_DRINKING_GOAL = 3;
+const ALCOHOL_MONTHLY_SPEND = 380;
+const ALCOHOL_DAILY_SPEND = ALCOHOL_MONTHLY_SPEND / 30;
 
 function getNoDrinkingDays() {
   return parseInt(localStorage.getItem('noDrinkingDays') || '1');
@@ -630,6 +632,10 @@ function renderHabitsPage() {
   const btn = document.querySelector('.habit-add-btn');
   btn.disabled = done;
   btn.classList.toggle('done', done);
+
+  const saved = days * ALCOHOL_DAILY_SPEND;
+  document.getElementById('no-drinking-savings-amount').textContent =
+    '$' + saved.toFixed(2);
 }
 
 function logPeriod() {
