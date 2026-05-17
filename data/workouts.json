@@ -472,6 +472,50 @@
       "rep3": 11,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0044-0044-0044-000000000044",
+      "date": "2026-05-17",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 190,
+      "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0045-0045-0045-000000000045",
+      "date": "2026-05-17",
+      "exercise": "Inner Abductor",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 135,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0046-0046-0046-000000000046",
+      "date": "2026-05-17",
+      "exercise": "Hip Abductor",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 120,
+      "muscles": ["glutes", "adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0047-0047-0047-000000000047",
+      "date": "2026-05-17",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
     }
   ],
   "running": [
