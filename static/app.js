@@ -177,11 +177,12 @@ function renderInsights() {
       }
     }
   }
-  // Barre + yoga = full body moderate intensity
+  // Barre + yoga = full body; intensity defaults to moderate unless specified
   for (const b of [...(state.barre || []), ...(state.yoga || [])]) {
+    const intensity = b.intensity || 'moderate';
     for (const m of ALL_MUSCLES) {
       if (!lastTrained[m] || b.date > lastTrained[m].date) {
-        lastTrained[m] = { date: b.date, intensity: 'moderate' };
+        lastTrained[m] = { date: b.date, intensity };
       }
     }
   }
