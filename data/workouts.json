@@ -526,7 +526,7 @@
       "rep2": 8,
       "rep3": 7,
       "weight": 55,
-      "muscles": ["back"]
+      "muscles": ["back", "biceps"]
     },
     {
       "id": "a1b2c3d4-0049-0049-0049-000000000049",
@@ -548,7 +548,7 @@
       "rep2": 6,
       "rep3": 6,
       "weight": 38,
-      "muscles": ["shoulders"]
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
