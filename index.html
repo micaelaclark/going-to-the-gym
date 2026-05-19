@@ -46,6 +46,13 @@
       </div>
     </div>
 
+    <div class="rest-timer-bar">
+      <span class="rest-timer-label">Rest</span>
+      <span id="rest-timer-display">0:00</span>
+      <button id="rest-timer-btn" class="rest-timer-toggle" onclick="toggleRestTimer()">Start</button>
+      <button class="rest-timer-reset" onclick="resetRestTimer()">Reset</button>
+    </div>
+
     <div class="filter-bar">
       <input type="text" id="exercise-search" placeholder="Search exercises…" oninput="renderStrengthBubbles()">
       <div class="body-filter-btns">
