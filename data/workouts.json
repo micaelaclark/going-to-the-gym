@@ -549,6 +549,26 @@
       "rep3": 6,
       "weight": 38,
       "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0051-0051-0051-000000000051",
+      "date": "2026-05-19",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 50,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0052-0052-0052-000000000052",
+      "date": "2026-05-19",
+      "exercise": "Plank",
+      "sets": 1,
+      "timed": true,
+      "rep1": 35,
+      "muscles": ["core"]
     }
   ],
   "running": [
