@@ -516,6 +516,39 @@
       "rep3": 10,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0048-0048-0048-000000000048",
+      "date": "2026-05-19",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 55,
+      "muscles": ["back"]
+    },
+    {
+      "id": "a1b2c3d4-0049-0049-0049-000000000049",
+      "date": "2026-05-19",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 6,
+      "weight": 30,
+      "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0050-0050-0050-000000000050",
+      "date": "2026-05-19",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 38,
+      "muscles": ["shoulders"]
     }
   ],
   "running": [
@@ -543,6 +576,11 @@
       "date": "2026-05-06",
       "distance": 1.5,
       "speed": 7.28
+    },
+    {
+      "date": "2026-05-19",
+      "distance": 6.04,
+      "speed": 4.9
     }
   ],
   "journal": [

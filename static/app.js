@@ -871,5 +871,45 @@ function nextCalMonth() {
   renderCalendar();
 }
 
+// ── Rest Timer ────────────────────────────────────────────────────────────────────────────
+
+let restTimerInterval = null;
+let restTimerSeconds = 0;
+let restTimerRunning = false;
+
+function toggleRestTimer() {
+  if (restTimerRunning) {
+    clearInterval(restTimerInterval);
+    restTimerRunning = false;
+    document.getElementById('rest-timer-btn').textContent = 'Resume';
+    document.getElementById('rest-timer-btn').classList.remove('running');
+  } else {
+    restTimerRunning = true;
+    document.getElementById('rest-timer-btn').textContent = 'Stop';
+    document.getElementById('rest-timer-btn').classList.add('running');
+    restTimerInterval = setInterval(() => {
+      restTimerSeconds++;
+      updateRestTimerDisplay();
+    }, 1000);
+  }
+}
+
+function resetRestTimer() {
+  clearInterval(restTimerInterval);
+  restTimerRunning = false;
+  restTimerSeconds = 0;
+  const btn = document.getElementById('rest-timer-btn');
+  btn.textContent = 'Start';
+  btn.classList.remove('running');
+  updateRestTimerDisplay();
+}
+
+function updateRestTimerDisplay() {
+  const m = Math.floor(restTimerSeconds / 60);
+  const s = restTimerSeconds % 60;
+  document.getElementById('rest-timer-display').textContent =
+    `${m}:${String(s).padStart(2, '0')}`;
+}
+
 // ── Boot ──────────────────────────────────────────────────────────────────────────────────
 fetchData();
