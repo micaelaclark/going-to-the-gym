@@ -594,12 +594,12 @@ function showPage(page) {
 
 // ── Habits ────────────────────────────────────────────────────────────────────────────────
 
-const NO_DRINKING_GOAL = 3;
+const NO_DRINKING_GOAL = 7;
 const ALCOHOL_MONTHLY_SPEND = 380;
 const ALCOHOL_DAILY_SPEND = ALCOHOL_MONTHLY_SPEND / 30;
 
 function getNoDrinkingDays() {
-  return parseInt(localStorage.getItem('noDrinkingDays') || '1');
+  return parseInt(localStorage.getItem('noDrinkingDays') || '4');
 }
 
 function addNoDrinkingDay() {
@@ -622,7 +622,7 @@ function renderHabitsPage() {
 
   const label = document.getElementById('no-drinking-goal-label');
   if (done) {
-    label.textContent = '🎉 Weekend goal reached!';
+    label.textContent = '🎉 Weekly goal reached!';
     label.className = 'habit-goal-label done';
   } else {
     const left = goal - days;
