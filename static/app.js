@@ -7,7 +7,7 @@ let runningDays = 'all';
 let runningMetric = 'both';
 
 const UPPER_MUSCLES = new Set(['chest', 'back', 'shoulders', 'biceps', 'triceps']);
-const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'core']);
+const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'abductors', 'core']);
 
 function setBodyFilter(filter) {
   bodyFilter = filter;
@@ -138,7 +138,7 @@ function renderStrengthBubbles() {
   `).join('');
 }
 
-const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'adductors'];
+const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'adductors', 'abductors'];
 
 const RECOVERY_DAYS = { light: 1, moderate: 2, intense: 3 };
 

@@ -504,7 +504,7 @@
       "rep2": 12,
       "rep3": 12,
       "weight": 120,
-      "muscles": ["glutes", "adductors"]
+      "muscles": ["glutes", "abductors"]
     },
     {
       "id": "a1b2c3d4-0047-0047-0047-000000000047",
@@ -569,6 +569,17 @@
       "timed": true,
       "rep1": 35,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0053-0053-0053-000000000053",
+      "date": "2026-05-22",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 14,
+      "rep2": 14,
+      "rep3": 15,
+      "weight": 105,
+      "muscles": ["quads", "hamstrings", "glutes"]
     }
   ],
   "running": [
