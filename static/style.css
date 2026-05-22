@@ -962,13 +962,16 @@ tr:last-child td { border-bottom: none; }
 
 .habit-goal-dots {
   display: flex;
-  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
   margin: 0.25rem 0;
+  max-width: 220px;
 }
 
 .habit-dot {
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--border);
   transition: background 0.2s;

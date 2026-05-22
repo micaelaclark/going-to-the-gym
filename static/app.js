@@ -68,7 +68,12 @@ function renderStrengthBubbles() {
   let sorted = [...state.strength].sort((a, b) => b.date.localeCompare(a.date));
 
   if (searchQ) {
-    sorted = sorted.filter(e => e.exercise.toLowerCase().includes(searchQ));
+    sorted = sorted.filter(e =>
+      e.exercise.toLowerCase().includes(searchQ) ||
+      (e.muscles || []).some(m => m.toLowerCase().includes(searchQ)) ||
+      (searchQ === 'upper' && (e.muscles || []).some(m => UPPER_MUSCLES.has(m))) ||
+      (searchQ === 'lower' && (e.muscles || []).some(m => LOWER_MUSCLES.has(m)))
+    );
   }
 
   if (bodyFilter === 'upper') {
@@ -594,7 +599,7 @@ function showPage(page) {
 
 // ── Habits ────────────────────────────────────────────────────────────────────────────────
 
-const NO_DRINKING_GOAL = 3;
+const NO_DRINKING_GOAL = 10;
 const ALCOHOL_MONTHLY_SPEND = 380;
 const ALCOHOL_DAILY_SPEND = ALCOHOL_MONTHLY_SPEND / 30;
 
@@ -622,7 +627,7 @@ function renderHabitsPage() {
 
   const label = document.getElementById('no-drinking-goal-label');
   if (done) {
-    label.textContent = '🎉 Weekend goal reached!';
+    label.textContent = '🎉 10-day goal reached!';
     label.className = 'habit-goal-label done';
   } else {
     const left = goal - days;
