@@ -134,7 +134,7 @@
     {
       "id": "a1b2c3d4-0013-0013-0013-000000000013",
       "date": "2026-04-25",
-      "exercise": "Hip Abductor Inner",
+      "exercise": "Hip Adduction",
       "sets": 3,
       "rep1": 5,
       "rep2": 5,
@@ -387,7 +387,7 @@
     {
       "id": "a1b2c3d4-0036-0036-0036-000000000036",
       "date": "2026-05-11",
-      "exercise": "Hip Abductor Inner",
+      "exercise": "Hip Adduction",
       "sets": 3,
       "rep1": 12,
       "rep2": 12,
@@ -454,7 +454,7 @@
     {
       "id": "a1b2c3d4-0042-0042-0042-000000000042",
       "date": "2026-05-13",
-      "exercise": "Hip Abductor Inner",
+      "exercise": "Hip Adduction",
       "sets": 3,
       "rep1": 10,
       "rep2": 10,
@@ -487,7 +487,7 @@
     {
       "id": "a1b2c3d4-0045-0045-0045-000000000045",
       "date": "2026-05-17",
-      "exercise": "Inner Abductor",
+      "exercise": "Hip Adduction",
       "sets": 3,
       "rep1": 12,
       "rep2": 12,
@@ -580,6 +580,59 @@
       "rep3": 15,
       "weight": 205,
       "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0054-0054-0054-000000000054",
+      "date": "2026-05-22",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 11,
+      "rep3": 9,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0055-0055-0055-000000000055",
+      "date": "2026-05-22",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 22,
+      "rep2": 15,
+      "rep3": 14,
+      "weight": 150,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0056-0056-0056-000000000056",
+      "date": "2026-05-22",
+      "exercise": "Plank",
+      "sets": 1,
+      "timed": true,
+      "rep1": 30,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0057-0057-0057-000000000057",
+      "date": "2026-05-22",
+      "exercise": "Leg Lift",
+      "sets": 3,
+      "rep1": 14,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0058-0058-0058-000000000058",
+      "date": "2026-05-22",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 11,
+      "rep2": 10,
+      "rep3": 9,
+      "weight": 135,
+      "muscles": ["glutes", "abductors"]
     }
   ],
   "running": [
