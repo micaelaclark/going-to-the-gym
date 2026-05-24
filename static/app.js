@@ -599,7 +599,7 @@ function showPage(page) {
 
 // ── Habits ────────────────────────────────────────────────────────────────────────────────
 
-const NO_DRINKING_GOAL = 10;
+const NO_DRINKING_GOAL = 14;
 const ALCOHOL_MONTHLY_SPEND = 380;
 const ALCOHOL_DAILY_SPEND = ALCOHOL_MONTHLY_SPEND / 30;
 
@@ -627,7 +627,7 @@ function renderHabitsPage() {
 
   const label = document.getElementById('no-drinking-goal-label');
   if (done) {
-    label.textContent = '🎉 10-day goal reached!';
+    label.textContent = '🎉 2-week goal reached!';
     label.className = 'habit-goal-label done';
   } else {
     const left = goal - days;
