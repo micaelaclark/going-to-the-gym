@@ -660,9 +660,10 @@
       "id": "a1b2c3d4-0061-0061-0061-000000000061",
       "date": "2026-05-26",
       "exercise": "Chest Press",
-      "sets": 2,
+      "sets": 3,
       "rep1": 7,
       "rep2": 5,
+      "rep3": 5,
       "weight": 50,
       "muscles": ["chest", "triceps", "shoulders"]
     }
