@@ -564,7 +564,7 @@
     {
       "id": "a1b2c3d4-0052-0052-0052-000000000052",
       "date": "2026-05-19",
-      "exercise": "Plank",
+      "exercise": "Plank Hold",
       "sets": 1,
       "timed": true,
       "rep1": 35,
@@ -606,7 +606,7 @@
     {
       "id": "a1b2c3d4-0056-0056-0056-000000000056",
       "date": "2026-05-22",
-      "exercise": "Plank",
+      "exercise": "Plank Hold",
       "sets": 1,
       "timed": true,
       "rep1": 30,
@@ -666,6 +666,37 @@
       "rep3": 5,
       "weight": 50,
       "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0062-0062-0062-000000000062",
+      "date": "2026-05-27",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 11,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0063-0063-0063-000000000063",
+      "date": "2026-05-27",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 3,
+      "rep2": 3,
+      "rep3": 3,
+      "weight": 145,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0064-0064-0064-000000000064",
+      "date": "2026-05-27",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 83,
+      "muscles": ["core"]
     }
   ],
   "running": [
