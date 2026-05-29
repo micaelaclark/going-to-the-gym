@@ -697,6 +697,39 @@
       "timed": true,
       "rep1": 83,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0065-0065-0065-000000000065",
+      "date": "2026-05-29",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 5,
+      "rep3": 3,
+      "weight": 32.5,
+      "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0066-0066-0066-000000000066",
+      "date": "2026-05-29",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 11,
+      "rep2": 9,
+      "rep3": 7,
+      "weight": 30,
+      "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0067-0067-0067-000000000067",
+      "date": "2026-05-29",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 30,
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
