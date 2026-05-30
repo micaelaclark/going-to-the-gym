@@ -599,49 +599,17 @@ function showPage(page) {
 
 // ── Habits ────────────────────────────────────────────────────────────────────────────────
 
-const NO_DRINKING_GOAL = 14;
-const ALCOHOL_MONTHLY_SPEND = 380;
-const ALCOHOL_DAILY_SPEND = ALCOHOL_MONTHLY_SPEND / 30;
-
-function getNoDrinkingDays() {
-  return parseInt(localStorage.getItem('noDrinkingDays') || '4');
+function getNoEatingOutDays() {
+  return parseInt(localStorage.getItem('noEatingOutDays') || '0');
 }
 
-function addNoDrinkingDay() {
-  const days = getNoDrinkingDays() + 1;
-  localStorage.setItem('noDrinkingDays', String(days));
+function addNoEatingOutDay() {
+  localStorage.setItem('noEatingOutDays', String(getNoEatingOutDays() + 1));
   renderHabitsPage();
 }
 
 function renderHabitsPage() {
-  const days = getNoDrinkingDays();
-  const goal = NO_DRINKING_GOAL;
-  const done = days >= goal;
-
-  document.getElementById('no-drinking-count').textContent = days;
-
-  const dots = document.getElementById('no-drinking-dots');
-  dots.innerHTML = Array.from({ length: goal }, (_, i) =>
-    `<span class="habit-dot ${i < days ? 'filled' : ''}"></span>`
-  ).join('');
-
-  const label = document.getElementById('no-drinking-goal-label');
-  if (done) {
-    label.textContent = '🎉 2-week goal reached!';
-    label.className = 'habit-goal-label done';
-  } else {
-    const left = goal - days;
-    label.textContent = `${left} day${left !== 1 ? 's' : ''} to go`;
-    label.className = 'habit-goal-label';
-  }
-
-  const btn = document.querySelector('.habit-add-btn');
-  btn.disabled = done;
-  btn.classList.toggle('done', done);
-
-  const saved = days * ALCOHOL_DAILY_SPEND;
-  document.getElementById('no-drinking-savings-amount').textContent =
-    '$' + saved.toFixed(2);
+  document.getElementById('no-eating-out-count').textContent = getNoEatingOutDays();
 }
 
 function logPeriod() {

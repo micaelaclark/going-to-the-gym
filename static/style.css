@@ -936,6 +936,25 @@ tr:last-child td { border-bottom: none; }
 
 /* ── Habits ── */
 
+.habit-note-card {
+  border-left: 4px solid var(--accent);
+}
+
+.habit-note-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.habit-note-text {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text);
+}
+
 .habit-card {
   display: flex;
   flex-direction: column;
