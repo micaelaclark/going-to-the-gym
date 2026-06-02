@@ -818,6 +818,48 @@
       "rep3": 8,
       "weight": 130,
       "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0076-0076-0076-000000000076",
+      "date": "2026-06-02",
+      "exercise": "Plank Hold",
+      "sets": 3,
+      "timed": true,
+      "rep1": 75,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0077-0077-0077-000000000077",
+      "date": "2026-06-02",
+      "exercise": "Leg Raises",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0078-0078-0078-000000000078",
+      "date": "2026-06-02",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0079-0079-0079-000000000079",
+      "date": "2026-06-02",
+      "exercise": "Spider-Man",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 15,
+      "rep3": 15,
+      "weight": 0,
+      "muscles": ["core"]
     }
   ],
   "running": [
