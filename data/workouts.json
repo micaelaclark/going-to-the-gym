@@ -860,6 +860,50 @@
       "rep3": 15,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0080-0080-0080-000000000080",
+      "date": "2026-06-04",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 240,
+      "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0081-0081-0081-000000000081",
+      "date": "2026-06-04",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 175,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0082-0082-0082-000000000082",
+      "date": "2026-06-04",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 145,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0083-0083-0083-000000000083",
+      "date": "2026-06-04",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 6,
+      "rep3": 5,
+      "weight": 50,
+      "muscles": ["chest", "triceps", "shoulders"]
     }
   ],
   "running": [
