@@ -904,6 +904,48 @@
       "rep3": 5,
       "weight": 50,
       "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0084-0084-0084-000000000084",
+      "date": "2026-06-05",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 90,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0085-0085-0085-000000000085",
+      "date": "2026-06-05",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 50,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0086-0086-0086-000000000086",
+      "date": "2026-06-05",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 175,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0087-0087-0087-000000000087",
+      "date": "2026-06-05",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
