@@ -946,6 +946,39 @@
       "rep3": 10,
       "weight": 55,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0088-0088-0088-000000000088",
+      "date": "2026-06-09",
+      "exercise": "Romanian Deadlift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 30,
+      "muscles": ["hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0089-0089-0089-000000000089",
+      "date": "2026-06-09",
+      "exercise": "Leg Extension",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 55,
+      "muscles": ["quads"]
+    },
+    {
+      "id": "a1b2c3d4-0090-0090-0090-000000000090",
+      "date": "2026-06-09",
+      "exercise": "Glute Bridge",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 15,
+      "muscles": ["glutes", "hamstrings"]
     }
   ],
   "running": [
