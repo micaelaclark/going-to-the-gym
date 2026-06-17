@@ -1034,6 +1034,39 @@
       "rep3": 12,
       "weight": 15,
       "muscles": ["shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0096-0096-0096-000000000096",
+      "date": "2026-06-17",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 50,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0097-0097-0097-000000000097",
+      "date": "2026-06-17",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0098-0098-0098-000000000098",
+      "date": "2026-06-17",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 30,
+      "muscles": ["biceps"]
     }
   ],
   "running": [
