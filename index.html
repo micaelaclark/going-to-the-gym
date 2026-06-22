@@ -54,11 +54,26 @@
     </div>
 
     <div class="filter-bar">
-      <input type="text" id="exercise-search" placeholder="Search by name or muscle…" oninput="renderStrengthBubbles()">
-      <div class="body-filter-btns">
-        <button class="filter-btn active" data-filter="all" onclick="setBodyFilter('all')">All</button>
-        <button class="filter-btn" data-filter="upper" onclick="setBodyFilter('upper')">Upper Body</button>
-        <button class="filter-btn" data-filter="lower" onclick="setBodyFilter('lower')">Lower Body</button>
+      <div class="filter-bar-top">
+        <input type="text" id="exercise-search" placeholder="Search by name or muscle…" oninput="renderStrengthBubbles()">
+        <div class="body-filter-btns">
+          <button class="filter-btn active" data-filter="all" onclick="setBodyFilter('all')">All</button>
+          <button class="filter-btn" data-filter="upper" onclick="setBodyFilter('upper')">Upper</button>
+          <button class="filter-btn" data-filter="lower" onclick="setBodyFilter('lower')">Lower</button>
+        </div>
+      </div>
+      <div class="muscle-filter-row">
+        <button class="muscle-filter-btn muscle-tag chest" data-muscle="chest" onclick="setMuscleFilter('chest')">chest</button>
+        <button class="muscle-filter-btn muscle-tag back" data-muscle="back" onclick="setMuscleFilter('back')">back</button>
+        <button class="muscle-filter-btn muscle-tag shoulders" data-muscle="shoulders" onclick="setMuscleFilter('shoulders')">shoulders</button>
+        <button class="muscle-filter-btn muscle-tag biceps" data-muscle="biceps" onclick="setMuscleFilter('biceps')">biceps</button>
+        <button class="muscle-filter-btn muscle-tag triceps" data-muscle="triceps" onclick="setMuscleFilter('triceps')">triceps</button>
+        <button class="muscle-filter-btn muscle-tag core" data-muscle="core" onclick="setMuscleFilter('core')">core</button>
+        <button class="muscle-filter-btn muscle-tag quads" data-muscle="quads" onclick="setMuscleFilter('quads')">quads</button>
+        <button class="muscle-filter-btn muscle-tag hamstrings" data-muscle="hamstrings" onclick="setMuscleFilter('hamstrings')">hamstrings</button>
+        <button class="muscle-filter-btn muscle-tag glutes" data-muscle="glutes" onclick="setMuscleFilter('glutes')">glutes</button>
+        <button class="muscle-filter-btn muscle-tag adductors" data-muscle="adductors" onclick="setMuscleFilter('adductors')">adductors</button>
+        <button class="muscle-filter-btn muscle-tag abductors" data-muscle="abductors" onclick="setMuscleFilter('abductors')">abductors</button>
       </div>
     </div>
 

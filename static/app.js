@@ -1,8 +1,9 @@
-let state = { strength: [], running: [], barre: [], yoga: [], cycle: [] };
+let state = { strength: [], running: [], barre: [], yoga: [], cycle: [], cardio: [] };
 let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
 let bodyFilter = 'all';
+let muscleFilter = null;
 let runningDays = 'all';
 let runningMetric = 'both';
 
@@ -11,8 +12,22 @@ const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'ab
 
 function setBodyFilter(filter) {
   bodyFilter = filter;
+  muscleFilter = null;
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.filter === filter);
+  });
+  document.querySelectorAll('.muscle-filter-btn').forEach(btn => btn.classList.remove('active'));
+  renderStrengthBubbles();
+}
+
+function setMuscleFilter(muscle) {
+  muscleFilter = muscleFilter === muscle ? null : muscle;
+  bodyFilter = 'all';
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === 'all' && !muscleFilter);
+  });
+  document.querySelectorAll('.muscle-filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.muscle === muscleFilter);
   });
   renderStrengthBubbles();
 }
@@ -76,7 +91,9 @@ function renderStrengthBubbles() {
     );
   }
 
-  if (bodyFilter === 'upper') {
+  if (muscleFilter) {
+    sorted = sorted.filter(e => (e.muscles || []).includes(muscleFilter));
+  } else if (bodyFilter === 'upper') {
     sorted = sorted.filter(e => (e.muscles || []).some(m => UPPER_MUSCLES.has(m)));
   } else if (bodyFilter === 'lower') {
     sorted = sorted.filter(e => (e.muscles || []).some(m => LOWER_MUSCLES.has(m)));
@@ -115,11 +132,22 @@ function renderStrengthBubbles() {
       <div class="bubble-stats">miles run</div>
     </div>`;
 
+  const cardioByType = {};
+  for (const c of (state.cardio || [])) {
+    cardioByType[c.type] = (cardioByType[c.type] || 0) + (c.duration || 0);
+  }
+  const cardioBubbles = Object.entries(cardioByType).map(([type, mins]) => `
+    <div class="bubble cardio-bubble">
+      <div class="bubble-exercise">${type.split(' ').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')}</div>
+      <div class="cardio-tally">${mins}</div>
+      <div class="bubble-stats">mins total</div>
+    </div>`).join('');
+
   if (!sorted.length) {
-    container.innerHTML = barreBubble + yogaBubble + runBubble;
+    container.innerHTML = barreBubble + yogaBubble + runBubble + cardioBubbles;
     return;
   }
-  container.innerHTML = barreBubble + yogaBubble + runBubble + sorted.map(e => `
+  container.innerHTML = barreBubble + yogaBubble + runBubble + cardioBubbles + sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>

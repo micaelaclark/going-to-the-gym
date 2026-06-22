@@ -1067,6 +1067,92 @@
       "rep3": 8,
       "weight": 30,
       "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0099-0099-0099-000000000099",
+      "date": "2026-06-22",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 11,
+      "rep2": 11,
+      "rep3": 11,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0100-0100-0100-000000000100",
+      "date": "2026-06-22",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 82,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0101-0101-0101-000000000101",
+      "date": "2026-06-22",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0102-0102-0102-000000000102",
+      "date": "2026-06-22",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 175,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0103-0103-0103-000000000103",
+      "date": "2026-06-22",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 35,
+      "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0104-0104-0104-000000000104",
+      "date": "2026-06-22",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 260,
+      "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0105-0105-0105-000000000105",
+      "date": "2026-06-22",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 4,
+      "rep2": 4,
+      "rep3": 4,
+      "weight": 145,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0106-0106-0106-000000000106",
+      "date": "2026-06-22",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 38,
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
@@ -1163,5 +1249,8 @@
   ],
   "cycle": [
     { "id": "c1y2c3l4-0001-0001-0001-000000000001", "date": "2026-04-30" }
+  ],
+  "cardio": [
+    { "date": "2026-06-22", "type": "stair climber", "duration": 10 }
   ]
 }

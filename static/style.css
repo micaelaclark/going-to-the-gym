@@ -327,6 +327,12 @@ tr:last-child td { border-bottom: none; }
 
 .filter-bar {
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.filter-bar-top {
+  display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
@@ -341,6 +347,29 @@ tr:last-child td { border-bottom: none; }
 .body-filter-btns {
   display: flex;
   gap: 0.4rem;
+}
+
+.muscle-filter-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.muscle-filter-btn {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  transition: opacity 0.15s, box-shadow 0.15s;
+  opacity: 0.5;
+}
+
+.muscle-filter-btn:hover {
+  opacity: 0.85;
+}
+
+.muscle-filter-btn.active {
+  opacity: 1;
+  box-shadow: 0 0 0 2px currentColor;
 }
 
 .filter-btn {
@@ -587,13 +616,15 @@ tr:last-child td { border-bottom: none; }
 /* ── Barre bubble ── */
 
 .barre-bubble,
-.yoga-bubble {
+.yoga-bubble,
+.cardio-bubble {
   cursor: default;
   text-align: center;
 }
 
 .barre-bubble:hover,
-.yoga-bubble:hover {
+.yoga-bubble:hover,
+.cardio-bubble:hover {
   transform: none;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
 }
@@ -610,6 +641,14 @@ tr:last-child td { border-bottom: none; }
   font-size: 2.5rem;
   font-weight: 800;
   color: #9c27b0;
+  line-height: 1.1;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.cardio-tally {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #e65100;
   line-height: 1.1;
   margin: 0.4rem 0 0.2rem;
 }
