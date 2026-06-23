@@ -619,27 +619,10 @@ function getCycleDayForDate(dateStr, periodDates) {
 function showPage(page) {
   document.getElementById('training-page').classList.toggle('hidden', page !== 'training');
   document.getElementById('cycle-page').classList.toggle('hidden', page !== 'cycle');
-  document.getElementById('habits-page').classList.toggle('hidden', page !== 'habits');
   document.querySelectorAll('.page-tab').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.page === page);
   });
   if (page === 'cycle') renderCyclePage();
-  if (page === 'habits') renderHabitsPage();
-}
-
-// ── Habits ────────────────────────────────────────────────────────────────────────────────
-
-function getNoEatingOutDays() {
-  return parseInt(localStorage.getItem('noEatingOutDays') || '0');
-}
-
-function addNoEatingOutDay() {
-  localStorage.setItem('noEatingOutDays', String(getNoEatingOutDays() + 1));
-  renderHabitsPage();
-}
-
-function renderHabitsPage() {
-  document.getElementById('no-eating-out-count').textContent = getNoEatingOutDays();
 }
 
 function logPeriod() {
