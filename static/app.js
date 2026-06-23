@@ -143,11 +143,13 @@ function renderStrengthBubbles() {
       <div class="bubble-stats">mins total</div>
     </div>`).join('');
 
+  const staticBubbles = muscleFilter ? '' : barreBubble + yogaBubble + runBubble + cardioBubbles;
+
   if (!sorted.length) {
-    container.innerHTML = barreBubble + yogaBubble + runBubble + cardioBubbles;
+    container.innerHTML = staticBubbles;
     return;
   }
-  container.innerHTML = barreBubble + yogaBubble + runBubble + cardioBubbles + sorted.map(e => `
+  container.innerHTML = staticBubbles + sorted.map(e => `
     <div class="bubble ${e.id === selectedBubbleId ? 'selected' : ''}"
          onclick="selectBubble('${e.id}', '${e.exercise}')">
       <div class="bubble-exercise">${e.exercise}${e.starred ? ' ⭐' : ''}</div>
