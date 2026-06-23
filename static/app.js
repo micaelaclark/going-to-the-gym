@@ -81,12 +81,12 @@ const GOALS = [
     }
   },
   {
-    label: 'Hip Abduction',
-    desc: 'Hit 160 lbs',
-    start: 120, target: 160, unit: 'lbs',
+    label: 'Shoulder Press',
+    desc: 'Hit 45 lbs',
+    start: 30, target: 45, unit: 'lbs',
     getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Hip Abduction').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 120;
+      const w = state.strength.filter(e => e.exercise === 'Shoulder Press').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 30;
     }
   },
   {
