@@ -547,6 +547,81 @@ tr:last-child td { border-bottom: none; }
 .muscle-tag.calves     { background: #e0f2f1; color: #00695c; }
 .muscle-tag.forearms   { background: #ede7f6; color: #4527a0; }
 
+/* ── Goals ── */
+
+.goals-panel {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+
+.goals-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 1.25rem;
+}
+
+.goal-item {
+  margin-bottom: 1.1rem;
+}
+
+.goal-item:last-child { margin-bottom: 0; }
+
+.goal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.45rem;
+}
+
+.goal-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.goal-values {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.goal-sep {
+  opacity: 0.4;
+  margin: 0 0.2em;
+}
+
+.goal-bar-track {
+  height: 7px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.3rem;
+}
+
+.goal-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+}
+
+.goal-bar-fill.complete {
+  background: #2e7d32;
+}
+
+.goal-subtext {
+  font-size: 0.68rem;
+  color: var(--muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
 /* ── Training insights ── */
 
 .insights-panel {

@@ -50,6 +50,77 @@ function setRunningMetric(metric) {
 
 const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4', '#ff9800', '#607d8b'];
 
+// ── Goals ─────────────────────────────────────────────────────────────────────────────────
+
+const GOALS = [
+  {
+    label: 'Leg Press',
+    desc: 'Hit 300 lbs',
+    start: 180, target: 300, unit: 'lbs',
+    getValue: () => {
+      const w = state.strength.filter(e => e.exercise === 'Leg Press').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 180;
+    }
+  },
+  {
+    label: 'Chest Press',
+    desc: 'Hit 70 lbs',
+    start: 40, target: 70, unit: 'lbs',
+    getValue: () => {
+      const w = state.strength.filter(e => e.exercise === 'Chest Press').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 40;
+    }
+  },
+  {
+    label: 'Low Row',
+    desc: 'Hit 65 lbs',
+    start: 40, target: 65, unit: 'lbs',
+    getValue: () => {
+      const w = state.strength.filter(e => e.exercise === 'Low Row').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 40;
+    }
+  },
+  {
+    label: 'Hip Abduction',
+    desc: 'Hit 160 lbs',
+    start: 120, target: 160, unit: 'lbs',
+    getValue: () => {
+      const w = state.strength.filter(e => e.exercise === 'Hip Abduction').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 120;
+    }
+  },
+  {
+    label: 'Leg Curl',
+    desc: '5 sessions',
+    start: 0, target: 5, unit: 'sessions',
+    getValue: () => state.strength.filter(e => e.exercise === 'Leg Curl').length
+  }
+];
+
+function renderGoals() {
+  const panel = document.getElementById('goals-panel');
+  if (!panel) return;
+  panel.innerHTML = `
+    <div class="goals-title">Goals</div>
+    ${GOALS.map(goal => {
+      const current = goal.getValue();
+      const pct = Math.min(100, Math.max(0, (current - goal.start) / (goal.target - goal.start) * 100));
+      const done = current >= goal.target;
+      return `
+        <div class="goal-item">
+          <div class="goal-header">
+            <span class="goal-label">${goal.label}</span>
+            <span class="goal-values">${current} <span class="goal-sep">/</span> ${goal.target} ${goal.unit}</span>
+          </div>
+          <div class="goal-bar-track">
+            <div class="goal-bar-fill${done ? ' complete' : ''}" style="width:${pct}%"></div>
+          </div>
+          <div class="goal-subtext">${done ? '✓ Done!' : goal.desc}</div>
+        </div>`;
+    }).join('')}
+  `;
+}
+
 // ── Init ─────────────────────────────────────────────────────────────────────────────────
 
 async function fetchData() {
@@ -59,6 +130,7 @@ async function fetchData() {
 }
 
 function renderAll() {
+  renderGoals();
   renderStrengthBubbles();
   renderInsights();
   if (selectedBubbleId) {
