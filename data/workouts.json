@@ -1153,6 +1153,49 @@
       "rep3": 8,
       "weight": 38,
       "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0107-0107-0107-000000000107",
+      "date": "2026-06-24",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 30,
+      "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0108-0108-0108-000000000108",
+      "date": "2026-06-24",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 9,
+      "weight": 38,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0109-0109-0109-000000000109",
+      "date": "2026-06-24",
+      "exercise": "Chest Press",
+      "sets": 2,
+      "rep1": 4,
+      "rep2": 4,
+      "weight": 70,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0110-0110-0110-000000000110",
+      "date": "2026-06-24",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 4,
+      "weight": 70,
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
