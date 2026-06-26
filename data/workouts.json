@@ -145,7 +145,7 @@
     {
       "id": "a1b2c3d4-0014-0014-0014-000000000014",
       "date": "2026-04-25",
-      "exercise": "Hip Abductor Outer",
+      "exercise": "Hip Abduction",
       "sets": 3,
       "rep1": 12,
       "rep2": 12,
@@ -254,7 +254,7 @@
     {
       "id": "a1b2c3d4-0024-0024-0024-000000000024",
       "date": "2026-05-02",
-      "exercise": "Hip Abductor Outer",
+      "exercise": "Hip Abduction",
       "sets": 3,
       "rep1": 10,
       "rep2": 10,
@@ -365,7 +365,7 @@
     {
       "id": "a1b2c3d4-0034-0034-0034-000000000034",
       "date": "2026-05-11",
-      "exercise": "Hip Abductor Outer",
+      "exercise": "Hip Abduction",
       "sets": 3,
       "rep1": 12,
       "rep2": 12,
@@ -498,7 +498,7 @@
     {
       "id": "a1b2c3d4-0046-0046-0046-000000000046",
       "date": "2026-05-17",
-      "exercise": "Hip Abductor",
+      "exercise": "Hip Abduction",
       "sets": 3,
       "rep1": 12,
       "rep2": 12,
@@ -1196,6 +1196,48 @@
       "rep3": 4,
       "weight": 70,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0111-0111-0111-000000000111",
+      "date": "2026-06-26",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 3,
+      "weight": 40,
+      "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0112-0112-0112-000000000112",
+      "date": "2026-06-26",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 140,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0113-0113-0113-000000000113",
+      "date": "2026-06-26",
+      "exercise": "Leg Extension",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 70,
+      "muscles": ["quads"]
+    },
+    {
+      "id": "a1b2c3d4-0114-0114-0114-000000000114",
+      "date": "2026-06-26",
+      "exercise": "Plank Hold",
+      "sets": 2,
+      "timed": true,
+      "rep1": 70,
+      "muscles": ["core"]
     }
   ],
   "running": [
@@ -1294,6 +1336,7 @@
     { "id": "c1y2c3l4-0001-0001-0001-000000000001", "date": "2026-04-30" }
   ],
   "cardio": [
-    { "date": "2026-06-22", "type": "stair climber", "duration": 10 }
+    { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
+    { "date": "2026-06-26", "type": "elliptical", "duration": 10 }
   ]
 }
