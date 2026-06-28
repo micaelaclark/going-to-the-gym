@@ -1238,6 +1238,61 @@
       "timed": true,
       "rep1": 70,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0115-0115-0115-000000000115",
+      "date": "2026-06-28",
+      "exercise": "Rear Delt Fly",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["shoulders", "back"]
+    },
+    {
+      "id": "a1b2c3d4-0116-0116-0116-000000000116",
+      "date": "2026-06-28",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0117-0117-0117-000000000117",
+      "date": "2026-06-28",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 4,
+      "rep2": 3,
+      "rep3": 1,
+      "weight": 45,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0118-0118-0118-000000000118",
+      "date": "2026-06-28",
+      "exercise": "Decline Sit Up",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0119-0119-0119-000000000119",
+      "date": "2026-06-28",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 180,
+      "muscles": ["adductors"]
     }
   ],
   "running": [
@@ -1337,6 +1392,7 @@
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
-    { "date": "2026-06-26", "type": "elliptical", "duration": 10 }
+    { "date": "2026-06-26", "type": "elliptical", "duration": 10 },
+    { "date": "2026-06-28", "type": "elliptical", "duration": 12 }
   ]
 }
