@@ -1293,6 +1293,61 @@
       "rep3": 10,
       "weight": 180,
       "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0120-0120-0120-000000000120",
+      "date": "2026-06-29",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 40,
+      "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0121-0121-0121-000000000121",
+      "date": "2026-06-29",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 7,
+      "weight": 185,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0122-0122-0122-000000000122",
+      "date": "2026-06-29",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 5,
+      "rep3": 4,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0123-0123-0123-000000000123",
+      "date": "2026-06-29",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 4,
+      "rep3": 4,
+      "weight": 139,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0124-0124-0124-000000000124",
+      "date": "2026-06-29",
+      "exercise": "Goblet Squat",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 17.5,
+      "muscles": ["quads", "glutes", "core"]
     }
   ],
   "running": [
