@@ -1348,6 +1348,28 @@
       "rep3": 10,
       "weight": 17.5,
       "muscles": ["quads", "glutes", "core"]
+    },
+    {
+      "id": "a1b2c3d4-0125-0125-0125-000000000125",
+      "date": "2026-07-01",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 60,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0126-0126-0126-000000000126",
+      "date": "2026-07-01",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 30,
+      "muscles": ["biceps"]
     }
   ],
   "running": [
@@ -1448,6 +1470,7 @@
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
     { "date": "2026-06-26", "type": "elliptical", "duration": 10 },
-    { "date": "2026-06-28", "type": "elliptical", "duration": 12 }
+    { "date": "2026-06-28", "type": "elliptical", "duration": 12 },
+    { "date": "2026-07-01", "type": "elliptical", "duration": 20 }
   ]
 }
