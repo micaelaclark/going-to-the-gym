@@ -1370,6 +1370,51 @@
       "rep3": 10,
       "weight": 30,
       "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0127-0127-0127-000000000127",
+      "date": "2026-07-02",
+      "exercise": "Leg Lift",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0128-0128-0128-000000000128",
+      "date": "2026-07-02",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 300,
+      "starred": true,
+      "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0129-0129-0129-000000000129",
+      "date": "2026-07-02",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 185,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0130-0130-0130-000000000130",
+      "date": "2026-07-02",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["hamstrings"]
     }
   ],
   "running": [
