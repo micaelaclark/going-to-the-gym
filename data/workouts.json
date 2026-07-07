@@ -1415,6 +1415,28 @@
       "rep3": 6,
       "weight": 40,
       "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0131-0131-0131-000000000131",
+      "date": "2026-07-05",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 38,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0132-0132-0132-000000000132",
+      "date": "2026-07-05",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 40,
+      "muscles": ["biceps"]
     }
   ],
   "running": [
