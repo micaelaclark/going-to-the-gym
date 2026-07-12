@@ -1437,6 +1437,61 @@
       "rep3": 8,
       "weight": 40,
       "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0133-0133-0133-000000000133",
+      "date": "2026-07-07",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 40,
+      "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0134-0134-0134-000000000134",
+      "date": "2026-07-07",
+      "exercise": "Leg Extension",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 70,
+      "muscles": ["quads"]
+    },
+    {
+      "id": "a1b2c3d4-0135-0135-0135-000000000135",
+      "date": "2026-07-07",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 190,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0136-0136-0136-000000000136",
+      "date": "2026-07-07",
+      "exercise": "Decline Sit Up",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 9,
+      "rep3": 9,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0137-0137-0137-000000000137",
+      "date": "2026-07-07",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 140,
+      "muscles": ["glutes", "abductors"]
     }
   ],
   "running": [
@@ -1539,6 +1594,7 @@
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
     { "date": "2026-06-26", "type": "elliptical", "duration": 10 },
     { "date": "2026-06-28", "type": "elliptical", "duration": 12 },
-    { "date": "2026-07-01", "type": "elliptical", "duration": 20 }
+    { "date": "2026-07-01", "type": "elliptical", "duration": 20 },
+    { "date": "2026-07-07", "type": "elliptical", "duration": 20, "level": 4 }
   ]
 }

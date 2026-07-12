@@ -54,46 +54,31 @@ const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4'
 
 const GOALS = [
   {
-    label: 'Leg Press',
-    desc: 'Hit 300 lbs',
-    start: 180, target: 300, unit: 'lbs',
+    label: 'Hip Thrust',
+    desc: 'Hit 100 lbs (new glute isolation)',
+    start: 0, target: 100, unit: 'lbs',
     getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Leg Press').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 180;
+      const w = state.strength.filter(e => e.exercise === 'Hip Thrust').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 0;
     }
   },
   {
-    label: 'Chest Press',
+    label: 'Pull Down',
     desc: 'Hit 70 lbs',
-    start: 40, target: 70, unit: 'lbs',
+    start: 45, target: 70, unit: 'lbs',
     getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Chest Press').map(e => e.weight || 0);
+      const w = state.strength.filter(e => e.exercise === 'Pull Down').map(e => e.weight || 0);
+      return w.length ? Math.max(...w) : 45;
+    }
+  },
+  {
+    label: 'Rear Delt Fly',
+    desc: 'Hit 50 lbs',
+    start: 40, target: 50, unit: 'lbs',
+    getValue: () => {
+      const w = state.strength.filter(e => e.exercise === 'Rear Delt Fly').map(e => e.weight || 0);
       return w.length ? Math.max(...w) : 40;
     }
-  },
-  {
-    label: 'Low Row',
-    desc: 'Hit 65 lbs',
-    start: 40, target: 65, unit: 'lbs',
-    getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Low Row').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 40;
-    }
-  },
-  {
-    label: 'Shoulder Press',
-    desc: 'Hit 45 lbs',
-    start: 30, target: 45, unit: 'lbs',
-    getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Shoulder Press').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 30;
-    }
-  },
-  {
-    label: 'Leg Curl',
-    desc: '5 sessions',
-    start: 0, target: 5, unit: 'sessions',
-    getValue: () => state.strength.filter(e => e.exercise === 'Leg Curl').length
   }
 ];
 
@@ -204,16 +189,22 @@ function renderStrengthBubbles() {
       <div class="bubble-stats">miles run</div>
     </div>`;
 
-  const cardioByType = {};
+  const cardioStats = {};
   for (const c of (state.cardio || [])) {
-    cardioByType[c.type] = (cardioByType[c.type] || 0) + (c.duration || 0);
+    const s = cardioStats[c.type] = cardioStats[c.type] || { mins: 0, levels: [] };
+    s.mins += (c.duration || 0);
+    if (c.level != null) s.levels.push(c.level);
   }
-  const cardioBubbles = Object.entries(cardioByType).map(([type, mins]) => `
+  const cardioBubbles = Object.entries(cardioStats).map(([type, s]) => {
+    const avgLevel = s.levels.length ? (s.levels.reduce((a, b) => a + b, 0) / s.levels.length) : null;
+    const levelText = avgLevel != null ? ` · avg lvl ${Number.isInteger(avgLevel) ? avgLevel : avgLevel.toFixed(1)}` : '';
+    return `
     <div class="bubble cardio-bubble">
       <div class="bubble-exercise">${type.split(' ').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')}</div>
-      <div class="cardio-tally">${mins}</div>
-      <div class="bubble-stats">mins total</div>
-    </div>`).join('');
+      <div class="cardio-tally">${s.mins}</div>
+      <div class="bubble-stats">mins total${levelText}</div>
+    </div>`;
+  }).join('');
 
   const staticBubbles = muscleFilter ? '' : barreBubble + yogaBubble + runBubble + cardioBubbles;
 
