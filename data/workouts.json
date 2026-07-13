@@ -1492,6 +1492,50 @@
       "rep3": 8,
       "weight": 140,
       "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0138-0138-0138-000000000138",
+      "date": "2026-07-13",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 70,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0139-0139-0139-000000000139",
+      "date": "2026-07-13",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0140-0140-0140-000000000140",
+      "date": "2026-07-13",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 65,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0141-0141-0141-000000000141",
+      "date": "2026-07-13",
+      "exercise": "Rear Delt Fly",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 4,
+      "rep3": 2,
+      "weight": 50,
+      "muscles": ["shoulders", "back"]
     }
   ],
   "running": [
