@@ -447,6 +447,55 @@ tr:last-child td { border-bottom: none; }
   padding: 1rem 0;
 }
 
+/* ── Chart notes ── */
+
+.chart-notes {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.chart-notes-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  margin-bottom: 0.6rem;
+}
+
+.chart-note-item {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  font-size: 0.85rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.chart-note-item:last-child {
+  border-bottom: none;
+}
+
+.chart-note-date {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 5rem;
+}
+
+.chart-note-weight {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 3.5rem;
+}
+
+.chart-note-text {
+  color: var(--text);
+  line-height: 1.4;
+}
+
 /* ── Muscle tags ── */
 
 .muscle-tags {

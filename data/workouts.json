@@ -1536,6 +1536,18 @@
       "rep3": 2,
       "weight": 50,
       "muscles": ["shoulders", "back"]
+    },
+    {
+      "id": "a1b2c3d4-0142-0142-0142-000000000142",
+      "date": "2026-07-16",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 280,
+      "note": "Setting 11",
+      "muscles": ["quads", "hamstrings", "glutes"]
     }
   ],
   "running": [
@@ -1605,6 +1617,11 @@
       "date": "2026-07-12",
       "distance": 1.2,
       "speed": 5.85
+    },
+    {
+      "date": "2026-07-16",
+      "distance": 3.39,
+      "speed": 4.45
     }
   ],
   "journal": [

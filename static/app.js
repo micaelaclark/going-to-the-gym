@@ -358,8 +358,30 @@ function closeChart() {
   runningSelected = false;
   document.getElementById('running-chart-controls').classList.add('hidden');
   document.getElementById('strength-chart-panel').classList.add('hidden');
+  document.getElementById('strength-chart-notes').classList.add('hidden');
   if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
   renderStrengthBubbles();
+}
+
+function renderChartNotes(entries) {
+  const el = document.getElementById('strength-chart-notes');
+  if (!el) return;
+  const notes = (entries || []).filter(e => e.note).sort((a, b) => b.date.localeCompare(a.date));
+  if (!notes.length) {
+    el.classList.add('hidden');
+    el.innerHTML = '';
+    return;
+  }
+  el.classList.remove('hidden');
+  el.innerHTML = `
+    <div class="chart-notes-title">Notes</div>
+    ${notes.map(n => `
+      <div class="chart-note-item">
+        <span class="chart-note-date">${fmt(n.date)}</span>
+        <span class="chart-note-weight">${n.weight ? n.weight + ' lbs' : ''}</span>
+        <span class="chart-note-text">${n.note}</span>
+      </div>`).join('')}
+  `;
 }
 
 // ── Strength chart ────────────────────────────────────────────────────────────────────────
@@ -371,6 +393,7 @@ function renderStrengthChart(exercise) {
     .sort((a, b) => a.date.localeCompare(b.date));
 
   if (strengthChart) { strengthChart.destroy(); strengthChart = null; }
+  renderChartNotes(data);
   if (!data.length) return;
 
   const isTimed = data[0]?.timed;
