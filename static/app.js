@@ -52,8 +52,80 @@ const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4'
 
 // ── Goals ─────────────────────────────────────────────────────────────────────────────────
 
-const GOALS = [
-  {
+const HALF_MARATHON_PLAN_START = '2026-07-13';
+const HALF_MARATHON_PLAN = [
+  { week: 1,  miles: 8,  longRun: 4 },
+  { week: 2,  miles: 10, longRun: 5 },
+  { week: 3,  miles: 12, longRun: 6 },
+  { week: 4,  miles: 10, longRun: 5 },
+  { week: 5,  miles: 14, longRun: 7 },
+  { week: 6,  miles: 16, longRun: 8 },
+  { week: 7,  miles: 18, longRun: 9 },
+  { week: 8,  miles: 14, longRun: 7 },
+  { week: 9,  miles: 20, longRun: 10 },
+  { week: 10, miles: 22, longRun: 11 },
+  { week: 11, miles: 18, longRun: 8 },
+  { week: 12, miles: 12, longRun: 13.1 }
+];
+
+function currentTrainingWeek() {
+  const start = new Date(HALF_MARATHON_PLAN_START + 'T00:00:00');
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return Math.floor((today - start) / (1000 * 60 * 60 * 24 * 7));
+}
+
+function currentWeekRuns() {
+  const weekIdx = currentTrainingWeek();
+  if (weekIdx < 0) return [];
+  const start = new Date(HALF_MARATHON_PLAN_START + 'T00:00:00');
+  const weekStart = new Date(start);
+  weekStart.setDate(weekStart.getDate() + weekIdx * 7);
+  const weekEnd = new Date(weekStart);
+  weekEnd.setDate(weekEnd.getDate() + 7);
+  const startStr = weekStart.toISOString().slice(0, 10);
+  const endStr = weekEnd.toISOString().slice(0, 10);
+  return (state.running || []).filter(r => r.date >= startStr && r.date < endStr);
+}
+
+function fmtGoalValue(v) {
+  return Number.isInteger(v) ? v : Math.round(v * 10) / 10;
+}
+
+function getGoals() {
+  const weekIdx = currentTrainingWeek();
+  const plan = HALF_MARATHON_PLAN[weekIdx];
+  const goals = [];
+
+  if (plan) {
+    goals.push({
+      label: 'Weekly Miles',
+      desc: `Week ${plan.week} of ${HALF_MARATHON_PLAN.length} · half marathon prep`,
+      start: 0, target: plan.miles, unit: 'mi',
+      getValue: () => currentWeekRuns().reduce((s, r) => s + r.distance, 0)
+    });
+    goals.push({
+      label: 'Long Run',
+      desc: 'Longest single run this week',
+      start: 0, target: plan.longRun, unit: 'mi',
+      getValue: () => {
+        const runs = currentWeekRuns();
+        return runs.length ? Math.max(...runs.map(r => r.distance)) : 0;
+      }
+    });
+  }
+
+  goals.push({
+    label: 'Longest Run Ever',
+    desc: 'Progress toward 13.1',
+    start: 2, target: 13.1, unit: 'mi',
+    getValue: () => {
+      const runs = state.running || [];
+      return runs.length ? Math.max(...runs.map(r => r.distance)) : 0;
+    }
+  });
+
+  goals.push({
     label: 'Hip Thrust',
     desc: 'Hit 100 lbs (new glute isolation)',
     start: 0, target: 100, unit: 'lbs',
@@ -61,8 +133,9 @@ const GOALS = [
       const w = state.strength.filter(e => e.exercise === 'Hip Thrust').map(e => e.weight || 0);
       return w.length ? Math.max(...w) : 0;
     }
-  },
-  {
+  });
+
+  goals.push({
     label: 'Pull Down',
     desc: 'Hit 70 lbs',
     start: 45, target: 70, unit: 'lbs',
@@ -70,24 +143,17 @@ const GOALS = [
       const w = state.strength.filter(e => e.exercise === 'Pull Down').map(e => e.weight || 0);
       return w.length ? Math.max(...w) : 45;
     }
-  },
-  {
-    label: 'Rear Delt Fly',
-    desc: 'Hit 50 lbs',
-    start: 40, target: 50, unit: 'lbs',
-    getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Rear Delt Fly').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 40;
-    }
-  }
-];
+  });
+
+  return goals;
+}
 
 function renderGoals() {
   const panel = document.getElementById('goals-panel');
   if (!panel) return;
   panel.innerHTML = `
     <div class="goals-title">Goals</div>
-    ${GOALS.map(goal => {
+    ${getGoals().map(goal => {
       const current = goal.getValue();
       const pct = Math.min(100, Math.max(0, (current - goal.start) / (goal.target - goal.start) * 100));
       const done = current >= goal.target;
@@ -95,7 +161,7 @@ function renderGoals() {
         <div class="goal-item">
           <div class="goal-header">
             <span class="goal-label">${goal.label}</span>
-            <span class="goal-values">${current} <span class="goal-sep">/</span> ${goal.target} ${goal.unit}</span>
+            <span class="goal-values">${fmtGoalValue(current)} <span class="goal-sep">/</span> ${fmtGoalValue(goal.target)} ${goal.unit}</span>
           </div>
           <div class="goal-bar-track">
             <div class="goal-bar-fill${done ? ' complete' : ''}" style="width:${pct}%"></div>
