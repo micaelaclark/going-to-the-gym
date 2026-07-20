@@ -1548,6 +1548,54 @@
       "weight": 280,
       "note": "Setting 11",
       "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0143-0143-0143-000000000143",
+      "date": "2026-07-19",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 58,
+      "timeOfDay": "morning",
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0144-0144-0144-000000000144",
+      "date": "2026-07-19",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 6,
+      "rep3": 3,
+      "weight": 65,
+      "timeOfDay": "morning",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0145-0145-0145-000000000145",
+      "date": "2026-07-19",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 70,
+      "timeOfDay": "morning",
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0146-0146-0146-000000000146",
+      "date": "2026-07-19",
+      "exercise": "Ab Raise",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "timeOfDay": "morning",
+      "muscles": ["core"]
     }
   ],
   "running": [

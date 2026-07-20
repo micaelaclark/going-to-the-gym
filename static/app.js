@@ -298,6 +298,7 @@ function renderStrengthBubbles() {
         </div>
       ` : ''}
       <span class="intensity-badge ${calcIntensity(e)}">${calcIntensity(e)}</span>
+      ${e.timeOfDay ? `<span class="time-badge time-${e.timeOfDay}">${e.timeOfDay === 'morning' ? '🌅' : e.timeOfDay === 'evening' ? '🌙' : '☀️'} ${e.timeOfDay}</span>` : ''}
     </div>
   `).join('');
 }
