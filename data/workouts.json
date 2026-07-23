@@ -1596,6 +1596,48 @@
       "weight": 0,
       "timeOfDay": "morning",
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0147-0147-0147-000000000147",
+      "date": "2026-07-23",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 190,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0148-0148-0148-000000000148",
+      "date": "2026-07-23",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 4,
+      "weight": 140,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0149-0149-0149-000000000149",
+      "date": "2026-07-23",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0150-0150-0150-000000000150",
+      "date": "2026-07-23",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 60,
+      "muscles": ["core"]
     }
   ],
   "running": [
@@ -1690,6 +1732,11 @@
       "date": "2026-07-21",
       "distance": 1,
       "speed": 4.29
+    },
+    {
+      "date": "2026-07-23",
+      "distance": 1,
+      "speed": 5.0
     }
   ],
   "journal": [
