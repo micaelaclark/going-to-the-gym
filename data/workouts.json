@@ -1638,6 +1638,50 @@
       "timed": true,
       "rep1": 60,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0151-0151-0151-000000000151",
+      "date": "2026-07-27",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 58,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0152-0152-0152-000000000152",
+      "date": "2026-07-27",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0153-0153-0153-000000000153",
+      "date": "2026-07-27",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 40,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0154-0154-0154-000000000154",
+      "date": "2026-07-27",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 6,
+      "rep3": 5,
+      "weight": 32.5,
+      "muscles": ["triceps"]
     }
   ],
   "running": [
@@ -1737,6 +1781,11 @@
       "date": "2026-07-23",
       "distance": 1,
       "speed": 5.0
+    },
+    {
+      "date": "2026-07-27",
+      "distance": 2.97,
+      "speed": 5.87
     }
   ],
   "journal": [
