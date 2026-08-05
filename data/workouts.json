@@ -1705,6 +1705,28 @@
       "rep3": 8,
       "weight": 22,
       "muscles": ["quads", "glutes", "core"]
+    },
+    {
+      "id": "a1b2c3d4-0157-0157-0157-000000000157",
+      "date": "2026-08-05",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0158-0158-0158-000000000158",
+      "date": "2026-08-05",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 5,
+      "weight": 30,
+      "muscles": ["biceps"]
     }
   ],
   "running": [
@@ -1819,6 +1841,11 @@
       "date": "2026-08-04",
       "distance": 2,
       "speed": 6.18
+    },
+    {
+      "date": "2026-08-05",
+      "distance": 1.66,
+      "speed": 6.38
     }
   ],
   "journal": [
