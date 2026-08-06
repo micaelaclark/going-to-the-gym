@@ -1727,6 +1727,26 @@
       "rep3": 5,
       "weight": 30,
       "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0159-0159-0159-000000000159",
+      "date": "2026-08-06",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 70,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0160-0160-0160-000000000160",
+      "date": "2026-08-06",
+      "exercise": "Vertical Traction",
+      "sets": 1,
+      "rep1": 10,
+      "weight": 50,
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
@@ -1846,6 +1866,11 @@
       "date": "2026-08-05",
       "distance": 1.66,
       "speed": 6.38
+    },
+    {
+      "date": "2026-08-06",
+      "distance": 1.34,
+      "speed": 6.57
     }
   ],
   "journal": [
