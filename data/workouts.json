@@ -1747,6 +1747,51 @@
       "rep1": 10,
       "weight": 50,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0161-0161-0161-000000000161",
+      "date": "2026-08-17",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 45,
+      "starred": true,
+      "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0162-0162-0162-000000000162",
+      "date": "2026-08-17",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 70,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0163-0163-0163-000000000163",
+      "date": "2026-08-17",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 140,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0164-0164-0164-000000000164",
+      "date": "2026-08-17",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 150,
+      "muscles": ["adductors"]
     }
   ],
   "running": [
