@@ -151,12 +151,16 @@ function getGoals() {
 function renderGoals() {
   const panel = document.getElementById('goals-panel');
   if (!panel) return;
+  const active = getGoals().filter(g => g.getValue() < g.target);
+  if (!active.length) {
+    panel.innerHTML = `<div class="goals-title">Goals</div><div class="goal-subtext">✨ All goals complete — nice work!</div>`;
+    return;
+  }
   panel.innerHTML = `
     <div class="goals-title">Goals</div>
-    ${getGoals().map(goal => {
+    ${active.map(goal => {
       const current = goal.getValue();
       const pct = Math.min(100, Math.max(0, (current - goal.start) / (goal.target - goal.start) * 100));
-      const done = current >= goal.target;
       return `
         <div class="goal-item">
           <div class="goal-header">
@@ -164,9 +168,9 @@ function renderGoals() {
             <span class="goal-values">${fmtGoalValue(current)} <span class="goal-sep">/</span> ${fmtGoalValue(goal.target)} ${goal.unit}</span>
           </div>
           <div class="goal-bar-track">
-            <div class="goal-bar-fill${done ? ' complete' : ''}" style="width:${pct}%"></div>
+            <div class="goal-bar-fill" style="width:${pct}%"></div>
           </div>
-          <div class="goal-subtext">${done ? '✓ Done!' : goal.desc}</div>
+          <div class="goal-subtext">${goal.desc}</div>
         </div>`;
     }).join('')}
   `;
