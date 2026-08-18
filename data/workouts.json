@@ -1792,6 +1792,46 @@
       "rep3": 8,
       "weight": 150,
       "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0165-0165-0165-000000000165",
+      "date": "2026-08-18",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 58,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0166-0166-0166-000000000166",
+      "date": "2026-08-18",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 92,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0167-0167-0167-000000000167",
+      "date": "2026-08-18",
+      "exercise": "Hip Dips",
+      "sets": 1,
+      "rep1": 25,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0168-0168-0168-000000000168",
+      "date": "2026-08-18",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["hamstrings"]
     }
   ],
   "running": [
