@@ -1832,6 +1832,72 @@
       "rep3": 6,
       "weight": 40,
       "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0169-0169-0169-000000000169",
+      "date": "2026-08-29",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 155,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0170-0170-0170-000000000170",
+      "date": "2026-08-29",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 140,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0171-0171-0171-000000000171",
+      "date": "2026-08-29",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 4,
+      "rep3": 4,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0172-0172-0172-000000000172",
+      "date": "2026-08-29",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0173-0173-0173-000000000173",
+      "date": "2026-08-29",
+      "exercise": "Decline Sit Up",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0174-0174-0174-000000000174",
+      "date": "2026-08-29",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 50,
+      "muscles": ["glutes", "hamstrings"]
     }
   ],
   "running": [
