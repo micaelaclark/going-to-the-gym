@@ -52,7 +52,7 @@ const COLORS = ['#f06292', '#2196f3', '#4caf50', '#9c27b0', '#ff5722', '#00bcd4'
 
 // ── Goals ─────────────────────────────────────────────────────────────────────────────────
 
-const HALF_MARATHON_PLAN_START = '2026-07-15';
+const HALF_MARATHON_PLAN_START = '2026-07-13';
 const HALF_MARATHON_PLAN = [
   { week: 1,  miles: 8,  longRun: 4 },
   { week: 2,  miles: 10, longRun: 5 },
