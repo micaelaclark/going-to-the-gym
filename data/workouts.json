@@ -1898,6 +1898,37 @@
       "rep3": 8,
       "weight": 50,
       "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0175-0175-0175-000000000175",
+      "date": "2026-08-31",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 270,
+      "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0176-0176-0176-000000000176",
+      "date": "2026-08-31",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0177-0177-0177-000000000177",
+      "date": "2026-08-31",
+      "exercise": "Plank Hold",
+      "sets": 1,
+      "timed": true,
+      "rep1": 93,
+      "muscles": ["core"]
     }
   ],
   "running": [
