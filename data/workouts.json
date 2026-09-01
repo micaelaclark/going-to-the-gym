@@ -1929,6 +1929,28 @@
       "timed": true,
       "rep1": 93,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0178-0178-0178-000000000178",
+      "date": "2026-08-31",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 160,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0179-0179-0179-000000000179",
+      "date": "2026-08-31",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 4,
+      "rep2": 4,
+      "rep3": 3,
+      "weight": 145,
+      "muscles": ["glutes", "abductors"]
     }
   ],
   "running": [
@@ -2088,6 +2110,11 @@
       "date": "2026-08-30",
       "distance": 9.01,
       "speed": 5.62
+    },
+    {
+      "date": "2026-08-31",
+      "distance": 2.5,
+      "speed": 4.84
     }
   ],
   "journal": [
