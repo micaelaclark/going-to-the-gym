@@ -1951,6 +1951,39 @@
       "rep3": 3,
       "weight": 145,
       "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0180-0180-0180-000000000180",
+      "date": "2026-09-03",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 9,
+      "rep3": 9,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0181-0181-0181-000000000181",
+      "date": "2026-09-03",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0182-0182-0182-000000000182",
+      "date": "2026-09-03",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 9,
+      "rep3": 9,
+      "weight": 270,
+      "muscles": ["quads", "hamstrings", "glutes"]
     }
   ],
   "running": [
@@ -2115,6 +2148,11 @@
       "date": "2026-08-31",
       "distance": 2.5,
       "speed": 4.84
+    },
+    {
+      "date": "2026-09-03",
+      "distance": 1.09,
+      "speed": 5.45
     }
   ],
   "journal": [
