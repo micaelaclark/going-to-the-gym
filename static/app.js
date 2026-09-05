@@ -1,4 +1,4 @@
-let state = { strength: [], running: [], barre: [], yoga: [], cycle: [], cardio: [] };
+let state = { strength: [], running: [], barre: [], yoga: [], cycle: [], cardio: [], stretching: [] };
 let strengthChart = null;
 let selectedBubbleId = null;
 let runningSelected = false;
@@ -8,7 +8,7 @@ let runningDays = 'all';
 let runningMetric = 'both';
 
 const UPPER_MUSCLES = new Set(['chest', 'back', 'shoulders', 'biceps', 'triceps']);
-const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'abductors', 'core']);
+const LOWER_MUSCLES = new Set(['quads', 'hamstrings', 'glutes', 'adductors', 'abductors', 'core', 'calves']);
 
 function setBodyFilter(filter) {
   bodyFilter = filter;
@@ -122,6 +122,24 @@ function getGoals() {
     getValue: () => {
       const runs = state.running || [];
       return runs.length ? Math.max(...runs.map(r => r.distance)) : 0;
+    }
+  });
+
+  goals.push({
+    label: 'Stretch',
+    desc: '3x this week',
+    start: 0, target: 3, unit: 'sessions',
+    getValue: () => {
+      const weekIdx = currentTrainingWeek();
+      if (weekIdx < 0) return (state.stretching || []).length;
+      const start = new Date(HALF_MARATHON_PLAN_START + 'T00:00:00');
+      const weekStart = new Date(start);
+      weekStart.setDate(weekStart.getDate() + weekIdx * 7);
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekEnd.getDate() + 7);
+      const startStr = weekStart.toISOString().slice(0, 10);
+      const endStr = weekEnd.toISOString().slice(0, 10);
+      return (state.stretching || []).filter(s => s.date >= startStr && s.date < endStr).length;
     }
   });
 
@@ -276,7 +294,15 @@ function renderStrengthBubbles() {
     </div>`;
   }).join('');
 
-  const staticBubbles = muscleFilter ? '' : barreBubble + yogaBubble + runBubble + cardioBubbles;
+  const stretchCount = (state.stretching || []).length;
+  const stretchBubble = `
+    <div class="bubble stretch-bubble">
+      <div class="bubble-exercise">Stretching</div>
+      <div class="stretch-tally">${stretchCount}</div>
+      <div class="bubble-stats">sessions total</div>
+    </div>`;
+
+  const staticBubbles = muscleFilter ? '' : barreBubble + yogaBubble + runBubble + cardioBubbles + stretchBubble;
 
   if (!sorted.length) {
     container.innerHTML = staticBubbles;
@@ -307,7 +333,7 @@ function renderStrengthBubbles() {
   `).join('');
 }
 
-const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'adductors', 'abductors'];
+const ALL_MUSCLES = ['chest', 'back', 'shoulders', 'biceps', 'triceps', 'core', 'quads', 'hamstrings', 'glutes', 'adductors', 'abductors', 'calves'];
 
 const RECOVERY_DAYS = { light: 1, moderate: 2, intense: 3 };
 

@@ -1984,6 +1984,68 @@
       "rep3": 9,
       "weight": 270,
       "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0183-0183-0183-000000000183",
+      "date": "2026-09-05",
+      "exercise": "Bulgarian Split Squat",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 22,
+      "muscles": ["quads", "glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0184-0184-0184-000000000184",
+      "date": "2026-09-05",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 5,
+      "weight": 60,
+      "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0185-0185-0185-000000000185",
+      "date": "2026-09-05",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 160,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0186-0186-0186-000000000186",
+      "date": "2026-09-05",
+      "exercise": "Plank Hold",
+      "sets": 3,
+      "timed": true,
+      "rep1": 45,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0187-0187-0187-000000000187",
+      "date": "2026-09-05",
+      "exercise": "Side Plank",
+      "sets": 2,
+      "timed": true,
+      "rep1": 30,
+      "note": "Each side",
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0188-0188-0188-000000000188",
+      "date": "2026-09-05",
+      "exercise": "Calf Raise",
+      "sets": 2,
+      "rep1": 10,
+      "rep2": 10,
+      "weight": 0,
+      "muscles": ["calves"]
     }
   ],
   "running": [
@@ -2193,6 +2255,9 @@
   ],
   "cycle": [
     { "id": "c1y2c3l4-0001-0001-0001-000000000001", "date": "2026-04-30" }
+  ],
+  "stretching": [
+    { "id": "s1t2r3e4-0001-0001-0001-000000000001", "date": "2026-09-05" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
