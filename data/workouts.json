@@ -2046,6 +2046,39 @@
       "rep2": 10,
       "weight": 0,
       "muscles": ["calves"]
+    },
+    {
+      "id": "a1b2c3d4-0189-0189-0189-000000000189",
+      "date": "2026-09-07",
+      "exercise": "Chest Fly",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 7,
+      "weight": 50,
+      "muscles": ["chest"]
+    },
+    {
+      "id": "a1b2c3d4-0190-0190-0190-000000000190",
+      "date": "2026-09-07",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 60,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0191-0191-0191-000000000191",
+      "date": "2026-09-07",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 45,
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
@@ -2215,6 +2248,11 @@
       "date": "2026-09-03",
       "distance": 1.09,
       "speed": 5.45
+    },
+    {
+      "date": "2026-09-07",
+      "distance": 1.25,
+      "speed": 5.0
     }
   ],
   "journal": [
