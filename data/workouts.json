@@ -2079,6 +2079,26 @@
       "rep3": 5,
       "weight": 45,
       "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0192-0192-0192-000000000192",
+      "date": "2026-09-09",
+      "exercise": "Plank Hold",
+      "sets": 3,
+      "timed": true,
+      "rep1": 45,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0193-0193-0193-000000000193",
+      "date": "2026-09-09",
+      "exercise": "Leg Curl",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 40,
+      "muscles": ["hamstrings"]
     }
   ],
   "running": [
@@ -2258,6 +2278,11 @@
       "date": "2026-09-08",
       "distance": 3.24,
       "speed": 5.97
+    },
+    {
+      "date": "2026-09-09",
+      "distance": 2,
+      "speed": 5.52
     }
   ],
   "journal": [
