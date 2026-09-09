@@ -382,6 +382,24 @@ function renderInsights() {
     }
   }
 
+  const RUN_MUSCLES = ['quads', 'hamstrings', 'glutes', 'calves', 'core'];
+  for (const r of (state.running || [])) {
+    const intensity = r.distance >= 7 ? 'intense' : r.distance >= 3 ? 'moderate' : 'light';
+    for (const m of RUN_MUSCLES) {
+      if (!lastTrained[m] || r.date > lastTrained[m].date) {
+        lastTrained[m] = { date: r.date, intensity };
+      }
+    }
+  }
+  for (const c of (state.cardio || [])) {
+    const intensity = (c.duration || 0) >= 20 ? 'moderate' : 'light';
+    for (const m of RUN_MUSCLES) {
+      if (!lastTrained[m] || c.date > lastTrained[m].date) {
+        lastTrained[m] = { date: c.date, intensity };
+      }
+    }
+  }
+
   const recovering = [];
   const ready = [];
   const focus = [];
