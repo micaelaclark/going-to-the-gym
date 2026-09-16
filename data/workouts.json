@@ -2099,6 +2099,61 @@
       "rep3": 6,
       "weight": 40,
       "muscles": ["hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0194-0194-0194-000000000194",
+      "date": "2026-09-16",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0195-0195-0195-000000000195",
+      "date": "2026-09-16",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 4,
+      "weight": 58,
+      "muscles": ["shoulders", "triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0196-0196-0196-000000000196",
+      "date": "2026-09-16",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 30,
+      "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0197-0197-0197-000000000197",
+      "date": "2026-09-16",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 50,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0198-0198-0198-000000000198",
+      "date": "2026-09-16",
+      "exercise": "Ab Lift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 0,
+      "muscles": ["core"]
     }
   ],
   "running": [
@@ -2293,6 +2348,11 @@
       "date": "2026-09-13",
       "distance": 10,
       "speed": 5.0
+    },
+    {
+      "date": "2026-09-16",
+      "distance": 1,
+      "speed": 5.45
     }
   ],
   "journal": [
