@@ -64,8 +64,10 @@ const HALF_MARATHON_PLAN = [
   { week: 8,  miles: 14, longRun: 7 },
   { week: 9,  miles: 20, longRun: 10 },
   { week: 10, miles: 22, longRun: 11 },
-  { week: 11, miles: 18, longRun: 8 },
-  { week: 12, miles: 12, longRun: 13.1 }
+  { week: 11, miles: 20, longRun: 11 },
+  { week: 12, miles: 18, longRun: 9 },
+  { week: 13, miles: 12, longRun: 5 },
+  { week: 14, miles: 15, longRun: 13.1 }
 ];
 
 function currentTrainingWeek() {
