@@ -2154,6 +2154,48 @@
       "rep3": 8,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0199-0199-0199-000000000199",
+      "date": "2026-09-21",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 45,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0200-0200-0200-000000000200",
+      "date": "2026-09-21",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0201-0201-0201-000000000201",
+      "date": "2026-09-21",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 25,
+      "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0202-0202-0202-000000000202",
+      "date": "2026-09-21",
+      "exercise": "Plank Hold",
+      "sets": 3,
+      "timed": true,
+      "rep1": 45,
+      "muscles": ["core"]
     }
   ],
   "running": [
