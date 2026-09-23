@@ -2196,6 +2196,40 @@
       "timed": true,
       "rep1": 45,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0203-0203-0203-000000000203",
+      "date": "2026-09-23",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 4,
+      "weight": 90,
+      "starred": true,
+      "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0204-0204-0204-000000000204",
+      "date": "2026-09-23",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 175,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0205-0205-0205-000000000205",
+      "date": "2026-09-23",
+      "exercise": "Calf Raise",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 10,
+      "muscles": ["calves"]
     }
   ],
   "running": [
@@ -2405,6 +2439,11 @@
       "date": "2026-09-19",
       "distance": 10.65,
       "speed": 5.14
+    },
+    {
+      "date": "2026-09-23",
+      "distance": 2.5,
+      "speed": 6.25
     }
   ],
   "journal": [
@@ -2448,7 +2487,9 @@
     { "id": "c1y2c3l4-0001-0001-0001-000000000001", "date": "2026-04-30" }
   ],
   "stretching": [
-    { "id": "s1t2r3e4-0001-0001-0001-000000000001", "date": "2026-09-05" }
+    { "id": "s1t2r3e4-0001-0001-0001-000000000001", "date": "2026-09-05" },
+    { "id": "s1t2r3e4-0002-0002-0002-000000000002", "date": "2026-09-21" },
+    { "id": "s1t2r3e4-0003-0003-0003-000000000003", "date": "2026-09-23" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
