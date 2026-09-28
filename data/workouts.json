@@ -2263,6 +2263,60 @@
       "rep3": 5,
       "weight": 10,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0209-0209-0209-000000000209",
+      "date": "2026-09-28",
+      "exercise": "Pull Down",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 65,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0210-0210-0210-000000000210",
+      "date": "2026-09-28",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 65,
+      "note": "First set at 70, dropped to 65",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0211-0211-0211-000000000211",
+      "date": "2026-09-28",
+      "exercise": "Plank Hold",
+      "sets": 3,
+      "timed": true,
+      "rep1": 50,
+      "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0212-0212-0212-000000000212",
+      "date": "2026-09-28",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 9,
+      "rep3": 9,
+      "weight": 135,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0213-0213-0213-000000000213",
+      "date": "2026-09-28",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 8,
+      "weight": 175,
+      "muscles": ["adductors"]
     }
   ],
   "running": [
