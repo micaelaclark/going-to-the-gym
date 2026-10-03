@@ -2317,6 +2317,39 @@
       "rep3": 8,
       "weight": 175,
       "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0214-0214-0214-000000000214",
+      "date": "2026-10-03",
+      "exercise": "Rear Delt Fly",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 55,
+      "muscles": ["shoulders", "back"]
+    },
+    {
+      "id": "a1b2c3d4-0215-0215-0215-000000000215",
+      "date": "2026-10-03",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 7,
+      "weight": 25,
+      "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0216-0216-0216-000000000216",
+      "date": "2026-10-03",
+      "exercise": "Tricep Pull Down",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 30,
+      "muscles": ["triceps"]
     }
   ],
   "running": [
