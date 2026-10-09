@@ -2350,6 +2350,40 @@
       "rep3": 7,
       "weight": 30,
       "muscles": ["triceps"]
+    },
+    {
+      "id": "a1b2c3d4-0217-0217-0217-000000000217",
+      "date": "2026-10-09",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 50,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0218-0218-0218-000000000218",
+      "date": "2026-10-09",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 65,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0219-0219-0219-000000000219",
+      "date": "2026-10-09",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 145,
+      "note": "Intentionally dropped weight — first day back after being sick",
+      "muscles": ["adductors"]
     }
   ],
   "running": [
@@ -2630,7 +2664,8 @@
     { "id": "s1t2r3e4-0001-0001-0001-000000000001", "date": "2026-09-05" },
     { "id": "s1t2r3e4-0002-0002-0002-000000000002", "date": "2026-09-21" },
     { "id": "s1t2r3e4-0003-0003-0003-000000000003", "date": "2026-09-23" },
-    { "id": "s1t2r3e4-0004-0004-0004-000000000004", "date": "2026-09-24" }
+    { "id": "s1t2r3e4-0004-0004-0004-000000000004", "date": "2026-09-24" },
+    { "id": "s1t2r3e4-0005-0005-0005-000000000005", "date": "2026-10-09" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
