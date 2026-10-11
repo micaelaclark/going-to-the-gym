@@ -2672,6 +2672,7 @@
     { "date": "2026-06-26", "type": "elliptical", "duration": 10 },
     { "date": "2026-06-28", "type": "elliptical", "duration": 12 },
     { "date": "2026-07-01", "type": "elliptical", "duration": 20 },
-    { "date": "2026-07-12", "type": "elliptical", "duration": 20, "level": 4 }
+    { "date": "2026-07-12", "type": "elliptical", "duration": 20, "level": 4 },
+    { "date": "2026-10-10", "type": "hike", "duration": 154, "note": "NH, 4.78mi with 1819ft elevation gain" }
   ]
 }
