@@ -395,7 +395,8 @@ function renderInsights() {
   }
   for (const c of (state.cardio || [])) {
     const intensity = (c.duration || 0) >= 20 ? 'moderate' : 'light';
-    for (const m of RUN_MUSCLES) {
+    const muscles = c.muscles && c.muscles.length ? c.muscles : RUN_MUSCLES;
+    for (const m of muscles) {
       if (!lastTrained[m] || c.date > lastTrained[m].date) {
         lastTrained[m] = { date: c.date, intensity };
       }
