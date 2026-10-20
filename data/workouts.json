@@ -2414,6 +2414,40 @@
       "rep1": 30,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0223-0223-0223-000000000223",
+      "date": "2026-10-20",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 9,
+      "rep3": 6,
+      "weight": 65,
+      "note": "Feeling sick",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0224-0224-0224-000000000224",
+      "date": "2026-10-20",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 50,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0225-0225-0225-000000000225",
+      "date": "2026-10-20",
+      "exercise": "Shoulder Press",
+      "sets": 3,
+      "rep1": 4,
+      "rep2": 4,
+      "rep3": 4,
+      "weight": 58,
+      "muscles": ["shoulders", "triceps"]
     }
   ],
   "running": [
@@ -2701,7 +2735,8 @@
     { "id": "s1t2r3e4-0003-0003-0003-000000000003", "date": "2026-09-23" },
     { "id": "s1t2r3e4-0004-0004-0004-000000000004", "date": "2026-09-24" },
     { "id": "s1t2r3e4-0005-0005-0005-000000000005", "date": "2026-10-09" },
-    { "id": "s1t2r3e4-0006-0006-0006-000000000006", "date": "2026-10-12" }
+    { "id": "s1t2r3e4-0006-0006-0006-000000000006", "date": "2026-10-12" },
+    { "id": "s1t2r3e4-0007-0007-0007-000000000007", "date": "2026-10-20" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },

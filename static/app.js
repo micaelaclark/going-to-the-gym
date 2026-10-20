@@ -99,31 +99,49 @@ function getGoals() {
   const plan = HALF_MARATHON_PLAN[weekIdx];
   const goals = [];
 
-  if (plan) {
-    goals.push({
-      label: 'Weekly Miles',
-      desc: `Week ${plan.week} of ${HALF_MARATHON_PLAN.length} · half marathon prep`,
-      start: 0, target: plan.miles, unit: 'mi',
-      getValue: () => currentWeekRuns().reduce((s, r) => s + r.distance, 0)
-    });
-    goals.push({
-      label: 'Long Run',
-      desc: 'Longest single run this week',
-      start: 0, target: plan.longRun, unit: 'mi',
-      getValue: () => {
-        const runs = currentWeekRuns();
-        return runs.length ? Math.max(...runs.map(r => r.distance)) : 0;
-      }
-    });
-  }
+  // Feb 10K speed-focused training
+  goals.push({
+    label: '10K Race Pace',
+    desc: 'Hit 10:30/mi avg for 6+ mi (Feb 10K)',
+    start: 11.5, target: 10.5, unit: 'min/mi',
+    getValue: () => {
+      // Find longest run of >=5mi, convert speed → min/mi, best (lowest) pace
+      const runs = (state.running || []).filter(r => r.distance >= 5 && r.speed);
+      if (!runs.length) return 11.5;
+      const paces = runs.map(r => 60 / r.speed);
+      return Math.min(...paces);
+    }
+  });
 
   goals.push({
-    label: 'Longest Run Ever',
-    desc: 'Progress toward 13.1',
-    start: 2, target: 13.1, unit: 'mi',
+    label: 'Fastest Mile',
+    desc: 'Break 9:00/mi — speed workout proxy',
+    start: 11, target: 9, unit: 'min/mi',
     getValue: () => {
-      const runs = state.running || [];
-      return runs.length ? Math.max(...runs.map(r => r.distance)) : 0;
+      const runs = (state.running || []).filter(r => r.distance >= 1 && r.distance <= 2.5 && r.speed);
+      if (!runs.length) return 11;
+      const paces = runs.map(r => 60 / r.speed);
+      return Math.min(...paces);
+    }
+  });
+
+  goals.push({
+    label: 'Weekly Miles',
+    desc: 'Base building — 15 mi/week',
+    start: 0, target: 15, unit: 'mi',
+    getValue: () => {
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
+      const day = now.getDay();
+      const monday = new Date(now);
+      monday.setDate(now.getDate() - ((day + 6) % 7));
+      const sunday = new Date(monday);
+      sunday.setDate(monday.getDate() + 7);
+      const startStr = monday.toISOString().slice(0, 10);
+      const endStr = sunday.toISOString().slice(0, 10);
+      return (state.running || [])
+        .filter(r => r.date >= startStr && r.date < endStr)
+        .reduce((s, r) => s + r.distance, 0);
     }
   });
 
@@ -132,36 +150,26 @@ function getGoals() {
     desc: '3x this week',
     start: 0, target: 3, unit: 'sessions',
     getValue: () => {
-      const weekIdx = currentTrainingWeek();
-      if (weekIdx < 0) return (state.stretching || []).length;
-      const start = new Date(HALF_MARATHON_PLAN_START + 'T00:00:00');
-      const weekStart = new Date(start);
-      weekStart.setDate(weekStart.getDate() + weekIdx * 7);
-      const weekEnd = new Date(weekStart);
-      weekEnd.setDate(weekEnd.getDate() + 7);
-      const startStr = weekStart.toISOString().slice(0, 10);
-      const endStr = weekEnd.toISOString().slice(0, 10);
+      const now = new Date();
+      now.setHours(0, 0, 0, 0);
+      const day = now.getDay();
+      const monday = new Date(now);
+      monday.setDate(now.getDate() - ((day + 6) % 7));
+      const sunday = new Date(monday);
+      sunday.setDate(monday.getDate() + 7);
+      const startStr = monday.toISOString().slice(0, 10);
+      const endStr = sunday.toISOString().slice(0, 10);
       return (state.stretching || []).filter(s => s.date >= startStr && s.date < endStr).length;
     }
   });
 
   goals.push({
     label: 'Hip Thrust',
-    desc: 'Hit 100 lbs (new glute isolation)',
+    desc: 'Hit 100 lbs',
     start: 0, target: 100, unit: 'lbs',
     getValue: () => {
       const w = state.strength.filter(e => e.exercise === 'Hip Thrust').map(e => e.weight || 0);
       return w.length ? Math.max(...w) : 0;
-    }
-  });
-
-  goals.push({
-    label: 'Pull Down',
-    desc: 'Hit 70 lbs',
-    start: 45, target: 70, unit: 'lbs',
-    getValue: () => {
-      const w = state.strength.filter(e => e.exercise === 'Pull Down').map(e => e.weight || 0);
-      return w.length ? Math.max(...w) : 45;
     }
   });
 
@@ -171,7 +179,11 @@ function getGoals() {
 function renderGoals() {
   const panel = document.getElementById('goals-panel');
   if (!panel) return;
-  const active = getGoals().filter(g => g.getValue() < g.target);
+  const active = getGoals().filter(g => {
+    const current = g.getValue();
+    const lowerIsBetter = g.target < g.start;
+    return lowerIsBetter ? current > g.target : current < g.target;
+  });
   if (!active.length) {
     panel.innerHTML = `<div class="goals-title">Goals</div><div class="goal-subtext">✨ All goals complete — nice work!</div>`;
     return;
@@ -201,6 +213,7 @@ function renderGoals() {
 async function fetchData() {
   const res = await fetch('./data/workouts.json?t=' + Date.now());
   state = await res.json();
+  mergeLocalState();
   renderAll();
 }
 
@@ -1063,3 +1076,144 @@ function nextCalMonth() {
 
 // ── Boot ──────────────────────────────────────────────────────────────────────────────────
 fetchData();
+
+// ── In-app logging ─────────────────────────────────────────────────────────────────────────
+
+function openLogModal() {
+  document.getElementById('log-modal').classList.remove('hidden');
+  const today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('.log-form input[name="date"]').forEach(i => { if (!i.value) i.value = today; });
+  renderPending();
+}
+
+function closeLogModal() {
+  document.getElementById('log-modal').classList.add('hidden');
+}
+
+function setLogTab(tab) {
+  document.querySelectorAll('.log-tab').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.log-form').forEach(f => f.classList.add('hidden'));
+  document.getElementById('log-form-' + tab).classList.remove('hidden');
+}
+
+function getPending() {
+  try { return JSON.parse(localStorage.getItem('pendingEntries') || '{}'); }
+  catch (e) { return {}; }
+}
+
+function savePending(p) {
+  localStorage.setItem('pendingEntries', JSON.stringify(p));
+}
+
+function nextLocalId(prefix, section) {
+  const existing = (state[section] || []).concat(getPending()[section] || []);
+  return `${prefix}-local-${Date.now()}-${existing.length}`;
+}
+
+function submitLog(e, kind) {
+  e.preventDefault();
+  const f = e.target;
+  const data = Object.fromEntries(new FormData(f));
+  const pending = getPending();
+
+  if (kind === 'strength') {
+    const entry = {
+      id: nextLocalId('a1b2c3d4', 'strength'),
+      date: data.date,
+      exercise: data.exercise,
+      sets: [data.rep1, data.rep2, data.rep3].filter(r => r !== '').length || 1,
+      rep1: Number(data.rep1),
+      weight: Number(data.weight) || 0,
+      muscles: data.muscles ? data.muscles.split(',').map(m => m.trim().toLowerCase()).filter(Boolean) : []
+    };
+    if (data.rep2) entry.rep2 = Number(data.rep2);
+    if (data.rep3) entry.rep3 = Number(data.rep3);
+    if (data.timed === 'on') entry.timed = true;
+    if (data.note) entry.note = data.note;
+    pending.strength = (pending.strength || []).concat(entry);
+  } else if (kind === 'run') {
+    const dist = Number(data.distance);
+    const min = Number(data.paceMin || 0);
+    const sec = Number(data.paceSec || 0);
+    let speed;
+    if (data.paceType === 'total') {
+      const totalMin = min + sec / 60;
+      speed = totalMin > 0 ? Math.round((dist / (totalMin / 60)) * 100) / 100 : null;
+    } else {
+      const pace = min + sec / 60;
+      speed = pace > 0 ? Math.round((60 / pace) * 100) / 100 : null;
+    }
+    const entry = { date: data.date, distance: dist };
+    if (speed) entry.speed = speed;
+    if (data.note) entry.note = data.note;
+    pending.running = (pending.running || []).concat(entry);
+  } else if (kind === 'cardio') {
+    const entry = { date: data.date, type: data.type.toLowerCase(), duration: Number(data.duration) };
+    if (data.level) entry.level = Number(data.level);
+    if (data.note) entry.note = data.note;
+    pending.cardio = (pending.cardio || []).concat(entry);
+  } else if (kind === 'yoga') {
+    const entry = { id: nextLocalId('y1o2g3a4', 'yoga'), date: data.date, intensity: data.intensity };
+    if (data.note) entry.note = data.note;
+    pending.yoga = (pending.yoga || []).concat(entry);
+  } else if (kind === 'stretch') {
+    const entry = { id: nextLocalId('s1t2r3e4', 'stretching'), date: data.date };
+    if (data.note) entry.note = data.note;
+    pending.stretching = (pending.stretching || []).concat(entry);
+  }
+
+  savePending(pending);
+  mergeLocalState();
+  renderAll();
+  renderPending();
+  f.reset();
+  const today = new Date().toISOString().slice(0, 10);
+  f.querySelector('[name="date"]').value = today;
+}
+
+function mergeLocalState() {
+  const p = getPending();
+  for (const key of ['strength', 'running', 'yoga', 'cardio', 'stretching', 'barre']) {
+    if (!p[key] || !p[key].length) continue;
+    state[key] = (state[key] || []).concat(p[key]);
+  }
+}
+
+function renderPending() {
+  const p = getPending();
+  const list = document.getElementById('pending-list');
+  const section = document.getElementById('pending-entries');
+  if (!list || !section) return;
+  let html = '';
+  let total = 0;
+  for (const key of ['strength', 'running', 'yoga', 'cardio', 'stretching']) {
+    for (const e of (p[key] || [])) {
+      total++;
+      const label = key === 'strength' ? `${e.exercise} ${e.weight ? e.weight + 'lb ' : ''}${e.rep1}${e.rep2 ? '/' + e.rep2 : ''}${e.rep3 ? '/' + e.rep3 : ''}`
+        : key === 'running' ? `Run ${e.distance}mi${e.speed ? ' @ ' + e.speed + 'mph' : ''}`
+        : key === 'yoga' ? `Yoga (${e.intensity || 'moderate'})`
+        : key === 'cardio' ? `${e.type} ${e.duration}min`
+        : 'Stretch';
+      html += `<div class="pending-entry"><span>${e.date} · ${label}</span><button onclick="removePending('${key}',${(p[key] || []).indexOf(e)})">✕</button></div>`;
+    }
+  }
+  if (total === 0) { section.classList.add('hidden'); return; }
+  section.classList.remove('hidden');
+  list.innerHTML = html;
+}
+
+function removePending(section, idx) {
+  const p = getPending();
+  if (!p[section]) return;
+  p[section].splice(idx, 1);
+  if (p[section].length === 0) delete p[section];
+  savePending(p);
+  fetchData().then(() => { mergeLocalState(); renderPending(); });
+}
+
+function exportPending() {
+  const p = getPending();
+  const txt = JSON.stringify(p, null, 2);
+  navigator.clipboard?.writeText(txt);
+  alert('Copied to clipboard! Paste it to Claude to save permanently.');
+}
