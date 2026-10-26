@@ -2470,6 +2470,40 @@
       "rep3": 5,
       "weight": 140,
       "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0228-0228-0228-000000000228",
+      "date": "2026-10-26",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 5,
+      "rep2": 5,
+      "rep3": 5,
+      "weight": 70,
+      "note": "Different machine — harder to push weight on this one",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0229-0229-0229-000000000229",
+      "date": "2026-10-26",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0230-0230-0230-000000000230",
+      "date": "2026-10-26",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 90,
+      "muscles": ["glutes", "hamstrings"]
     }
   ],
   "running": [
@@ -2764,7 +2798,8 @@
     { "id": "s1t2r3e4-0005-0005-0005-000000000005", "date": "2026-10-09" },
     { "id": "s1t2r3e4-0006-0006-0006-000000000006", "date": "2026-10-12" },
     { "id": "s1t2r3e4-0007-0007-0007-000000000007", "date": "2026-10-20" },
-    { "id": "s1t2r3e4-0008-0008-0008-000000000008", "date": "2026-10-21" }
+    { "id": "s1t2r3e4-0008-0008-0008-000000000008", "date": "2026-10-21" },
+    { "id": "s1t2r3e4-0009-0009-0009-000000000009", "date": "2026-10-26" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
