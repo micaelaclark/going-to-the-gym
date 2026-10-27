@@ -2504,6 +2504,29 @@
       "rep3": 7,
       "weight": 90,
       "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0231-0231-0231-000000000231",
+      "date": "2026-10-27",
+      "exercise": "Leg Raises",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "note": "With Magic Circle",
+      "muscles": ["core", "adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0232-0232-0232-000000000232",
+      "date": "2026-10-27",
+      "exercise": "Spider-Man",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 0,
+      "muscles": ["core"]
     }
   ],
   "running": [
@@ -2799,7 +2822,8 @@
     { "id": "s1t2r3e4-0006-0006-0006-000000000006", "date": "2026-10-12" },
     { "id": "s1t2r3e4-0007-0007-0007-000000000007", "date": "2026-10-20" },
     { "id": "s1t2r3e4-0008-0008-0008-000000000008", "date": "2026-10-21" },
-    { "id": "s1t2r3e4-0009-0009-0009-000000000009", "date": "2026-10-26" }
+    { "id": "s1t2r3e4-0009-0009-0009-000000000009", "date": "2026-10-26" },
+    { "id": "s1t2r3e4-0010-0010-0010-000000000010", "date": "2026-10-27" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
@@ -2808,6 +2832,7 @@
     { "date": "2026-07-01", "type": "elliptical", "duration": 20 },
     { "date": "2026-07-12", "type": "elliptical", "duration": 20, "level": 4 },
     { "date": "2026-10-10", "type": "hike", "duration": 154, "note": "NH, 4.78mi with 1819ft elevation gain" },
-    { "date": "2026-10-12", "type": "elliptical", "duration": 10, "muscles": ["quads", "hamstrings", "glutes", "calves", "core", "chest", "back", "biceps", "triceps"], "note": "Used arm handles for full-body" }
+    { "date": "2026-10-12", "type": "elliptical", "duration": 10, "muscles": ["quads", "hamstrings", "glutes", "calves", "core", "chest", "back", "biceps", "triceps"], "note": "Used arm handles for full-body" },
+    { "date": "2026-10-27", "type": "elliptical", "duration": 10, "note": "1 mile warm-up" }
   ]
 }
