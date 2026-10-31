@@ -2527,6 +2527,41 @@
       "rep3": 12,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0233-0233-0233-000000000233",
+      "date": "2026-10-31",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 55,
+      "starred": true,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0234-0234-0234-000000000234",
+      "date": "2026-10-31",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 65,
+      "starred": true,
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0235-0235-0235-000000000235",
+      "date": "2026-10-31",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
@@ -2844,6 +2879,7 @@
     { "date": "2026-07-12", "type": "elliptical", "duration": 20, "level": 4 },
     { "date": "2026-10-10", "type": "hike", "duration": 154, "note": "NH, 4.78mi with 1819ft elevation gain" },
     { "date": "2026-10-12", "type": "elliptical", "duration": 10, "muscles": ["quads", "hamstrings", "glutes", "calves", "core", "chest", "back", "biceps", "triceps"], "note": "Used arm handles for full-body" },
-    { "date": "2026-10-27", "type": "elliptical", "duration": 10, "note": "1 mile warm-up" }
+    { "date": "2026-10-27", "type": "elliptical", "duration": 10, "note": "1 mile warm-up" },
+    { "date": "2026-10-31", "type": "elliptical", "duration": 9, "note": "1 mile at 8:29 pace (fast!)" }
   ]
 }
