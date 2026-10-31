@@ -2818,7 +2818,8 @@
     { "id": "y1o2g3a4-0012-0012-0012-000000000012", "date": "2026-08-18", "intensity": "moderate" },
     { "id": "y1o2g3a4-0013-0013-0013-000000000013", "date": "2026-08-23", "intensity": "moderate" },
     { "id": "y1o2g3a4-0014-0014-0014-000000000014", "date": "2026-08-24", "intensity": "moderate" },
-    { "id": "y1o2g3a4-0015-0015-0015-000000000015", "date": "2026-09-12", "intensity": "moderate", "note": "Upper moderate" }
+    { "id": "y1o2g3a4-0015-0015-0015-000000000015", "date": "2026-09-12", "intensity": "moderate", "note": "Upper moderate" },
+    { "id": "y1o2g3a4-0016-0016-0016-000000000016", "date": "2026-10-30", "intensity": "moderate", "note": "Full body, big emphasis on abductors and adductors" }
   ],
   "cycle": [
     { "id": "c1y2c3l4-0001-0001-0001-000000000001", "date": "2026-04-30" }
