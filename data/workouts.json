@@ -2562,6 +2562,63 @@
       "rep3": 6,
       "weight": 55,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0236-0236-0236-000000000236",
+      "date": "2026-11-02",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 15,
+      "rep2": 15,
+      "rep3": 15,
+      "weight": 160,
+      "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0237-0237-0237-000000000237",
+      "date": "2026-11-02",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 130,
+      "note": "Applied the lower-weight-higher-rep approach",
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0238-0238-0238-000000000238",
+      "date": "2026-11-02",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 85,
+      "note": "Likely a different machine — big jump from 65",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0239-0239-0239-000000000239",
+      "date": "2026-11-02",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 9,
+      "rep2": 8,
+      "rep3": 6,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0240-0240-0240-000000000240",
+      "date": "2026-11-02",
+      "exercise": "Bicep Curl",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 30,
+      "muscles": ["biceps"]
     }
   ],
   "running": [
@@ -2874,7 +2931,8 @@
     { "id": "s1t2r3e4-0007-0007-0007-000000000007", "date": "2026-10-20" },
     { "id": "s1t2r3e4-0008-0008-0008-000000000008", "date": "2026-10-21" },
     { "id": "s1t2r3e4-0009-0009-0009-000000000009", "date": "2026-10-26" },
-    { "id": "s1t2r3e4-0010-0010-0010-000000000010", "date": "2026-10-27" }
+    { "id": "s1t2r3e4-0010-0010-0010-000000000010", "date": "2026-10-27" },
+    { "id": "s1t2r3e4-0011-0011-0011-000000000011", "date": "2026-11-02" }
   ],
   "cardio": [
     { "date": "2026-06-22", "type": "stair climber", "duration": 10 },
