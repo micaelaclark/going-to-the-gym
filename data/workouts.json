@@ -2619,6 +2619,30 @@
       "rep3": 7,
       "weight": 30,
       "muscles": ["biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0241-0241-0241-000000000241",
+      "date": "2026-11-08",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 7,
+      "rep3": 6,
+      "weight": 85,
+      "note": "Different machine (same as 11/2)",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0242-0242-0242-000000000242",
+      "date": "2026-11-08",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 7,
+      "rep3": 6,
+      "weight": 85,
+      "note": "Different machine — big jump from 55 lb PR",
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
@@ -2878,6 +2902,16 @@
       "date": "2026-11-02",
       "distance": 4.63,
       "speed": 6.22
+    },
+    {
+      "date": "2026-11-08",
+      "distance": 1,
+      "speed": 6.0
+    },
+    {
+      "date": "2026-11-09",
+      "distance": 4.62,
+      "speed": 6.32
     }
   ],
   "journal": [
