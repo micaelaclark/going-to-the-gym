@@ -2643,6 +2643,42 @@
       "weight": 85,
       "note": "Different machine — big jump from 55 lb PR",
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0243-0243-0243-000000000243",
+      "date": "2026-11-09",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 7,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 65,
+      "starred": true,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0244-0244-0244-000000000244",
+      "date": "2026-11-09",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 40,
+      "note": "Focused on form + squeeze, lighter weight",
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0245-0245-0245-000000000245",
+      "date": "2026-11-09",
+      "exercise": "Leg Lift",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "note": "With Magic Circle / block",
+      "muscles": ["core", "adductors"]
     }
   ],
   "running": [
@@ -2912,6 +2948,11 @@
       "date": "2026-11-08",
       "distance": 4.62,
       "speed": 6.32
+    },
+    {
+      "date": "2026-11-09",
+      "distance": 1.6,
+      "speed": 6.74
     }
   ],
   "journal": [
