@@ -94,6 +94,18 @@ function fmtGoalValue(v) {
   return Number.isInteger(v) ? v : Math.round(v * 10) / 10;
 }
 
+function getCurrentWeekRange() {
+  // Returns { startStr, endStr } for the Mon-Sun week containing today,
+  // using LOCAL time only (never toISOString, which shifts to UTC).
+  const today = new Date();
+  const day = today.getDay(); // 0=Sun, 1=Mon, ..., 6=Sat
+  const daysSinceMonday = (day + 6) % 7; // 0 on Mon, 6 on Sun
+  const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - daysSinceMonday);
+  const sunday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - daysSinceMonday + 6);
+  const fmt = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  return { startStr: fmt(monday), endStr: fmt(sunday) };
+}
+
 function getGoals() {
   const weekIdx = currentTrainingWeek();
   const plan = HALF_MARATHON_PLAN[weekIdx];
@@ -130,17 +142,9 @@ function getGoals() {
     desc: 'Base building — 15 mi/week',
     start: 0, target: 15, unit: 'mi',
     getValue: () => {
-      const now = new Date();
-      now.setHours(0, 0, 0, 0);
-      const day = now.getDay();
-      const monday = new Date(now);
-      monday.setDate(now.getDate() - ((day + 6) % 7));
-      const sunday = new Date(monday);
-      sunday.setDate(monday.getDate() + 7);
-      const startStr = monday.toISOString().slice(0, 10);
-      const endStr = sunday.toISOString().slice(0, 10);
+      const { startStr, endStr } = getCurrentWeekRange();
       return (state.running || [])
-        .filter(r => r.date >= startStr && r.date < endStr)
+        .filter(r => r.date >= startStr && r.date <= endStr)
         .reduce((s, r) => s + r.distance, 0);
     }
   });
@@ -150,16 +154,8 @@ function getGoals() {
     desc: '3x this week',
     start: 0, target: 3, unit: 'sessions',
     getValue: () => {
-      const now = new Date();
-      now.setHours(0, 0, 0, 0);
-      const day = now.getDay();
-      const monday = new Date(now);
-      monday.setDate(now.getDate() - ((day + 6) % 7));
-      const sunday = new Date(monday);
-      sunday.setDate(monday.getDate() + 7);
-      const startStr = monday.toISOString().slice(0, 10);
-      const endStr = sunday.toISOString().slice(0, 10);
-      return (state.stretching || []).filter(s => s.date >= startStr && s.date < endStr).length;
+      const { startStr, endStr } = getCurrentWeekRange();
+      return (state.stretching || []).filter(s => s.date >= startStr && s.date <= endStr).length;
     }
   });
 
