@@ -2701,6 +2701,18 @@
       "rep3": 10,
       "weight": 240,
       "muscles": ["quads", "hamstrings", "glutes"]
+    },
+    {
+      "id": "a1b2c3d4-0248-0248-0248-000000000248",
+      "date": "2026-11-13",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 7,
+      "weight": 85,
+      "note": "Different machine",
+      "muscles": ["chest", "triceps", "shoulders"]
     }
   ],
   "running": [
