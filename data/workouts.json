@@ -2679,6 +2679,28 @@
       "weight": 0,
       "note": "With Magic Circle / block",
       "muscles": ["core", "adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0246-0246-0246-000000000246",
+      "date": "2026-11-13",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 7,
+      "rep3": 7,
+      "weight": 65,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0247-0247-0247-000000000247",
+      "date": "2026-11-13",
+      "exercise": "Leg Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 240,
+      "muscles": ["quads", "hamstrings", "glutes"]
     }
   ],
   "running": [
