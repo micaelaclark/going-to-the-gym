@@ -2734,6 +2734,30 @@
       "rep3": 10,
       "weight": 0,
       "muscles": ["core"]
+    },
+    {
+      "id": "a1b2c3d4-0251-0251-0251-000000000251",
+      "date": "2026-11-16",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 85,
+      "note": "Different machine",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0252-0252-0252-000000000252",
+      "date": "2026-11-16",
+      "exercise": "Low Row",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 45,
+      "note": "Light, form-focused",
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
@@ -3013,6 +3037,11 @@
       "date": "2026-11-11",
       "distance": 2.46,
       "speed": 5.60
+    },
+    {
+      "date": "2026-11-16",
+      "distance": 1.5,
+      "speed": 5.63
     }
   ],
   "journal": [
