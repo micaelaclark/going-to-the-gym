@@ -2758,6 +2758,41 @@
       "weight": 45,
       "note": "Light, form-focused",
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0253-0253-0253-000000000253",
+      "date": "2026-11-18",
+      "exercise": "Hip Thrust",
+      "sets": 3,
+      "rep1": 6,
+      "rep2": 6,
+      "rep3": 6,
+      "weight": 100,
+      "starred": true,
+      "note": "🏆 100 lb goal hit!",
+      "muscles": ["glutes", "hamstrings"]
+    },
+    {
+      "id": "a1b2c3d4-0254-0254-0254-000000000254",
+      "date": "2026-11-18",
+      "exercise": "Hip Abduction",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 7,
+      "weight": 135,
+      "muscles": ["glutes", "abductors"]
+    },
+    {
+      "id": "a1b2c3d4-0255-0255-0255-000000000255",
+      "date": "2026-11-18",
+      "exercise": "Hip Adduction",
+      "sets": 3,
+      "rep1": 12,
+      "rep2": 12,
+      "rep3": 12,
+      "weight": 160,
+      "muscles": ["adductors"]
     }
   ],
   "running": [
@@ -3042,6 +3077,11 @@
       "date": "2026-11-16",
       "distance": 1.5,
       "speed": 5.63
+    },
+    {
+      "date": "2026-11-18",
+      "distance": 2,
+      "speed": 5.45
     }
   ],
   "journal": [
