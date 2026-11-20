@@ -2793,6 +2793,30 @@
       "rep3": 12,
       "weight": 160,
       "muscles": ["adductors"]
+    },
+    {
+      "id": "a1b2c3d4-0256-0256-0256-000000000256",
+      "date": "2026-11-20",
+      "exercise": "Chest Press",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 85,
+      "note": "Different machine",
+      "muscles": ["chest", "triceps", "shoulders"]
+    },
+    {
+      "id": "a1b2c3d4-0257-0257-0257-000000000257",
+      "date": "2026-11-20",
+      "exercise": "Vertical Traction",
+      "sets": 3,
+      "rep1": 8,
+      "rep2": 8,
+      "rep3": 8,
+      "weight": 65,
+      "starred": true,
+      "muscles": ["back", "biceps"]
     }
   ],
   "running": [
@@ -3082,6 +3106,11 @@
       "date": "2026-11-18",
       "distance": 2,
       "speed": 5.45
+    },
+    {
+      "date": "2026-11-20",
+      "distance": 2,
+      "speed": 6.07
     }
   ],
   "journal": [
