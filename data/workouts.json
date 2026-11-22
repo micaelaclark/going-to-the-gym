@@ -2817,6 +2817,38 @@
       "weight": 65,
       "starred": true,
       "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0258-0258-0258-000000000258",
+      "date": "2026-11-22",
+      "exercise": "Rear Delt Fly",
+      "sets": 2,
+      "rep1": 8,
+      "rep2": 6,
+      "weight": 45,
+      "muscles": ["shoulders", "back"]
+    },
+    {
+      "id": "a1b2c3d4-0259-0259-0259-000000000259",
+      "date": "2026-11-22",
+      "exercise": "Low Row",
+      "sets": 2,
+      "rep1": 8,
+      "rep2": 7,
+      "weight": 55,
+      "muscles": ["back", "biceps"]
+    },
+    {
+      "id": "a1b2c3d4-0260-0260-0260-000000000260",
+      "date": "2026-11-22",
+      "exercise": "Decline Sit Up",
+      "sets": 3,
+      "rep1": 10,
+      "rep2": 10,
+      "rep3": 10,
+      "weight": 0,
+      "note": "Accidentally made it more of a quad workout",
+      "muscles": ["core", "quads"]
     }
   ],
   "running": [
@@ -3111,6 +3143,11 @@
       "date": "2026-11-20",
       "distance": 2,
       "speed": 6.07
+    },
+    {
+      "date": "2026-11-22",
+      "distance": 3,
+      "speed": 5.03
     }
   ],
   "journal": [
